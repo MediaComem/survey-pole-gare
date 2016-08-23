@@ -1,0 +1,9 @@
+<h1>Survey#new</h1>
+<p>Find me in app/views/survey/new.html.erb</p>
+div 
+  = form_for :survey, url: surveys_path do |f|
+    h3 Hello World
+    = f.text_field :q1
+    h3 Hello World
+    = f.text_field :q2
+    = f.submit
