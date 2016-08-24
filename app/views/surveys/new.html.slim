@@ -24,8 +24,11 @@ div
     = f.radio_button(:q2,"Occasionnellement")
     = f.label "Jamais"
     = f.radio_button(:q2,"Jamais")
-    h3 Q3
-    
+    h3 Q3 Lorsque vous êtes dans le secteur sous-gare, combien de temps y restez-vous en moyenne?
+    = f.label "1 heure"
+    = f.radio_button(:q3,"1 heure")
+    = f.label "2 jours"
+    = f.radio_button(:q3,"2 jours")
     h3 Q4
     = f.radio_button(:q3,"Oui,et j’en suis heureux")
     = f.radio_button(:q3,"Au moins une fois par semaine")
