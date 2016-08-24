@@ -12,5 +12,5 @@ class SurveysController < ApplicationController
 end
 private
   def survey_params
-    params.require(:survey).permit(:q1,:q3, q2: params[:survey][:q2].try(:keys))
+    params.require(:survey).permit(q1: params[:survey][:q1].try(:keys))
   end

@@ -3,8 +3,18 @@
 div 
   = form_for :survey, url: surveys_path do |f|
 
-    h3 Q1
-    = f.text_field :q1
+    h3 1. Dans le secteur sous­-gare,vous êtes avant tout...
+    = f.fields_for :q1 do |ff|
+      = ff.label "Usager des commerces ou des services"
+      = ff.check_box "Usager des commerces ou des services"
+      = ff.label "Habitant"
+      = ff.check_box "Habitant"
+      = ff.label "Commerçant"
+      = ff.check_box "Commerçant"
+      = ff.label "Autre"
+      = ff.check_box "Autre"
+      = ff.label "Veuillez préciser"
+      = ff.text_field :autre_precision
     h3 Q2
     = f.fields_for :q2 do |ff|
       = ff.check_box "Usager des commerces ou des services"
@@ -14,6 +24,11 @@ div
       = ff.text_field :autre_precision
     h3 Q3
     = f.radio_button(:q3,"Au moins une fois par jour")
+    = f.radio_button(:q3,"Au moins une fois par semaine")
+    = f.radio_button(:q3,"Occasionnellement")
+    = f.radio_button(:q3,"Jamais")
+    h3 Q4
+    = f.radio_button(:q3,"Oui,et j’en suis heureux")
     = f.radio_button(:q3,"Au moins une fois par semaine")
     = f.radio_button(:q3,"Occasionnellement")
     = f.radio_button(:q3,"Jamais")
