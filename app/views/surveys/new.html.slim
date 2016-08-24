@@ -3,20 +3,14 @@
 div 
   = form_for :survey, url: surveys_path do |f|
 
-    h3 Check
-    = f.check_box :q3
-    = f.check_box :q3
-    h3 Check array
-    = f.check_box :q1, {multiple: true}, "Usager des commerces ou des services", nil
-    = f.check_box :q1, {multiple: true}, "Habitant", nil
-    = f.check_box :q1, {multiple: true}, "Commerçant", nil
-    = f.check_box :q1, {multiple: true}, "Usager de la gare", nil
-    = f.check_box :q1, {multiple: true}, "Employé ou indépendant", nil
-    = f.text_field :q1, {multiple: true}
-    h3 Check array 2
+    h3 Q1
+    = f.text_field :q1
+    h3 Q2
     = f.fields_for :q2 do |ff|
       = ff.check_box "Usager des commerces ou des services"
       = ff.check_box "Habitant"
       = ff.check_box "Commerçant"
+      = ff.check_box "Autre"
+      = ff.text_field :autre_precision
 
     = f.submit

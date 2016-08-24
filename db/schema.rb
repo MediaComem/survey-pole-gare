@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823082132) do
+ActiveRecord::Schema.define(version: 20160824074511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "surveys", force: :cascade do |t|
     t.string   "q1"
-    t.text     "q2"
+    t.hstore   "q2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
