@@ -12,5 +12,9 @@ div
       = ff.check_box "Commerçant"
       = ff.check_box "Autre"
       = ff.text_field :autre_precision
-
+    h3 Q3
+    = f.radio_button(:q3,"Au moins une fois par jour")
+    = f.radio_button(:q3,"Au moins une fois par semaine")
+    = f.radio_button(:q3,"Occasionnellement")
+    = f.radio_button(:q3,"Jamais")
     = f.submit
