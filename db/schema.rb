@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160824074511) do
 
   create_table "surveys", force: :cascade do |t|
     t.hstore   "q1"
+    t.string   "q2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

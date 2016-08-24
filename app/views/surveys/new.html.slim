@@ -15,18 +15,17 @@ div
       = ff.check_box "Autre"
       = ff.label "Veuillez préciser"
       = ff.text_field :autre_precision
-    h3 Q2
-    = f.fields_for :q2 do |ff|
-      = ff.check_box "Usager des commerces ou des services"
-      = ff.check_box "Habitant"
-      = ff.check_box "Commerçant"
-      = ff.check_box "Autre"
-      = ff.text_field :autre_precision
+    h3 2. Quelle est votre fréquentation moyenne du secteur sous-gare?
+    = f.label "Au moins une fois par jour"
+    = f.radio_button(:q2,"Au moins une fois par jour")
+    = f.label "Au moins une fois par semaine"
+    = f.radio_button(:q2,"Au moins une fois par semaine")
+    = f.label "Occasionnellement"
+    = f.radio_button(:q2,"Occasionnellement")
+    = f.label "Jamais"
+    = f.radio_button(:q2,"Jamais")
     h3 Q3
-    = f.radio_button(:q3,"Au moins une fois par jour")
-    = f.radio_button(:q3,"Au moins une fois par semaine")
-    = f.radio_button(:q3,"Occasionnellement")
-    = f.radio_button(:q3,"Jamais")
+    
     h3 Q4
     = f.radio_button(:q3,"Oui,et j’en suis heureux")
     = f.radio_button(:q3,"Au moins une fois par semaine")
