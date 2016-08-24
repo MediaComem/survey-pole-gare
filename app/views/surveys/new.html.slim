@@ -56,5 +56,11 @@ div
       = ff.label "Veuillez préciser"
       = ff.text_field :autre_precision
     h3 Q5 Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois)?
-    #map
+    .q5
+      = f.fields_for :q5 do |ff|
+        - @quartiers_data_hash['features'].each do |n|
+          label 
+            = n['properties']['AlphaID']
+          = ff.check_box n['properties']['AlphaID'], {'data-polygonid'=>n['properties']['AlphaID']}
+      #map
     = f.submit

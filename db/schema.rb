@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160824074511) do
     t.string   "q2"
     t.string   "q3"
     t.string   "q4"
+    t.hstore   "q5"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
