@@ -11,6 +11,14 @@ class SurveysController < ApplicationController
   	@survey.save
   	redirect_to @survey
 	end
+  def admin
+    @users = Survey.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+    end
+  end
 end
 private
   def survey_params
