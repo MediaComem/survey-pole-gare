@@ -5,30 +5,11 @@ div
 
     h3 1. Dans le secteur sous­-gare,vous êtes avant tout...
     = f.fields_for :q1 do |ff|
-      .checkbox
-        label
-          = ff.check_box "Usager des commerces ou des services"
-          | Usager des commerces ou des services
-      .checkbox
-        label
-          = ff.check_box "Habitant"
-          | Habitant
-      .checkbox
-        label
-          = ff.check_box "Commerçant"
-          | Commerçant
-      .checkbox
-        label
-          = ff.check_box "Usager de la gare"
-          | Usager de la gare
-      .checkbox
-        label
-          = ff.check_box "Employé ou indépendant"
-          | Employé ou indépendant
-      .checkbox
-        label
-          = ff.check_box "Autre"
-          | Autre
+      - Survey.q1_answers.each do |item|
+        .checkbox
+          label
+            = ff.check_box "#{item}"
+            = item
       .form-group
         label Veuillez préciser
         = ff.text_field :autre_precision, :class => 'form-control'
@@ -62,50 +43,11 @@ div
         |Jamais
     h3 Q4 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur sous-gare ?
     = f.fields_for :q4 do |ff|
-      .checkbox
-        label
-          = ff.check_box "marche"
-          |marche
-      .checkbox
-        label
-          = ff.check_box "vélo"
-          |vélo
-      .checkbox
-        label
-          = ff.check_box "train"
-          |train
-      .checkbox
-        label
-          = ff.check_box "bus"
-          |bus
-      .checkbox
-        label
-          = ff.check_box "métro"
-          |métro
-      .checkbox
-        label
-          = ff.check_box "voiture personnelle"
-          |voiture personnelle
-      .checkbox
-        label
-          = ff.check_box "covoiturage"
-          |covoiturage
-      .checkbox
-        label
-          = ff.check_box "Mobility"
-          |Mobility
-      .checkbox
-        label
-          = ff.check_box "taxi"
-          |taxi
-      .checkbox
-        label
-          = ff.check_box "2 roues motorisé"
-          |2 roues motorisé
-      .checkbox
-        label
-          = ff.check_box "autre"
-          |autre
+      - Survey.q4_answers.each do |item|
+        .checkbox
+          label
+            = ff.check_box "#{item}"
+            = item
       .form-group
         label Veuillez préciser
         = ff.text_field :autre_precision, :class => 'form-control'

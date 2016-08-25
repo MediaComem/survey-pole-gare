@@ -16,7 +16,11 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+      format.csv {
+        send_data @users.to_csv.encode("iso-8859-1", :invalid => :replace, :undef => :replace, :replace => "?"),
+          :type => 'text/csv; charset=iso-8859-1; header=present',
+          :disposition => "attachment; filename=answers.csv" 
+      }
     end
   end
 end
