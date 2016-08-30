@@ -1,27 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The <tt>config/database.yml</tt> file uses environment variable for some config values. Each contributor must have a <tt>.env</tt> file in the app root with values for the following environment variables:
 
-Things you may want to cover:
+* <tt>DB_USER</tt>
+* <tt>DB_NAME_DEV</tt>
+* <tt>DB_NAME_TEST</tt>
 
-* Ruby version
+=== Example
+    
+<tt>.env</tt> content
+  DB_USER=[your_db_username]
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-`rails new survey16 --skip-action-cable` to create a ruby app withtout cable (websockets)
 
