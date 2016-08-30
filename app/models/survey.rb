@@ -3,6 +3,12 @@ class Survey < ApplicationRecord
 	def self.q1_answers
     ['Usager des commerces ou des services', 'Habitant', 'Commerçant', 'Usager de la gare', 'Employé ou indépendant', 'Autre']
   end
+  def self.q2_answers
+    ['Au moins une fois par jour', 'Au moins une fois par semaine', 'Occasionnellement', 'Jamais']
+  end
+  def self.q3_answers
+    ['Au moins une heure', 'Une demi journée']
+  end
   def self.q4_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
