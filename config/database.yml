@@ -1,17 +1,17 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: heig-survey16_dev
+  database: <%= ENV['DB_NAME_DEV'] %>
   host: 127.0.0.1
   pool: 5
-  username: adrienbigler
+  username: <%= ENV['DB_USER'] %>
   password:
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: heig-survey16_test
+  database: <%= ENV['DB_NAME_TEST'] %>
   host: 127.0.0.1
   pool: 5
-  username: adrienbigler
+  username: <%= ENV['DB_USER'] %>
   password: 
