@@ -23,7 +23,7 @@ var mapManager = {
     // map.renderSync()
     var vectorSource = new ol.source.Vector();
 
-    $.get( "/quartiersPully.geojson", function( data ) {
+    $.get( "/lausanne_maillle_reguliere2.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
     });
 

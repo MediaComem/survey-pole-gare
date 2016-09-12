@@ -18,6 +18,12 @@ class Survey < ApplicationRecord
   def self.q6_answers
     ['marche','vélo','train','bus','métro','voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé', 'Autre']
   end
+  def self.q7_answers
+    ['Dans une rue du secteur','Dans une rue en dehors du secteur',',Parking privé','Parking du Simplon','Parking de la Coop','Autre']
+  end
+  def self.q9_answers
+    ['Traverser','Shopping','Se promener','Se rencontrer & attendre','Manger sur le pouce','Autre']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end

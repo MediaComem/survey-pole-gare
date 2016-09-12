@@ -42,7 +42,7 @@ div
         - Survey.q5_answers.each do |item|
           .radio
             label
-              = f.radio_button(:q3,"#{item}")
+              = f.radio_button(:q5,"#{item}")
               = item
     #q6
       h3 6. Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? 
@@ -55,28 +55,39 @@ div
         .form-group
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q41
-      h3 Q4 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur sous-gare ?
-      = f.fields_for :q4 do |ff|
-        - Survey.q4_answers.each do |item|
+    #q7
+      h3 7. Si vous vous rendez dans le secteur en voiture, où stationnez-vous le plus souvent ?
+      = f.fields_for :q7 do |ff|
+        - Survey.q7_answers.each do |item|
+          .radio
+            label
+              = f.radio_button(:q7,"#{item}")
+              = item
+        .form-group
+          label Veuillez préciser
+          = ff.text_field :autre_precision, :class => 'form-control other'
+    #q8
+      h3 Q5 Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois)?
+      .q8
+        = f.fields_for :q8 do |ff|
+          - @quartiers_data_hash['features'].each do |n|
+            label 
+              = n['properties']['AlphaID']
+            = ff.check_box n['properties']['AlphaID'], {'data-polygonid'=>n['properties']['AlphaID']}
+        h4 Interractions avec la map bloquées durant le scroll
+    #q9
+      h3 9. Que faites-vous dans ces rues ou places ?
+      = f.fields_for :q9 do |ff|
+        - Survey.q9_answers.each do |item|
           .checkbox
             label
               = ff.check_box "#{item}"
               = item
         .form-group
           label Veuillez préciser
-          = ff.text_field :autre_precision, :class => 'form-control'
-    #q51
-      h3 Q5 Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois)?
-      .q5
-        = f.fields_for :q5 do |ff|
-          - @quartiers_data_hash['features'].each do |n|
-            label 
-              = n['properties']['AlphaID']
-            = ff.check_box n['properties']['AlphaID'], {'data-polygonid'=>n['properties']['AlphaID']}
-        h4 Interractions avec la map bloquées durant le scroll
-    #map
+          = ff.text_field :autre_precision, :class => 'form-control other'
     = f.submit
+    #map
     p | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra erat a urna tempor aliquam. Sed vitae elementum odio. In diam nibh, viverra a volutpat ac, convallis sed dui. Donec sed facilisis ex. Praesent varius orci lectus, nec ultricies velit faucibus nec. Sed at elit metus. Maecenas placerat, ex in consequat aliquam, leo diam aliquet metus, vitae ornare leo tellus non eros.Aliquam enim mi, vulputate sed nisl at, eleifend bibendum tellus. Nulla placerat tortor non justo dapibus mollis. Aenean auctor libero turpis, id ullamcorper erat cursus sed. Vivamus congue malesuada sem. Proin ac ipsum at lorem tristique scelerisque nec id justo. Sed vitae euismod sem. Vestibulum ultricies consequat ullamcorper. Phasellus ornare tincidunt est, sit amet commodo lorem congue vestibulum. Nunc lectus eros, fermentum quis dolor quis, porttitor faucibus metus. Sed vitae metus eget sem aliquet scelerisque. Nunc vitae faucibus ante. Pellentesque metus nulla, hendrerit vulputate pulvinar nec, facilisis vitae ligula.Sed id efficitur justo. Integer ultrices eget purus sit amet volutpat. Donec a arcu et tellus suscipi t mattis a dignissim tellus. Maecenas sollicitudin, velit id fringilla commodo, turpis sapien interdum elit, sit amet varius lorem turpis ut massa. Mauris ut dignissim turpis. Pellentesque ultrices nulla nec justo eleifend, et rutrum arcu hendrerit. Aenean hendrerit lobortis tincidunt. Cras nec venenatis lectus. Integer vitae molestie libero. Maecenas vel eros nec lectus consectetur viverra vel et nisi. Ut non vulputate massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sit amet nisi eget dui dictum commodo.Sed malesuada lectus sed eros accumsan, egestas tincidunt sem auctor. Aliquam erat volutpat. Quisque gravida tortor ut rhoncus tincidunt. Aenean faucibus lobortis neque quis ullamcorper. Vivamus quis mi non ex faucibus commodo. Vestibulum egestas felis vitae leo aliquam dignissim. Donec finibus consequat nibh, ut vestibulum leo varius nec. Nulla in pellentesque nulla. Praesent maximus porta sem vel mollis. Morbi varius, ipsum at vestibulum faucibus, lacus ligula iaculis leo, quis facilisis lectus libero sed magna. Maecenas nec ligula vel elit sagittis iaculis ultricies vel turpis. Morbi bibendum pulvinar elementum. Duis convallis, dolor et viverra egestas, velit magna malesuada purus, sed ultrices turpis eros blandit urna. Nulla euismod diam libero, sit amet consectetur nunc ullamcorper sit amet.Nullam euismod consequat ornare. Sed ultricies, quam sit amet laoreet bibendum, ex lacus tincidunt nulla, non sagittis massa mauris ut magna. Vivamus efficitur elementum porttitor. Nunc at sapien risus. Curabitur facilisis laoreet lectus, non pulvinar leo egestas eu. Ut at libero finibus, vestibulum sapien sed, lacinia diam. Proin a nunc vitae odio mollis porttitor sit amet quis dolor. Sed id dolor quis ligula blandit porta. Maecenas in dictum nibh. Etiam bibendum velit eu cursus tincidunt. Duis id nibh elementum, egestas ex ac, ultrices tellus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra erat a urna tempor aliquam. Sed vitae elementum odio. In diam nibh, viverra a volutpat ac, convallis sed dui. Donec sed facilisis ex. Praesent varius orci lectus, nec ultricies velit faucibus nec. Sed at elit metus. Maecenas placerat, ex in consequat aliquam, leo diam aliquet metus, vitae ornare leo tellus non eros.Aliquam enim mi, vulputate sed nisl at, eleifend bibendum tellus. Nulla placerat tortor non justo dapibus mollis. Aenean auctor libero turpis, id ullamcorper erat cursus sed. Vivamus congue malesuada sem. Proin ac ipsum at lorem tristique scelerisque nec id justo. Sed vitae euismod sem. Vestibulum ultricies consequat ullamcorper. Phasellus ornare tincidunt est, sit amet commodo lorem congue vestibulum. Nunc lectus eros, fermentum quis dolor quis, porttitor faucibus metus. Sed vitae metus eget sem aliquet scelerisque. Nunc vitae faucibus ante. Pellentesque metus nulla, hendrerit vulputate pulvinar nec, facilisis vitae ligula.Sed id efficitur justo. Integer ultrices eget purus sit amet volutpat. Donec a arcu et tellus suscipi t mattis a dignissim tellus. Maecenas sollicitudin, velit id fringilla commodo, turpis sapien interdum elit, sit amet varius lorem turpis ut
     .q5
       = f.fields_for :q6 do |ff|
