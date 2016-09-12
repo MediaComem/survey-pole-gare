@@ -40,10 +40,21 @@ div
       h3 5. Lorsque vous êtes dans le secteur, combien de temps y restez-vous en moyenne ?
       = f.fields_for :q5 do |ff|
         - Survey.q5_answers.each do |item|
-            .radio
-              label
-                = f.radio_button(:q3,"#{item}")
-                = item
+          .radio
+            label
+              = f.radio_button(:q3,"#{item}")
+              = item
+    #q6
+      h3 6. Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? 
+      = f.fields_for :q6 do |ff|
+        - Survey.q6_answers.each do |item|
+          .checkbox
+            label
+              = ff.check_box "#{item}"
+              = item
+        .form-group
+          label Veuillez préciser
+          = ff.text_field :autre_precision, :class => 'form-control other'
     #q41
       h3 Q4 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur sous-gare ?
       = f.fields_for :q4 do |ff|

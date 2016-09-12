@@ -15,9 +15,19 @@ var surveyManager = {
 				$(this).parents().eq(1).next('.form-group').hide()
       }
 		});
-
+	},
+	setupQ2: function(){
+		$("#q6 .checkbox input").change(function() {
+      if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
+				$(this).parents().eq(1).next('.form-group').show()
+      }
+      if($(this).parent().text() == 'Autre' && !($(this).prop('checked'))){
+				$(this).parents().eq(1).next('.form-group').hide()
+      }
+		});
 	}
 }
 $(function() {
   surveyManager.setupQ1()
+  surveyManager.setupQ2()
 })
