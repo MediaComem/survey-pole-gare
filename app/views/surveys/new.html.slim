@@ -15,14 +15,14 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q2 
-      h3 2. Quelle est votre fréquentation moyenne du secteur sous-gare?
+      h3 2. Depuis combien de temps fréquentez-vous ce secteur?
       - Survey.q2_answers.each do |item|
         .radio
           label
             = f.radio_button(:q2,"#{item}")
             = item
     #q3
-      h3 Q3 Lorsque vous êtes dans le secteur sous-gare, combien de temps y restez-vous en moyenne?
+      h3 3. Quelle est votre fréquentation moyenne du secteur ?
       - Survey.q3_answers.each do |item|
         .radio
           label
