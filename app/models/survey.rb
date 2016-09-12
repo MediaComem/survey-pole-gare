@@ -12,6 +12,9 @@ class Survey < ApplicationRecord
   def self.q4_answers
     ['Matin', 'Midi', 'Après-midi', 'Soir (après 17h)', 'Aucune']
   end
+  def self.q5_answers
+    ['Moins de 15mn', '15-30mn', '30mn à 2h', '½ journée', 'Plus d’1/2 journée']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
