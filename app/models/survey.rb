@@ -27,6 +27,12 @@ class Survey < ApplicationRecord
   def self.q10_answers
     ['Oui (enfants accompagnés)','Oui (enfants seuls)','Non','Se rencontrer & attendre','Manger sur le pouce','Autre']
   end
+  def self.q11_answers
+    ['Aller à l’école','Aller à la garderie','Aller à la gare','Se promener','Shopping','Autre']
+  end
+  def self.q12_answers
+    ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end

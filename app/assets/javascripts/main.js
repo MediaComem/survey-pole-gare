@@ -44,6 +44,26 @@ var surveyManager = {
 				$(this).parents().eq(1).next('.form-group').hide()
       }
 		});
+	},
+	setupQ11: function(){
+		$("#q11 .checkbox input").change(function() {
+      if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
+				$(this).parents().eq(1).next('.form-group').show()
+      }
+      if($(this).parent().text() == 'Autre' && !($(this).prop('checked'))){
+				$(this).parents().eq(1).next('.form-group').hide()
+      }
+		});
+	},
+	setupQ12: function(){
+		$("#q12 .checkbox input").change(function() {
+      if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
+				$(this).parents().eq(1).next('.form-group').show()
+      }
+      if($(this).parent().text() == 'Autre' && !($(this).prop('checked'))){
+				$(this).parents().eq(1).next('.form-group').hide()
+      }
+		});
 	}
 }
 $(function() {
@@ -51,4 +71,6 @@ $(function() {
   surveyManager.setupQ6()
   surveyManager.setupQ7()
   surveyManager.setupQ9()
+  surveyManager.setupQ11()
+  surveyManager.setupQ12()
 })
