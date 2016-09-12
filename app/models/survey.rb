@@ -10,6 +10,9 @@ class Survey < ApplicationRecord
     ['Au moins une fois par jour', 'Au moins une fois par semaine', 'Occasionnellement', 'Jamais']
   end
   def self.q4_answers
+    ['Matin', 'Midi', 'Après-midi', 'Soir (après 17h)', 'Aucune']
+  end
+  def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
 
