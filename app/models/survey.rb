@@ -63,6 +63,12 @@ class Survey < ApplicationRecord
   def self.q25_answers
     ['Oui','Non']
   end
+  def self.q26_answers
+    ['Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre']
+  end
+  def self.q27_answers
+    ['Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre','Pas de conjoint']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
