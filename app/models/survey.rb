@@ -33,6 +33,9 @@ class Survey < ApplicationRecord
   def self.q12_answers
     ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
   end
+  def self.q14_answers
+    ['L’ambiance est « villageoise », les habitants se connaissent','Les commerces sont variés','Les commerces sont proches']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
