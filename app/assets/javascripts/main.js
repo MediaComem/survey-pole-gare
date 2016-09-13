@@ -90,6 +90,25 @@ var surveyManager = {
       	$('#q24').show()
       }
 		});
+	},
+	setupQ28: function(){
+		locationChoice($('#home-map'),'location_choice');
+	  $("form").bind("keypress", function(e) {
+	    if (e.keyCode == 13) {
+	      return false;
+	    }
+	  });
+	},
+	enableTypeaheadQ28: function(){
+		var engine = new Bloodhound({
+    	local: gmVilles,
+    	queryTokenizer: Bloodhound.tokenizers.whitespace,
+    	datumTokenizer: Bloodhound.tokenizers.whitespace
+  	});
+		$(".gm-city-autocomplete-input").typeahead({hint: true, highlight: true}, {source: engine});
+	},
+	disableTypeaheadQ28: function(){
+		$(".gm-city-autocomplete-input").typeahead('destroy');
 	}
 }
 
@@ -98,17 +117,11 @@ var locationChoice = function(elem,radiogroup){
 	$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').hide();
 	$("input[name="+radiogroup+"]:radio").change(function(){
 		$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').val('');
-		if($(this).val() == 'etranger'){
-			$(elem).siblings('.center-map').hide();
-			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').hide();
-			$(elem).hide();
-			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').val('étranger');
-		}
-		if($(this).val() == 'autres'){
+		if($(this).val() == 'autre'){
 			$(elem).hide();
 			$(elem).siblings('.center-map').hide();
-			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').hide();
-			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').val('autres');
+			surveyManager.disableTypeaheadQ28()
+			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').show();
 		}
 		if($(this).val() == 'map'){
 			$(elem).siblings('.center-map').show();
@@ -120,6 +133,7 @@ var locationChoice = function(elem,radiogroup){
 			$(elem).siblings('.center-map').hide();
 			console.log($(elem).siblings())
 			$(elem).hide();
+			surveyManager.enableTypeaheadQ28()
 			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').show();
 		}
 	});
@@ -133,17 +147,5 @@ $(function() {
   surveyManager.setupQ12()
   surveyManager.setupQ16()
   surveyManager.setupQ2324()
-
-  var engine = new Bloodhound({
-    local: gmVilles,
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    datumTokenizer: Bloodhound.tokenizers.whitespace
-  });
-  $(".gm-city-autocomplete-input").typeahead({hint: true, highlight: true}, {source: engine});
-  locationChoice($('#home-map'),'location_choice');
-  $("form").bind("keypress", function(e) {
-    if (e.keyCode == 13) {
-      return false;
-    }
-  });
+  surveyManager.setupQ28()
 })

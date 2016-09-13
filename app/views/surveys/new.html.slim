@@ -278,22 +278,17 @@ div
               .radio.radio-map
                 label
                   = radio_button_tag 'location_choice', 'map', true
-                  | Pully&nbsp;
+                  | Lausanne &nbsp;
             .col-sm-12.col-md-3
               .radio.radio-map
                 label
                   = radio_button_tag 'location_choice', 'commune'
-                  | Autre commune vaudoise&nbsp;
+                  | Canton de Vaud&nbsp;
             .col-sm-12.col-md-4
               .radio.radio-map
                 label
-                  = radio_button_tag 'location_choice', 'autres'
-                  | Autre commune en Suisse (hors Vaud)&nbsp;
-            .col-sm-12.col-md-3
-              .radio.radio-map
-                label
-                  = radio_button_tag 'location_choice', 'etranger'
-                  | Etranger&nbsp;
+                  = radio_button_tag 'location_choice', 'autre'
+                  | Autre&nbsp;
       #home-map
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
