@@ -42,6 +42,21 @@ class Survey < ApplicationRecord
   def self.q16_answers
     ['Accroître la présence de la végétation ','Améliorer l\'éclairage','Créer/développer des places et parcs publics','Développer les espaces piétons','Accroître les infrastructures cyclables','Développer la signalétique (métro, lac, musées)','Animer le quartier avec les commerçants et habitants','Réduire le trafic automobile','Autre']
   end
+  def self.q17_answers
+    ['Oui, et j’en suis heureux','Oui, et je le regrette','Non, et j’en suis heureux','Non, et je le regrette','Je ne sais pas']
+  end
+  def self.q20_answers
+    ['Femme','Homme']
+  end
+  def self.q21_answers
+    ['- de 18 ans','de 18 à 29 ans','de 30 à 39 ans','de 40 à 49 ans','de 50 à 64 ans','de 65 à 80 ans','+ de 80 ans','sans réponse']
+  end
+  def self.q22_answers
+    ['1','2','3','4','5','Plus de 5']
+  end
+  def self.q23_answers
+    ['1','2','3','4','Plus de 4','Pas d\'enfants']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
