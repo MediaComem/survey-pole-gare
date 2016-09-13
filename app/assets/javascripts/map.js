@@ -23,7 +23,7 @@ var mapManager = {
     // map.renderSync()
     var vectorSource = new ol.source.Vector();
 
-    $.get( "/lausanne_maillle_reguliere2.geojson", function( data ) {
+    $.get( "/lausanne_maillle_reguliere.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
     });
 
@@ -50,6 +50,7 @@ var mapManager = {
 
     selectSingleClick.on('select', function(e) {
     	$('#map').siblings('input').find(':checked').prop('checked','')
+      console.log(map.getView().getCenter())
       // console.log(e.target.getFeatures().item(0).get('AlphaID'))
       // $('#pullyCenterMap').siblings('.checkbox').find(':checked').prop('checked','')
       e.target.getFeatures().forEach(function(f){
@@ -165,7 +166,7 @@ var mapManager = {
   },
   defaultView: function(){
     return new ol.View({
-      center:[741974, 5863910],
+      center:[738228, 5869064],
       zoom: 12,
       maxZoom: 19,
       minZoom: 12,
