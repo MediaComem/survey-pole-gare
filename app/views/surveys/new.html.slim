@@ -11,7 +11,7 @@ div
             label
               = ff.check_box "#{item}"
               = item
-        .form-group
+        .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q2 
@@ -52,7 +52,7 @@ div
             label
               = ff.check_box "#{item}"
               = item
-        .form-group
+        .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q7
@@ -63,7 +63,7 @@ div
             label
               = f.radio_button(:q7,"#{item}")
               = item
-        .form-group
+        .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q8
@@ -83,7 +83,7 @@ div
             label
               = ff.check_box "#{item}"
               = item
-        .form-group
+        .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q10
@@ -94,9 +94,6 @@ div
             label
               = f.radio_button(:q10,"#{item}")
               = item
-        .form-group
-          label Veuillez préciser
-          = ff.text_field :autre_precision, :class => 'form-control other'
     #q11
       h3 11. Si oui, pour quelles activités ?
       = f.fields_for :q11 do |ff|
@@ -105,7 +102,7 @@ div
             label
               = ff.check_box "#{item}"
               = item
-        .form-group
+        .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q12
@@ -116,9 +113,6 @@ div
             label
               = ff.check_box "#{item}"
               = item
-        .form-group
-          label Veuillez préciser
-          = ff.text_field :autre_precision, :class => 'form-control other'
     #q13
       h3 13.  Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
       .q13

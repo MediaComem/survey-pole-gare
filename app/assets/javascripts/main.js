@@ -131,7 +131,6 @@ var locationChoice = function(elem,radiogroup){
 		}
 		if($(this).val() == 'commune'){
 			$(elem).siblings('.center-map').hide();
-			console.log($(elem).siblings())
 			$(elem).hide();
 			surveyManager.enableTypeaheadQ28()
 			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').show();
@@ -148,4 +147,5 @@ $(function() {
   surveyManager.setupQ16()
   surveyManager.setupQ2324()
   surveyManager.setupQ28()
+  $('.precision').hide()
 })
