@@ -148,4 +148,7 @@ $(function() {
   surveyManager.setupQ2324()
   surveyManager.setupQ28()
   $('.precision').hide()
+  $("form").submit(function() {
+    $("input").removeAttr("disabled");
+	});
 })
