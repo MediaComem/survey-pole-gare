@@ -144,14 +144,45 @@ div
                 label
                   = ff.radio_button(item, ["D’accord et important"])
                   | <div>D’accord et important</div>  
-              .col-xs-12.col-md-3.radio
+              .col-xs-12.col-md-4.radio
                 label
                   = ff.radio_button(item, ["D’accord mais peu important"])
                   | <div>D’accord mais peu important</div>
-              .col-xs-12.col-md-3.radio
+              .col-xs-12.col-md-2.radio
                 label
                   = ff.radio_button(item, ["Sans avis"])
                   | <div>Sans avis</div>
+              .hidden
+                = ff.radio_button(item, [""],{checked: true})
+                | null
+    #q15
+      h3 15. Comment appréciez-vous ces différentes composantes du secteur ?
+      = f.fields_for :q15 do |ff|
+        - Survey.q15_answers.each do |item|
+          .panel.panel-default
+            .panel-heading
+              = item
+            .panel-body
+              .col-xs-12.col-md-3.radio
+                label
+                  = ff.radio_button(item, ["Pas du tout satisfaisant"])
+                  | <div>Pas du tout satisfaisant</div>   
+              .col-xs-12.col-md-2.radio
+                label
+                  = ff.radio_button(item, ["Peu satisfaisant"])
+                  | <div>Peu satisfaisant</div>  
+              .col-xs-12.col-md-2.radio
+                label
+                  = ff.radio_button(item, ["Sans avis"])
+                  | <div>Sans avis</div>
+              .col-xs-12.col-md-2.radio
+                label
+                  = ff.radio_button(item, ["Satisfaisant"])
+                  | <div>Satisfaisant</div>
+              .col-xs-12.col-md-2.radio
+                label
+                  = ff.radio_button(item, ["Très satisfaisant"])
+                  | <div>Très satisfaisant</div>
               .hidden
                 = ff.radio_button(item, [""],{checked: true})
                 | null 

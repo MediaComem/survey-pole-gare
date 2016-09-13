@@ -36,6 +36,9 @@ class Survey < ApplicationRecord
   def self.q14_answers
     ['L’ambiance est « villageoise », les habitants se connaissent','Les commerces sont variés','Les commerces sont proches','L’offre en transports publics est bonne','Le secteur est animé','Le secteur est convivial ','Le secteur est bruyant ','Les bâtiments sont beaux','La vue sur le grand paysage est belle','Il est facile d’y stationner']
   end
+  def self.q15_answers
+    ['Les aménagements piétons ','Les infrastructures cyclables ','La présence de la végétation ','Le trafic automobile','La sécurité','La propreté du secteur','La signalétique','L’éclairage public']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
