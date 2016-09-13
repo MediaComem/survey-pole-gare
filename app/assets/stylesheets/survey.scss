@@ -3,9 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #q14,#q15{
-	 .radio+.radio {
+	.radio+.radio {
 		@media (min-width: 970px) {
-	  	margin-top: 10px;
+			margin-top: 10px;
 		}
 	}
+}
+.gm-city-autocomplete {
+	display: block;
+	.gm-city-autocomplete-input {
+		margin-bottom: 10px;
+		position: relative;
+		top: -7px;
+	}
+}
+.tt-menu {
+	background-color: #fff;
+	border: 1px solid grey;
+	width: 100%;
+}
+
+.tt-cursor {
+	background-color: #ccc;
+}
+.tt-suggestion {
+	padding: 8px;
+}
+
+.tt-suggestion:hover {
+	background-color: #ccc;
+}
+
+.tt-menu {
+	margin-top: -15px;
 }

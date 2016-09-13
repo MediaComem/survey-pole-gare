@@ -6,7 +6,7 @@ var mapManager = {
 
     var map = new ol.Map({
       view: mapManager.defaultView(),
-      target: 'map',
+      target: 'home-map',
       layers: [
         new ol.layer.Tile({
           source: new ol.source.OSM()
@@ -39,7 +39,6 @@ var mapManager = {
 
     var selectSingleClick = new ol.interaction.Select({
       condition: ol.events.condition.click,
-      toggleCondition: ol.events.condition.click,
       style: new ol.style.Style({
         fill: mapManager.selectFill(),
         stroke: mapManager.selectStroke()
@@ -49,15 +48,9 @@ var mapManager = {
     map.addInteraction(selectSingleClick);
 
     selectSingleClick.on('select', function(e) {
-    	$('#map').siblings('input').find(':checked').prop('checked','')
-      console.log(map.getView().getCenter())
-      // console.log(e.target.getFeatures().item(0).get('AlphaID'))
-      // $('#pullyCenterMap').siblings('.checkbox').find(':checked').prop('checked','')
-      e.target.getFeatures().forEach(function(f){
-      	var checkbox = $('#map').siblings('input[data-polygonid='+f.get('AlphaID')+']')
-        checkbox.prop('checked', 'checked');
-        console.log(f.get('AlphaID'))
-      })
+    	console.log(e.target.getFeatures().item(0).get('id'))
+      $('#home-map').siblings('.gm-city-autocomplete').find('input[name*=q28]').val(e.target.getFeatures().item(0).get('id'))
+      $('#home-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
     });
 
     window.onscroll = function (e) {
@@ -153,14 +146,7 @@ var mapManager = {
     map.addInteraction(selectSingleClick);
 
     selectSingleClick.on('select', function(e) {
-      $('#mapOld').siblings('input').find(':checked').prop('checked','')
-      // console.log(e.target.getFeatures().item(0).get('AlphaID'))
-      // $('#pullyCenterMap').siblings('.checkbox').find(':checked').prop('checked','')
-      e.target.getFeatures().forEach(function(f){
-        var checkbox = $('#mapOld').siblings('input[data-polygonid='+f.get('AlphaID')+']')
-        checkbox.prop('checked', 'checked');
-        console.log(f.get('AlphaID'))
-      })
+
     });
 
   },

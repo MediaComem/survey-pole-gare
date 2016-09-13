@@ -92,6 +92,38 @@ var surveyManager = {
 		});
 	}
 }
+
+/* Display Map or commune autocomplete for location */
+var locationChoice = function(elem,radiogroup){
+	$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').hide();
+	$("input[name="+radiogroup+"]:radio").change(function(){
+		$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').val('');
+		if($(this).val() == 'etranger'){
+			$(elem).siblings('.center-map').hide();
+			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').hide();
+			$(elem).hide();
+			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').val('étranger');
+		}
+		if($(this).val() == 'autres'){
+			$(elem).hide();
+			$(elem).siblings('.center-map').hide();
+			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').hide();
+			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').val('autres');
+		}
+		if($(this).val() == 'map'){
+			$(elem).siblings('.center-map').show();
+			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').hide();
+			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').val($(elem).siblings('.mapPlaceId').attr('data-id'));
+			$(elem).show();
+		}
+		if($(this).val() == 'commune'){
+			$(elem).siblings('.center-map').hide();
+			console.log($(elem).siblings())
+			$(elem).hide();
+			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q28]').show();
+		}
+	});
+};
 $(function() {
   surveyManager.setupQ1()
   surveyManager.setupQ6()
@@ -101,4 +133,17 @@ $(function() {
   surveyManager.setupQ12()
   surveyManager.setupQ16()
   surveyManager.setupQ2324()
+
+  var engine = new Bloodhound({
+    local: gmVilles,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    datumTokenizer: Bloodhound.tokenizers.whitespace
+  });
+  $(".gm-city-autocomplete-input").typeahead({hint: true, highlight: true}, {source: engine});
+  locationChoice($('#home-map'),'location_choice');
+  $("form").bind("keypress", function(e) {
+    if (e.keyCode == 13) {
+      return false;
+    }
+  });
 })
