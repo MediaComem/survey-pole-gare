@@ -81,6 +81,15 @@ var surveyManager = {
 				$(this).parents().eq(1).next('.form-group').hide()
       }
 		});
+	},
+	setupQ2324: function(){
+		$("#q23 .radio input").change(function() {
+      if($(this).parent().text() == 'Pas d\'enfants'){
+				$('#q24').hide()
+      }else{
+      	$('#q24').show()
+      }
+		});
 	}
 }
 $(function() {
@@ -91,4 +100,5 @@ $(function() {
   surveyManager.setupQ11()
   surveyManager.setupQ12()
   surveyManager.setupQ16()
+  surveyManager.setupQ2324()
 })

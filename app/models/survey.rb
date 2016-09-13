@@ -57,6 +57,9 @@ class Survey < ApplicationRecord
   def self.q23_answers
     ['1','2','3','4','Plus de 4','Pas d\'enfants']
   end
+  def self.q24_answers
+    ['- de 5 ans','de 5 à 10 ans','de 11 à 15 ans','de 16 à 18 ans','+ de 18 ans']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
