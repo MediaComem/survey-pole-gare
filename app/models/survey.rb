@@ -39,6 +39,9 @@ class Survey < ApplicationRecord
   def self.q15_answers
     ['Les aménagements piétons ','Les infrastructures cyclables ','La présence de la végétation ','Le trafic automobile','La sécurité','La propreté du secteur','La signalétique','L’éclairage public']
   end
+  def self.q16_answers
+    ['Accroître la présence de la végétation ','Améliorer l\'éclairage','Créer/développer des places et parcs publics','Développer les espaces piétons','Accroître les infrastructures cyclables','Développer la signalétique (métro, lac, musées)','Animer le quartier avec les commerçants et habitants','Réduire le trafic automobile','Autre']
+  end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
   end
