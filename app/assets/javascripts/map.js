@@ -101,14 +101,14 @@ var mapManager = {
     }
 
   },
-  initHomeMapOld: function(){
+  initMapVisits: function(){
     
     var scrollStarted = false
     var timer = null; 
 
     var map = new ol.Map({
-      view: mapManager.defaultView(),
-      target: 'mapOld',
+      view: mapManager.zoomedView(),
+      target: 'map-visits',
       layers: [
         new ol.layer.Tile({
           source: new ol.source.OSM()
@@ -120,7 +120,7 @@ var mapManager = {
 
     var vectorSource = new ol.source.Vector();
 
-    $.get( "/quartiersPully.geojson", function( data ) {
+    $.get( "/plein.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
     });
 
@@ -146,7 +146,12 @@ var mapManager = {
     map.addInteraction(selectSingleClick);
 
     selectSingleClick.on('select', function(e) {
-
+      console.log(map.getView().getCenter())
+      $('#map-visits').siblings('.checkbox').find(':checked').prop('checked','')
+      e.target.getFeatures().forEach(function(f){
+        var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
+        checkbox.prop('checked', 'checked');
+      })
     });
 
   },
@@ -156,6 +161,15 @@ var mapManager = {
       zoom: 12,
       maxZoom: 19,
       minZoom: 12,
+      extent: [731311, 5858530, 752636, 5869289]
+    })
+  },
+  zoomedView: function(){
+    return new ol.View({
+      center:[738004, 5863295],
+      zoom: 16,
+      maxZoom: 19,
+      minZoom: 14,
       extent: [731311, 5858530, 752636, 5869289]
     })
   },
@@ -200,5 +214,5 @@ var mapManager = {
 
 $(function() {
   mapManager.initHomeMap()
-  mapManager.initHomeMapOld()
+  mapManager.initMapVisits()
 })
