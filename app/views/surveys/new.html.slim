@@ -95,10 +95,10 @@ div
             label
               = f.radio_button(:q10,"#{item}")
               = item
-    #q11
-      h3 11. Si oui, pour quelles activités ?
-      = f.fields_for :q11 do |ff|
-        - Survey.q11_answers.each do |item|
+    #q10a
+      h3 10a Si oui, pour quelles activités ?
+      = f.fields_for :q10a do |ff|
+        - Survey.q10a_answers.each do |item|
           .checkbox
             label
               = ff.check_box "#{item}"

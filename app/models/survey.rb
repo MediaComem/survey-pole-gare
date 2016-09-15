@@ -25,9 +25,9 @@ class Survey < ApplicationRecord
     ['Traverser','Shopping','Se promener','Se rencontrer & attendre','Manger sur le pouce','Autre']
   end
   def self.q10_answers
-    ['Oui (enfants accompagnés)','Oui (enfants seuls)','Non','Se rencontrer & attendre','Manger sur le pouce','Autre']
+    ['Oui (enfants accompagnés)','Oui (enfants seuls)','Non']
   end
-  def self.q11_answers
+  def self.q10a_answers
     ['Aller à l’école','Aller à la garderie','Aller à la gare','Se promener','Shopping','Autre']
   end
   def self.q12_answers

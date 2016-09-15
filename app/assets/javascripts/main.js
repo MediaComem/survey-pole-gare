@@ -45,8 +45,19 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ11: function(){
-		$("#q11 .checkbox input").change(function() {
+	setupQ10: function(){
+		$("#q10a").hide()
+		$("#q10 .radio input").change(function() {
+			console.log($(this).parent().text().indexOf("Oui"))
+      if($(this).parent().text().indexOf("Oui") > -1){
+				$("#q10a").show()
+      }else{
+      	$("#q10a").hide()
+      }
+		});
+	},
+	setupQ10a: function(){
+		$("#q10a .checkbox input").change(function() {
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(1).next('.form-group').show()
       }
@@ -142,7 +153,8 @@ $(function() {
   surveyManager.setupQ6()
   surveyManager.setupQ7()
   surveyManager.setupQ9()
-  surveyManager.setupQ11()
+  surveyManager.setupQ10()
+  surveyManager.setupQ10a()
   surveyManager.setupQ12()
   surveyManager.setupQ16()
   surveyManager.setupQ2324()
