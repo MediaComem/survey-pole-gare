@@ -61,7 +61,7 @@ div
         - Survey.q7_answers.each do |item|
           .radio
             label
-              = f.radio_button(:q7,"#{item}")
+              = ff.radio_button(:q7,"#{item}")
               = item
         .form-group.precision
           label Veuillez préciser
@@ -176,7 +176,7 @@ div
               .col-xs-12.col-md-2.radio
                 label
                   = ff.radio_button(item, ["Très satisfaisant"])
-                  | <div>Très satisfaisant</div>
+                  | <div>Très satisfaisant</div>  
               .hidden
                 = ff.radio_button(item, [""],{checked: true})
                 | null 
