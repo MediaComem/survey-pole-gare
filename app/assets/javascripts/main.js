@@ -76,14 +76,14 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ16: function(){
+	setupQ15: function(){
 		var count = 0
-  	$("#q16 .checkbox input").change(function() {
+  	$("#q15 .checkbox input").change(function() {
   		count = $("[type='checkbox']:checked").length;
       if(count == 3){
-      	$("#q16 .checkbox input:not(:checked)").attr("disabled", true);
+      	$("#q15 .checkbox input:not(:checked)").attr("disabled", true);
       }else{
-      	$("#q16 .checkbox input").attr("disabled", false);
+      	$("#q15 .checkbox input").attr("disabled", false);
       }
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(1).next('.form-group').show()
@@ -156,7 +156,7 @@ $(function() {
   surveyManager.setupQ10()
   surveyManager.setupQ10a()
   surveyManager.setupQ11()
-  surveyManager.setupQ16()
+  surveyManager.setupQ15()
   surveyManager.setupQ2324()
   surveyManager.setupQ28()
   $('.precision').hide()

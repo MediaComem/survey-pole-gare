@@ -185,24 +185,24 @@ div
               .hidden
                 = ff.radio_button(item, [""],{checked: true})
                 | null 
-    #q16
-      h3 16. Quelle serait pour vous les trois premières choses à faire pour le secteur (3 max) ?
-      = f.fields_for :q16 do |ff|
-        - Survey.q16_answers.each do |item|
+    #q15
+      h3 15. Quelle serait pour vous les trois premières choses à faire pour le secteur (3 max) ?
+      = f.fields_for :q15 do |ff|
+        - Survey.q15_answers.each do |item|
           .checkbox
             label
               = ff.check_box "#{item}"
               = item
-        .form-group
+        .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q17
-      h3 17. Est-ce que l’ambiance du secteur sous-gare a changé ces dix dernières années ?
-      = f.fields_for :q17 do |ff|
-        - Survey.q17_answers.each do |item|
+    #q16
+      h3 16. Est-ce que l’ambiance du secteur sous-gare a changé ces dix dernières années ?
+      = f.fields_for :q16 do |ff|
+        - Survey.q16_answers.each do |item|
           .radio
             label
-              = f.radio_button(:q17,"#{item}")
+              = f.radio_button(:q16,"#{item}")
               = item
     #q20
       h3 20. Sexe ?

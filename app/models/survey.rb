@@ -39,10 +39,10 @@ class Survey < ApplicationRecord
   def self.q14_answers
     ['Les aménagements piétons ','Les infrastructures cyclables ','La présence de la végétation ','Le trafic automobile','La sécurité','La propreté du secteur','La signalétique','L’éclairage public']
   end
-  def self.q16_answers
+  def self.q15_answers
     ['Accroître la présence de la végétation ','Améliorer l\'éclairage','Créer/développer des places et parcs publics','Développer les espaces piétons','Accroître les infrastructures cyclables','Développer la signalétique (métro, lac, musées)','Animer le quartier avec les commerçants et habitants','Réduire le trafic automobile','Autre']
   end
-  def self.q17_answers
+  def self.q16_answers
     ['Oui, et j’en suis heureux','Oui, et je le regrette','Non, et j’en suis heureux','Non, et je le regrette','Je ne sais pas']
   end
   def self.q20_answers
