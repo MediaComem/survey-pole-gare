@@ -154,10 +154,10 @@ div
               .hidden
                 = ff.radio_button(item, [""],{checked: true})
                 | null
-    #q15
-      h3 15. Comment appréciez-vous ces différentes composantes du secteur ?
-      = f.fields_for :q15 do |ff|
-        - Survey.q15_answers.each do |item|
+    #q14
+      h3 14. Comment appréciez-vous ces différentes composantes du secteur ?
+      = f.fields_for :q14 do |ff|
+        - Survey.q14_answers.each do |item|
           .panel.panel-default
             .panel-heading
               = item

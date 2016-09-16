@@ -26,5 +26,5 @@ class SurveysController < ApplicationController
 end
 private
   def survey_params
-    params.require(:survey).permit(:q2, :q3, :q5, :q10,:q28, q1: params[:survey][:q1].try(:keys),q4: params[:survey][:q4].try(:keys), q5: params[:survey][:q5].try(:keys), q6: params[:survey][:q6].try(:keys), q7: params[:survey][:q7].try(:keys), q8: params[:survey][:q8].try(:keys), q9: params[:survey][:q9].try(:keys), q10a: params[:survey][:q10a].try(:keys),q11: params[:survey][:q11].try(:keys), q12: params[:survey][:q12].try(:keys), q13: params[:survey][:q13].try(:keys))
+    params.require(:survey).permit(:q2, :q3, :q5, :q10,:q28, q1: params[:survey][:q1].try(:keys),q4: params[:survey][:q4].try(:keys), q5: params[:survey][:q5].try(:keys), q6: params[:survey][:q6].try(:keys), q7: params[:survey][:q7].try(:keys), q8: params[:survey][:q8].try(:keys), q9: params[:survey][:q9].try(:keys), q10a: params[:survey][:q10a].try(:keys),q11: params[:survey][:q11].try(:keys), q12: params[:survey][:q12].try(:keys), q13: params[:survey][:q13].try(:keys), q14: params[:survey][:q14].try(:keys))
   end
