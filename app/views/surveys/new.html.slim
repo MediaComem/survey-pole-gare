@@ -204,6 +204,25 @@ div
             label
               = f.radio_button(:q16,"#{item}")
               = item
+    #q17
+      h3 17. Avez-vous connaissance des futurs projets dans le secteur ?
+      = f.fields_for :q17 do |ff|
+        - Survey.q17_answers.each do |item|
+          .radio
+            label
+              = f.radio_button(:q17,"#{item}")
+              = item
+    #q17a
+      h3 17a. Desquel ?
+      = f.fields_for :q17a do |ff|
+        - Survey.q17a_answers.each do |item|
+          .checkbox
+            label
+              = ff.check_box "#{item}"
+              = item
+        .form-group.precision
+          label Veuillez préciser
+          = ff.text_field :autre_precision, :class => 'form-control other'
     #q20
       h3 20. Sexe ?
       = f.fields_for :q20 do |ff|

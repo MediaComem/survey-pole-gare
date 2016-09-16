@@ -52,6 +52,8 @@ var surveyManager = {
       if($(this).parent().text().indexOf("Oui") > -1){
 				$("#q10a").show()
       }else{
+      	$('#q10a .checkbox').find(':checked').prop('checked','')
+      	$('#q10a input[type=text]').val("")
       	$("#q10a").hide()
       }
 		});
@@ -85,6 +87,29 @@ var surveyManager = {
       }else{
       	$("#q15 .checkbox input").attr("disabled", false);
       }
+      if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
+				$(this).parents().eq(1).next('.form-group').show()
+      }
+      if($(this).parent().text() == 'Autre' && !($(this).prop('checked'))){
+				$(this).parents().eq(1).next('.form-group').hide()
+      }
+		});
+	},
+	setupQ17: function(){
+		$("#q17a").hide()
+		$("#q17 .radio input").change(function() {
+			console.log($(this).parent().text().indexOf("Oui"))
+      if($(this).parent().text().indexOf("Oui") > -1){
+				$("#q17a").show()
+      }else{
+      	$('#q17a .checkbox').find(':checked').prop('checked','')
+      	$('#q17a input[type=text]').val("")
+      	$("#q17a").hide()
+      }
+		});
+	},
+	setupQ17a: function(){
+		$("#q17a .checkbox input").change(function() {
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(1).next('.form-group').show()
       }
@@ -157,6 +182,8 @@ $(function() {
   surveyManager.setupQ10a()
   surveyManager.setupQ11()
   surveyManager.setupQ15()
+  surveyManager.setupQ17()
+  surveyManager.setupQ17a()
   surveyManager.setupQ2324()
   surveyManager.setupQ28()
   $('.precision').hide()

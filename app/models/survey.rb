@@ -45,6 +45,12 @@ class Survey < ApplicationRecord
   def self.q16_answers
     ['Oui, et j’en suis heureux','Oui, et je le regrette','Non, et j’en suis heureux','Non, et je le regrette','Je ne sais pas']
   end
+  def self.q17_answers
+    ['Oui','Non']
+  end
+  def self.q17a_answers
+    ['Gare Léman 2030','Nouvelle place des Saugettes','Plateforme10 Pôle muséal','Projet Rasude','Métro M3','Démolitions','Autre']
+  end
   def self.q20_answers
     ['Femme','Homme']
   end
