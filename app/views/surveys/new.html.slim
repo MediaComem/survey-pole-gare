@@ -256,25 +256,17 @@ div
               = f.radio_button(:q21,"#{item}")
               = item
     #q22
-      h3 22. De combien de personnes se compose votre ménage ?
+      h3 22. Avez-vous des enfants à charge ? Si oui, combien ? 
       = f.fields_for :q22 do |ff|
         - Survey.q22_answers.each do |item|
           .radio
             label
               = f.radio_button(:q22,"#{item}")
               = item
-    #q23
-      h3 23. Avez-vous des enfants à charge ? Si oui, combien ? 
-      = f.fields_for :q23 do |ff|
-        - Survey.q23_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q23,"#{item}")
-              = item
-    #q24
-      h3 24. Quel âge ont-ils ?
-      = f.fields_for :q24 do |ff|
-        - Survey.q24_answers.each do |item|
+    #q22a
+      h3 22a. Quel âge ont-ils ?
+      = f.fields_for :q22a do |ff|
+        - Survey.q22a_answers.each do |item|
           .checkbox
             label
               = ff.check_box "#{item}"

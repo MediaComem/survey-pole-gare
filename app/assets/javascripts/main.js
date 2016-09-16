@@ -122,12 +122,13 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ2324: function(){
-		$("#q23 .radio input").change(function() {
+	setupQ22: function(){
+		$('#q22a').hide()
+		$("#q22 .radio input").change(function() {
       if($(this).parent().text() == 'Pas d\'enfants'){
-				$('#q24').hide()
+				$('#q22a').hide()
       }else{
-      	$('#q24').show()
+      	$('#q22a').show()
       }
 		});
 	},
@@ -188,7 +189,7 @@ $(function() {
   surveyManager.setupQ15()
   surveyManager.setupQ17()
   surveyManager.setupQ17a()
-  surveyManager.setupQ2324()
+  surveyManager.setupQ22()
   surveyManager.setupQ28()
   $('.precision').hide()
   $("form").submit(function() {
