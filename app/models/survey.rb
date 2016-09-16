@@ -30,7 +30,7 @@ class Survey < ApplicationRecord
   def self.q10a_answers
     ['Aller à l’école','Aller à la garderie','Aller à la gare','Se promener','Shopping','Autre']
   end
-  def self.q12_answers
+  def self.q11_answers
     ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
   end
   def self.q14_answers

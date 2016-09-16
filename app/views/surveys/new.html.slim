@@ -106,14 +106,17 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q12
-      h3 12. Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
-      = f.fields_for :q12 do |ff|
-        - Survey.q12_answers.each do |item|
+    #q11
+      h3 11. Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
+      = f.fields_for :q11 do |ff|
+        - Survey.q11_answers.each do |item|
           .checkbox
             label
               = ff.check_box "#{item}"
               = item
+          .form-group.precision
+            label Veuillez préciser
+            = ff.text_field :autre_precision, :class => 'form-control other'
     #q13
       h3 13.  Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
       .q13

@@ -66,8 +66,8 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ12: function(){
-		$("#q12 .checkbox input").change(function() {
+	setupQ11: function(){
+		$("#q11 .checkbox input").change(function() {
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(1).next('.form-group').show()
       }
@@ -155,7 +155,7 @@ $(function() {
   surveyManager.setupQ9()
   surveyManager.setupQ10()
   surveyManager.setupQ10a()
-  surveyManager.setupQ12()
+  surveyManager.setupQ11()
   surveyManager.setupQ16()
   surveyManager.setupQ2324()
   surveyManager.setupQ28()
