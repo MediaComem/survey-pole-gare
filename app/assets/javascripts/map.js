@@ -49,8 +49,110 @@ var mapManager = {
 
     selectSingleClick.on('select', function(e) {
     	console.log(e.target.getFeatures().item(0).get('id'))
-      $('#home-map').siblings('.gm-city-autocomplete').find('input[name*=q28]').val(e.target.getFeatures().item(0).get('id'))
+      $('#home-map').siblings('.gm-city-autocomplete').find('input[name*=q26]').val(e.target.getFeatures().item(0).get('id'))
       $('#home-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
+    });
+
+    window.onscroll = function (e) {
+      console.log("called when the window is scrolled")
+      if(!scrollStarted){
+        scrollStarted = true
+        map.getInteractions().forEach(function(e){
+          if(e instanceof ol.interaction.MouseWheelZoom){
+            console.log("ol.interaction.MouseWheelZoom")
+            // map.removeInteraction(e)
+            e.setActive(false)
+          }
+          if(e instanceof ol.interaction.DragPan){
+            console.log("ol.interaction.DragPan")
+            // map.removeInteraction(e)
+            e.setActive(false)
+          }
+          if(e instanceof ol.interaction.PinchZoom){
+            console.log("ol.interaction.PinchZoom")
+            // map.removeInteraction(e)
+            e.setActive(false)
+          }    
+        })
+      }
+      if(timer !== null) {
+        clearTimeout(timer);     
+      }
+      timer = setTimeout(function() {
+        scrollStarted = false
+        map.getInteractions().forEach(function(e){
+          if(e instanceof ol.interaction.MouseWheelZoom){
+            console.log("ol.interaction.MouseWheelZoom")
+            // map.removeInteraction(e)
+            e.setActive(true)
+          }
+          if(e instanceof ol.interaction.DragPan){
+            console.log("ol.interaction.DragPan")
+            // map.removeInteraction(e)
+            e.setActive(true)
+          }
+          if(e instanceof ol.interaction.PinchZoom){
+            console.log("ol.interaction.PinchZoom")
+            // map.removeInteraction(e)
+            e.setActive(true)
+          }    
+        })
+      }, 200);
+    }
+
+  },
+  initWorkMap: function(){
+    
+    var scrollStarted = false
+    var timer = null; 
+
+    var map = new ol.Map({
+      view: mapManager.defaultView(),
+      target: 'work-map',
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      controls: ol.control.defaults({ attribution: false }),
+      interactions: mapManager.disableRotationInteraction()
+    })
+
+    
+    // map.removeInteraction(ol.interaction.MouseWheelZoom)
+
+    // map.setProperties({interactions: mapManager.disableRotationAndZoomInteractions()});
+    // map.renderSync()
+    var vectorSource = new ol.source.Vector();
+
+    $.get( "/lausanne_maillle_reguliere.geojson", function( data ) {
+      vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
+    });
+
+    var vectorLayer = new ol.layer.Vector({
+      source: vectorSource,
+      style: new ol.style.Style({
+        fill: mapManager.defaultFill(),
+        stroke: mapManager.defaultStroke()
+      })
+    });
+
+    map.addLayer(vectorLayer)
+
+    var selectSingleClick = new ol.interaction.Select({
+      condition: ol.events.condition.click,
+      style: new ol.style.Style({
+        fill: mapManager.selectFill(),
+        stroke: mapManager.selectStroke()
+      })
+    });
+
+    map.addInteraction(selectSingleClick);
+
+    selectSingleClick.on('select', function(e) {
+      console.log(e.target.getFeatures().item(0).get('id'))
+      $('#work-map').siblings('.gm-city-autocomplete').find('input[name*=q27]').val(e.target.getFeatures().item(0).get('id'))
+      $('#work-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
     });
 
     window.onscroll = function (e) {
@@ -120,7 +222,7 @@ var mapManager = {
 
     var vectorSource = new ol.source.Vector();
 
-    $.get( "/plein.geojson", function( data ) {
+    $.get( "/vide.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
     });
 
@@ -268,6 +370,7 @@ var mapManager = {
 
 $(function() {
   mapManager.initHomeMap()
+  mapManager.initWorkMap()
   mapManager.initMapVisits()
   mapManager.initMapBusiness()
 })

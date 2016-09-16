@@ -72,13 +72,10 @@ class Survey < ApplicationRecord
   def self.q23_answers
     ['Oui','Non']
   end
-  def self.q25_answers
-    ['Oui','Non']
-  end
-  def self.q26_answers
+  def self.q24_answers
     ['Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre']
   end
-  def self.q27_answers
+  def self.q25_answers
     ['Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre','Pas de conjoint']
   end
   def self.q41_answers
