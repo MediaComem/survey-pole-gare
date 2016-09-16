@@ -271,6 +271,14 @@ div
             label
               = ff.check_box "#{item}"
               = item
+    #q23
+      h3 23. Êtes-vous propriétaire d’un bien immobilier dans le secteur ?
+      = f.fields_for :q23 do |ff|
+        - Survey.q23_answers.each do |item|
+          .radio
+            label
+              = f.radio_button(:q23,"#{item}")
+              = item
     #q25
       h3 25. Êtes-vous propriétaire d’un bien immobilier dans le secteur ?
       = f.fields_for :q25 do |ff|
