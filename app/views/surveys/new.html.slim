@@ -223,6 +223,14 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
+    #q17b
+      h3 17b. Comment vous sentez-vous face à ces changements ?
+      = f.fields_for :q17b do |ff|
+        - Survey.q17b_answers.each do |item|
+          .radio
+            label
+              = f.radio_button(:q17b,"#{item}")
+              = item
     #q20
       h3 20. Sexe ?
       = f.fields_for :q20 do |ff|

@@ -97,14 +97,18 @@ var surveyManager = {
 	},
 	setupQ17: function(){
 		$("#q17a").hide()
+		$("#q17b").hide()
 		$("#q17 .radio input").change(function() {
 			console.log($(this).parent().text().indexOf("Oui"))
       if($(this).parent().text().indexOf("Oui") > -1){
 				$("#q17a").show()
+				$("#q17b").show()
       }else{
       	$('#q17a .checkbox').find(':checked').prop('checked','')
       	$('#q17a input[type=text]').val("")
       	$("#q17a").hide()
+      	$("#q17b .radio input").attr('checked', false);
+      	$("#q17b").hide()
       }
 		});
 	},

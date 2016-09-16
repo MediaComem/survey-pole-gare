@@ -51,6 +51,9 @@ class Survey < ApplicationRecord
   def self.q17a_answers
     ['Gare Léman 2030','Nouvelle place des Saugettes','Plateforme10 Pôle muséal','Projet Rasude','Métro M3','Démolitions','Autre']
   end
+  def self.q17b_answers
+    ['Enthousiaste','Confiant','Indifférent','Méfiant','Opposé']
+  end
   def self.q20_answers
     ['Femme','Homme']
   end
