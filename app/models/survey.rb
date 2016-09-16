@@ -33,7 +33,7 @@ class Survey < ApplicationRecord
   def self.q11_answers
     ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
   end
-  def self.q14_answers
+  def self.q13_answers
     ['L’ambiance est « villageoise », les habitants se connaissent','Les commerces sont variés','Les commerces sont proches','L’offre en transports publics est bonne','Le secteur est animé','Le secteur est convivial ','Le secteur est bruyant ','Les bâtiments sont beaux','La vue sur le grand paysage est belle','Il est facile d’y stationner']
   end
   def self.q15_answers

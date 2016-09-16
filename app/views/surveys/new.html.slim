@@ -127,10 +127,10 @@ div
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
         #map-business
-    #q14
-      h3 14.  Etes-vous d’accord avec l’affirmation suivante ? 
-      = f.fields_for :q14 do |ff|
-        - Survey.q14_answers.each do |item|
+    #q13
+      h3 13.  Etes-vous d’accord avec l’affirmation suivante ? 
+      = f.fields_for :q13 do |ff|
+        - Survey.q13_answers.each do |item|
           .panel.panel-default
             .panel-heading
               = item
