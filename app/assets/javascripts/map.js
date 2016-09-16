@@ -155,6 +155,60 @@ var mapManager = {
     });
 
   },
+  initMapBusiness: function(){
+    
+    var scrollStarted = false
+    var timer = null; 
+
+    var map = new ol.Map({
+      view: mapManager.zoomedView(),
+      target: 'map-business',
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      controls: ol.control.defaults({ attribution: false }),
+      interactions: mapManager.disableRotationInteraction()
+    })
+
+    var vectorSource = new ol.source.Vector();
+
+    $.get( "/plein.geojson", function( data ) {
+      vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
+    });
+
+    var vectorLayer = new ol.layer.Vector({
+      source: vectorSource,
+      style: new ol.style.Style({
+        fill: mapManager.defaultFill(),
+        stroke: mapManager.defaultStroke()
+      })
+    });
+
+    map.addLayer(vectorLayer)
+
+    var selectSingleClick = new ol.interaction.Select({
+      condition: ol.events.condition.click,
+      toggleCondition: ol.events.condition.click,
+      style: new ol.style.Style({
+        fill: mapManager.selectFill(),
+        stroke: mapManager.selectStroke()
+      })
+    });
+
+    map.addInteraction(selectSingleClick);
+
+    selectSingleClick.on('select', function(e) {
+      $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
+      e.target.getFeatures().forEach(function(f){
+        console.log(f.get('id'))
+        var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
+        checkbox.prop('checked', 'checked');
+      })
+    });
+
+  },
   defaultView: function(){
     return new ol.View({
       center:[738228, 5869064],
@@ -215,4 +269,5 @@ var mapManager = {
 $(function() {
   mapManager.initHomeMap()
   mapManager.initMapVisits()
+  mapManager.initMapBusiness()
 })

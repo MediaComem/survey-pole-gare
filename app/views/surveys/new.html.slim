@@ -117,15 +117,16 @@ div
           .form-group.precision
             label Veuillez préciser
             = ff.text_field :autre_precision, :class => 'form-control other'
-    #q13
-      h3 13.  Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
-      .q13
-        = f.fields_for :q13 do |ff|
+    #q12
+      h3 12.  Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
+      .q12
+        = f.fields_for :q12 do |ff|
           - @quartiers_data_hash['features'].each do |n|
-            label 
-              = n['properties']['AlphaID']
-            = ff.check_box n['properties']['AlphaID'], {'data-polygonid'=>n['properties']['AlphaID']}
-        h4 Interractions avec la map bloquées durant le scroll
+            .checkbox
+              label 
+                = n['properties']['id']
+                = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
+        #map-business
     #q14
       h3 14.  Etes-vous d’accord avec l’affirmation suivante ? 
       = f.fields_for :q14 do |ff|
