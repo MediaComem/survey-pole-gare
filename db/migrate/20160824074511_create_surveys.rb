@@ -21,6 +21,9 @@ class CreateSurveys < ActiveRecord::Migration[5.0]
       t.string :q17
       t.hstore :q17a
       t.string :q17b
+      t.string :q19
+      t.string :q20
+      t.string :q21
       t.string :q28
       t.timestamps
     end

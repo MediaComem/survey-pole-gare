@@ -54,14 +54,17 @@ class Survey < ApplicationRecord
   def self.q17b_answers
     ['Enthousiaste','Confiant','Indifférent','Méfiant','Opposé']
   end
-  def self.q20_answers
+  def self.q19_answers
     ['Femme','Homme']
   end
-  def self.q21_answers
+  def self.q20_answers
     ['- de 18 ans','de 18 à 29 ans','de 30 à 39 ans','de 40 à 49 ans','de 50 à 64 ans','de 65 à 80 ans','+ de 80 ans','sans réponse']
   end
-  def self.q22_answers
+  def self.q21_answers
     ['1','2','3','4','5','Plus de 5']
+  end
+  def self.q22_answers
+    ['1','2','3','4','Plus de 4','Pas d\'enfants']
   end
   def self.q23_answers
     ['1','2','3','4','Plus de 4','Pas d\'enfants']

@@ -231,8 +231,16 @@ div
             label
               = f.radio_button(:q17b,"#{item}")
               = item
+    #q19
+      h3 19. Sexe ?
+      = f.fields_for :q19 do |ff|
+        - Survey.q19_answers.each do |item|
+          .radio
+            label
+              = f.radio_button(:q19,"#{item}")
+              = item
     #q20
-      h3 20. Sexe ?
+      h3 20. Quel est votre âge ?
       = f.fields_for :q20 do |ff|
         - Survey.q20_answers.each do |item|
           .radio
@@ -240,12 +248,12 @@ div
               = f.radio_button(:q20,"#{item}")
               = item
     #q21
-      h3 21. Quel est votre âge ?
-      = f.fields_for :q20 do |ff|
+      h3 21. De combien de personnes se compose votre ménage ?
+      = f.fields_for :q21 do |ff|
         - Survey.q21_answers.each do |item|
           .radio
             label
-              = f.radio_button(:q20,"#{item}")
+              = f.radio_button(:q21,"#{item}")
               = item
     #q22
       h3 22. De combien de personnes se compose votre ménage ?
