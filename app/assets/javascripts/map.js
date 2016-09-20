@@ -1,8 +1,8 @@
 var mapManager = {
+
+  mapsObjects: [],
+
   initHomeMap: function(){
-  	
-    var scrollStarted = false
-    var timer = null; 
 
     var map = new ol.Map({
       view: mapManager.defaultView(),
@@ -47,58 +47,13 @@ var mapManager = {
 
     map.addInteraction(selectSingleClick);
 
+    mapManager.mapsObjects.push(map)
+
     selectSingleClick.on('select', function(e) {
     	console.log(e.target.getFeatures().item(0).get('id'))
       $('#home-map').siblings('.gm-city-autocomplete').find('input[name*=q26]').val(e.target.getFeatures().item(0).get('id'))
       $('#home-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
     });
-
-    window.onscroll = function (e) {
-      console.log("called when the window is scrolled")
-      if(!scrollStarted){
-        scrollStarted = true
-        map.getInteractions().forEach(function(e){
-          if(e instanceof ol.interaction.MouseWheelZoom){
-            console.log("ol.interaction.MouseWheelZoom")
-            // map.removeInteraction(e)
-            e.setActive(false)
-          }
-          if(e instanceof ol.interaction.DragPan){
-            console.log("ol.interaction.DragPan")
-            // map.removeInteraction(e)
-            e.setActive(false)
-          }
-          if(e instanceof ol.interaction.PinchZoom){
-            console.log("ol.interaction.PinchZoom")
-            // map.removeInteraction(e)
-            e.setActive(false)
-          }    
-        })
-      }
-      if(timer !== null) {
-        clearTimeout(timer);     
-      }
-      timer = setTimeout(function() {
-        scrollStarted = false
-        map.getInteractions().forEach(function(e){
-          if(e instanceof ol.interaction.MouseWheelZoom){
-            console.log("ol.interaction.MouseWheelZoom")
-            // map.removeInteraction(e)
-            e.setActive(true)
-          }
-          if(e instanceof ol.interaction.DragPan){
-            console.log("ol.interaction.DragPan")
-            // map.removeInteraction(e)
-            e.setActive(true)
-          }
-          if(e instanceof ol.interaction.PinchZoom){
-            console.log("ol.interaction.PinchZoom")
-            // map.removeInteraction(e)
-            e.setActive(true)
-          }    
-        })
-      }, 200);
-    }
 
   },
   initWorkMap: function(){
@@ -118,11 +73,6 @@ var mapManager = {
       interactions: mapManager.disableRotationInteraction()
     })
 
-    
-    // map.removeInteraction(ol.interaction.MouseWheelZoom)
-
-    // map.setProperties({interactions: mapManager.disableRotationAndZoomInteractions()});
-    // map.renderSync()
     var vectorSource = new ol.source.Vector();
 
     $.get( "/lausanne_maillle_reguliere.geojson", function( data ) {
@@ -149,58 +99,13 @@ var mapManager = {
 
     map.addInteraction(selectSingleClick);
 
+    mapManager.mapsObjects.push(map)
+
     selectSingleClick.on('select', function(e) {
       console.log(e.target.getFeatures().item(0).get('id'))
       $('#work-map').siblings('.gm-city-autocomplete').find('input[name*=q27]').val(e.target.getFeatures().item(0).get('id'))
       $('#work-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
     });
-
-    window.onscroll = function (e) {
-      console.log("called when the window is scrolled")
-      if(!scrollStarted){
-        scrollStarted = true
-        map.getInteractions().forEach(function(e){
-          if(e instanceof ol.interaction.MouseWheelZoom){
-            console.log("ol.interaction.MouseWheelZoom")
-            // map.removeInteraction(e)
-            e.setActive(false)
-          }
-          if(e instanceof ol.interaction.DragPan){
-            console.log("ol.interaction.DragPan")
-            // map.removeInteraction(e)
-            e.setActive(false)
-          }
-          if(e instanceof ol.interaction.PinchZoom){
-            console.log("ol.interaction.PinchZoom")
-            // map.removeInteraction(e)
-            e.setActive(false)
-          }    
-        })
-      }
-      if(timer !== null) {
-        clearTimeout(timer);     
-      }
-      timer = setTimeout(function() {
-        scrollStarted = false
-        map.getInteractions().forEach(function(e){
-          if(e instanceof ol.interaction.MouseWheelZoom){
-            console.log("ol.interaction.MouseWheelZoom")
-            // map.removeInteraction(e)
-            e.setActive(true)
-          }
-          if(e instanceof ol.interaction.DragPan){
-            console.log("ol.interaction.DragPan")
-            // map.removeInteraction(e)
-            e.setActive(true)
-          }
-          if(e instanceof ol.interaction.PinchZoom){
-            console.log("ol.interaction.PinchZoom")
-            // map.removeInteraction(e)
-            e.setActive(true)
-          }    
-        })
-      }, 200);
-    }
 
   },
   initMapVisits: function(){
@@ -246,6 +151,8 @@ var mapManager = {
     });
 
     map.addInteraction(selectSingleClick);
+
+    mapManager.mapsObjects.push(map)
 
     selectSingleClick.on('select', function(e) {
       console.log(map.getView().getCenter())
@@ -300,6 +207,8 @@ var mapManager = {
     });
 
     map.addInteraction(selectSingleClick);
+
+    mapManager.mapsObjects.push(map)
 
     selectSingleClick.on('select', function(e) {
       $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
@@ -365,7 +274,54 @@ var mapManager = {
       color: 'rgba(255, 128, 0, 0.8)',
       width: 2
     })
-  }
+  },
+  disableZoomAndPanWhenScrolling: function(){
+    var scrollStarted = false
+    var timer = null; 
+    window.onscroll = function (e) {
+      console.log("scroll")
+      
+      if(!scrollStarted){
+        scrollStarted = true
+        for (let map of mapManager.mapsObjects) {
+          console.log(map)
+          map.getInteractions().forEach(function(e){
+            if(e instanceof ol.interaction.MouseWheelZoom){
+              // map.removeInteraction(e)
+              e.setActive(false)
+            }
+            if(e instanceof ol.interaction.DragPan){
+              // map.removeInteraction(e)
+              e.setActive(false)
+            }
+            if(e instanceof ol.interaction.PinchZoom){
+              // map.removeInteraction(e)
+              e.setActive(false)
+            }    
+          }) 
+        }
+      }
+      if(timer !== null) {
+        clearTimeout(timer);     
+      }
+      timer = setTimeout(function() {
+        scrollStarted = false
+        for (let map of mapManager.mapsObjects) {
+          map.getInteractions().forEach(function(e){
+            if(e instanceof ol.interaction.MouseWheelZoom){
+              e.setActive(true)
+            }
+            if(e instanceof ol.interaction.DragPan){
+              e.setActive(true)
+            }
+            if(e instanceof ol.interaction.PinchZoom){
+              e.setActive(true)
+            }    
+          })
+        }
+      }, 200);
+    }
+  } 
 }
 
 $(function() {
@@ -373,4 +329,5 @@ $(function() {
   mapManager.initWorkMap()
   mapManager.initMapVisits()
   mapManager.initMapBusiness()
+  mapManager.disableZoomAndPanWhenScrolling()
 })
