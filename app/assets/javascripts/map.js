@@ -109,59 +109,84 @@ var mapManager = {
 
   },
   initMapVisits: function(){
-    
-    var scrollStarted = false
-    var timer = null; 
+    console.log("test")
+    var colorlayer = new ol.layer.Tile({
+      opacity: 1,
+      visible: true,
+      source: new ol.source.WMTS({
+        url: 'http://ows.asitvd.ch/wmts/',
+        layer: 'asitvd.fond_gris',
+        matrixSet: '21781',
+        format: 'image/png',
+        tileGrid: new ol.tilegrid.WMTS({
+            origin: [420000.0, 350000.0],
+            resolutions: [4000.0, 3750.0, 3500.0, 3250.0, 3000.0, 2750.0, 2500.0, 2250.0, 2000.0, 1750.0, 1500.0, 1250.0, 1000.0, 750.0, 650.0, 500.0, 250.0, 100.0, 50.0, 20.0, 10.0, 5.0, 2.5, 2.0, 1.5, 1.0, 0.5, 0.25, 0.1, 0.05],
+            matrixIds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+        }),
+        dimensions: ['DIM1', 'ELEVATION'],
+        params: {
+            'dim1': 'default',
+            'elevation': '0'
+        },
+        style: 'default'
+      })
+    });
 
     var map = new ol.Map({
-      view: mapManager.zoomedView(),
+      view: mapManager.swissView(),
       target: 'map-visits',
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      controls: ol.control.defaults({ attribution: false }),
-      interactions: mapManager.disableRotationInteraction()
+      layers: [colorlayer]
     })
 
-    var vectorSource = new ol.source.Vector();
+    // var map = new ol.Map({
+    //   view: mapManager.zoomedView(),
+    //   target: 'map-visits',
+    //   layers: [
+    //     new ol.layer.Tile({
+    //       source: new ol.source.OSM()
+    //     })
+    //   ],
+    //   controls: ol.control.defaults({ attribution: false }),
+    //   interactions: mapManager.disableRotationInteraction()
+    // })
 
-    $.get( "/vide.geojson", function( data ) {
-      vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
-    });
+    // var vectorSource = new ol.source.Vector();
 
-    var vectorLayer = new ol.layer.Vector({
-      source: vectorSource,
-      style: new ol.style.Style({
-        fill: mapManager.defaultFill(),
-        stroke: mapManager.defaultStroke()
-      })
-    });
+    // $.get( "/vide.geojson", function( data ) {
+    //   vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
+    // });
 
-    map.addLayer(vectorLayer)
+    // var vectorLayer = new ol.layer.Vector({
+    //   source: vectorSource,
+    //   style: new ol.style.Style({
+    //     fill: mapManager.defaultFill(),
+    //     stroke: mapManager.defaultStroke()
+    //   })
+    // });
 
-    var selectSingleClick = new ol.interaction.Select({
-      condition: ol.events.condition.click,
-      toggleCondition: ol.events.condition.click,
-      style: new ol.style.Style({
-        fill: mapManager.selectFill(),
-        stroke: mapManager.selectStroke()
-      })
-    });
+    // map.addLayer(vectorLayer)
 
-    map.addInteraction(selectSingleClick);
+    // var selectSingleClick = new ol.interaction.Select({
+    //   condition: ol.events.condition.click,
+    //   toggleCondition: ol.events.condition.click,
+    //   style: new ol.style.Style({
+    //     fill: mapManager.selectFill(),
+    //     stroke: mapManager.selectStroke()
+    //   })
+    // });
 
-    mapManager.mapsObjects.push(map)
+    // map.addInteraction(selectSingleClick);
 
-    selectSingleClick.on('select', function(e) {
-      console.log(map.getView().getCenter())
-      $('#map-visits').siblings('.checkbox').find(':checked').prop('checked','')
-      e.target.getFeatures().forEach(function(f){
-        var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
-        checkbox.prop('checked', 'checked');
-      })
-    });
+    // mapManager.mapsObjects.push(map)
+
+    // selectSingleClick.on('select', function(e) {
+    //   console.log(map.getView().getCenter())
+    //   $('#map-visits').siblings('.checkbox').find(':checked').prop('checked','')
+    //   e.target.getFeatures().forEach(function(f){
+    //     var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
+    //     checkbox.prop('checked', 'checked');
+    //   })
+    // });
 
   },
   initMapBusiness: function(){
@@ -183,7 +208,7 @@ var mapManager = {
 
     var vectorSource = new ol.source.Vector();
 
-    $.get( "/plein.geojson", function( data ) {
+    $.get( "/vide.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
     });
 
@@ -227,6 +252,14 @@ var mapManager = {
       maxZoom: 19,
       minZoom: 12,
       extent: [731311, 5858530, 752636, 5869289]
+    })
+  },
+  swissView: function(){
+    return new ol.View({
+      center:[537906.4772998566, 151908.44192396867],
+      zoom: 18,
+      minZoom: 13,
+      extent: [488738.358855417, 114770.19797019214, 575876.5711005179, 158721.4892341685]
     })
   },
   zoomedView: function(){
