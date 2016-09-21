@@ -1,68 +1,125 @@
 <h1>Survey#new</h1>
 <p>Find me in app/views/survey/new.html.erb</p>
 div 
+
   = form_for :survey, url: surveys_path do |f|
 
     #q1
       h3 id="q1" 1. Dans le secteur sous­-gare,vous êtes avant tout...
       = f.fields_for :q1 do |ff|
-        - Survey.q1_answers.each do |item|
-          .checkbox
-            label
-              = ff.check_box "#{item}"
-              = item
+        .row
+          .col-sm-6
+            - Survey.q1_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q1_answers.in_groups(2)[1].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q2 
       h3 2. Depuis combien de temps fréquentez-vous ce secteur?
-      - Survey.q2_answers.each do |item|
-        .radio
-          label
-            = f.radio_button(:q2,"#{item}")
-            = item
+      .row
+        .col-sm-6
+          - Survey.q2_answers.in_groups(2)[0].each do |item|
+            .radio
+              label
+                = f.radio_button(:q2,"#{item}")
+                = item
+        .col-sm-6
+          - Survey.q2_answers.in_groups(2)[1].compact.each do |item|
+            .radio
+              label
+                = f.radio_button(:q2,"#{item}")
+                = item
     #q3
       h3 3. Quelle est votre fréquentation moyenne du secteur ?
-      - Survey.q3_answers.each do |item|
-        .radio
-          label
-            = f.radio_button(:q3,"#{item}")
-            = item
+      .row
+        .col-sm-6
+          - Survey.q3_answers.in_groups(2)[0].each do |item|
+            .radio
+              label
+                = f.radio_button(:q3,"#{item}")
+                = item
+        .col-sm-6
+          - Survey.q3_answers.in_groups(2)[1].compact.each do |item|
+            .radio
+              label
+                = f.radio_button(:q3,"#{item}")
+                = item
     #q4
       h3 4. A quelle(s) période(s) de la journée fréquentez-vous le secteur ?
       = f.fields_for :q4 do |ff|
-        - Survey.q4_answers.each do |item|
-            .checkbox
-              label
-                = ff.check_box "#{item}"
-                = item
+        .row
+          .col-sm-6
+            - Survey.q4_answers.in_groups(2)[0].each do |item|
+                .checkbox
+                  label
+                    = ff.check_box "#{item}"
+                    = item
+          .col-sm-6
+            - Survey.q4_answers.in_groups(2)[1].compact.each do |item|
+                .checkbox
+                  label
+                    = ff.check_box "#{item}"
+                    = item
     #q5
       h3 5. Lorsque vous êtes dans le secteur, combien de temps y restez-vous en moyenne ?
       = f.fields_for :q5 do |ff|
-        - Survey.q5_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q5,"#{item}")
-              = item
+        .row
+          .col-sm-6
+            - Survey.q5_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = f.radio_button(:q5,"#{item}")
+                  = item
+          .col-sm-6
+            - Survey.q5_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q5,"#{item}")
+                  = item
     #q6
       h3 6. Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? 
       = f.fields_for :q6 do |ff|
-        - Survey.q6_answers.each do |item|
-          .checkbox
-            label
-              = ff.check_box "#{item}"
-              = item
+        .row
+          .col-sm-6
+            - Survey.q6_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q6_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q7
       h3 7. Si vous vous rendez dans le secteur en voiture, où stationnez-vous le plus souvent ?
       = f.fields_for :q7 do |ff|
-        - Survey.q7_answers.each do |item|
-          .radio
-            label
-              = ff.radio_button(:q7,"#{item}")
-              = item
+        .row
+          .col-sm-6
+            - Survey.q7_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = ff.radio_button(:q7,"#{item}")
+                  = item
+          .col-sm-6
+            - Survey.q7_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = ff.radio_button(:q7,"#{item}")
+                  = item
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
@@ -79,16 +136,24 @@ div
     #q9
       h3 9. Que faites-vous dans ces rues ou places ?
       = f.fields_for :q9 do |ff|
-        - Survey.q9_answers.each do |item|
-          .checkbox
-            label
-              = ff.check_box "#{item}"
-              = item
+        .row
+          .col-sm-6
+            - Survey.q9_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q9_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q10
-      h3 10.  Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?
+      h3 10. Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?
       = f.fields_for :q10 do |ff|
         - Survey.q10_answers.each do |item|
           .radio
@@ -96,27 +161,43 @@ div
               = f.radio_button(:q10,"#{item}")
               = item
     #q10a
-      h3 10a Si oui, pour quelles activités ?
+      h3 10a. Si oui, pour quelles activités ?
       = f.fields_for :q10a do |ff|
-        - Survey.q10a_answers.each do |item|
-          .checkbox
-            label
-              = ff.check_box "#{item}"
-              = item
+        .row
+          .col-sm-6
+            - Survey.q10a_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q10a_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q11
       h3 11. Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
       = f.fields_for :q11 do |ff|
-        - Survey.q11_answers.each do |item|
-          .checkbox
-            label
-              = ff.check_box "#{item}"
-              = item
-          .form-group.precision
-            label Veuillez préciser
-            = ff.text_field :autre_precision, :class => 'form-control other'
+        .row
+          .col-sm-6
+            - Survey.q11_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q11_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+        .form-group.precision
+          label Veuillez préciser
+          = ff.text_field :autre_precision, :class => 'form-control other'
     #q12
       h3 12.  Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
       .q12
@@ -188,22 +269,38 @@ div
     #q15
       h3 15. Quelle serait pour vous les trois premières choses à faire pour le secteur (3 max) ?
       = f.fields_for :q15 do |ff|
-        - Survey.q15_answers.each do |item|
-          .checkbox
-            label
-              = ff.check_box "#{item}"
-              = item
+        .row
+          .col-sm-6
+            - Survey.q15_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q15_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q16
       h3 16. Est-ce que l’ambiance du secteur sous-gare a changé ces dix dernières années ?
       = f.fields_for :q16 do |ff|
-        - Survey.q16_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q16,"#{item}")
-              = item
+        .row
+          .col-sm-6
+            - Survey.q16_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = f.radio_button(:q16,"#{item}")
+                  = item
+          .col-sm-6
+            - Survey.q16_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q16,"#{item}")
+                  = item
     #q17
       h3 17. Avez-vous connaissance des futurs projets dans le secteur ?
       = f.fields_for :q17 do |ff|
@@ -242,35 +339,67 @@ div
     #q20
       h3 20. Quel est votre âge ?
       = f.fields_for :q20 do |ff|
-        - Survey.q20_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q20,"#{item}")
-              = item
+        .row
+          .col-sm-6
+            - Survey.q20_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = f.radio_button(:q20,"#{item}")
+                  = item
+          .col-sm-6
+            - Survey.q20_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q20,"#{item}")
+                  = item
     #q21
       h3 21. De combien de personnes se compose votre ménage ?
       = f.fields_for :q21 do |ff|
-        - Survey.q21_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q21,"#{item}")
-              = item
+        .row
+          .col-sm-6
+            - Survey.q21_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = f.radio_button(:q21,"#{item}")
+                  = item
+          .col-sm-6
+            - Survey.q21_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q21,"#{item}")
+                  = item
     #q22
       h3 22. Avez-vous des enfants à charge ? Si oui, combien ? 
       = f.fields_for :q22 do |ff|
-        - Survey.q22_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q22,"#{item}")
-              = item
+        .row
+          .col-sm-6
+            - Survey.q22_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = f.radio_button(:q22,"#{item}")
+                  = item
+          .col-sm-6
+            - Survey.q22_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q22,"#{item}")
+                  = item
     #q22a
       h3 22a. Quel âge ont-ils ?
       = f.fields_for :q22a do |ff|
-        - Survey.q22a_answers.each do |item|
-          .checkbox
-            label
-              = ff.check_box "#{item}"
-              = item
+        .row
+          .col-sm-6
+            - Survey.q22a_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q22a_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
     #q23
       h3 23. Êtes-vous propriétaire d’un bien immobilier dans le secteur ?
       = f.fields_for :q23 do |ff|
@@ -282,19 +411,35 @@ div
     #q24
       h3 24. Quelle est votre activité professionnelle ? 
       = f.fields_for :q24 do |ff|
-        - Survey.q24_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q24,"#{item}")
-              = item
+        .row
+          .col-sm-6
+            - Survey.q24_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = f.radio_button(:q24,"#{item}")
+                  = item
+          .col-sm-6
+            - Survey.q24_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q24,"#{item}")
+                  = item
     #q25
       h3 25. Quelle est l’activité professionnelle de votre conjoint ? 
       = f.fields_for :q25 do |ff|
-        - Survey.q25_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q25,"#{item}")
-              = item
+        .row
+          .col-sm-6
+            - Survey.q25_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = f.radio_button(:q25,"#{item}")
+                  = item
+          .col-sm-6
+            - Survey.q25_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q25,"#{item}")
+                  = item
     #q26
       h3 26. Où se situe votre lieu d’habitation ?
       .panel.panel-default
