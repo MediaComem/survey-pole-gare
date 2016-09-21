@@ -14,7 +14,7 @@ var mapManager = {
       ],
       controls: ol.control.defaults({ attribution: false }),
       interactions: mapManager.disableRotationInteraction()
-    })
+    });
 
     
     // map.removeInteraction(ol.interaction.MouseWheelZoom)
@@ -47,7 +47,7 @@ var mapManager = {
 
     map.addInteraction(selectSingleClick);
 
-    mapManager.mapsObjects.push(map)
+    mapManager.mapsObjects.push(map);
 
     selectSingleClick.on('select', function(e) {
     	console.log(e.target.getFeatures().item(0).get('id'))
@@ -58,7 +58,7 @@ var mapManager = {
   },
   initWorkMap: function(){
     
-    var scrollStarted = false
+    var scrollStarted = false;
     var timer = null; 
 
     var map = new ol.Map({
@@ -87,7 +87,7 @@ var mapManager = {
       })
     });
 
-    map.addLayer(vectorLayer)
+    map.addLayer(vectorLayer);
 
     var selectSingleClick = new ol.interaction.Select({
       condition: ol.events.condition.click,
@@ -99,7 +99,7 @@ var mapManager = {
 
     map.addInteraction(selectSingleClick);
 
-    mapManager.mapsObjects.push(map)
+    mapManager.mapsObjects.push(map);
 
     selectSingleClick.on('select', function(e) {
       console.log(e.target.getFeatures().item(0).get('id'))
@@ -136,7 +136,7 @@ var mapManager = {
       view: mapManager.swissView(),
       target: 'map-visits',
       layers: [colorlayer]
-    })
+    });
 
     // var map = new ol.Map({
     //   view: mapManager.zoomedView(),
@@ -220,7 +220,7 @@ var mapManager = {
       })
     });
 
-    map.addLayer(vectorLayer)
+    map.addLayer(vectorLayer);
 
     var selectSingleClick = new ol.interaction.Select({
       condition: ol.events.condition.click,
@@ -233,7 +233,7 @@ var mapManager = {
 
     map.addInteraction(selectSingleClick);
 
-    mapManager.mapsObjects.push(map)
+    mapManager.mapsObjects.push(map);
 
     selectSingleClick.on('select', function(e) {
       $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
@@ -316,8 +316,8 @@ var mapManager = {
       
       if(!scrollStarted){
         scrollStarted = true
-        for (let map of mapManager.mapsObjects) {
-          console.log(map)
+        for (var i = 0, l = mapManager.mapsObjects.length; i < l; i++) {
+          var map = mapManager.mapsObjects[i];
           map.getInteractions().forEach(function(e){
             if(e instanceof ol.interaction.MouseWheelZoom){
               // map.removeInteraction(e)
@@ -339,18 +339,22 @@ var mapManager = {
       }
       timer = setTimeout(function() {
         scrollStarted = false
-        for (let map of mapManager.mapsObjects) {
+        for (var i = 0, l = mapManager.mapsObjects.length; i < l; i++) {
+          var map = mapManager.mapsObjects[i];
           map.getInteractions().forEach(function(e){
             if(e instanceof ol.interaction.MouseWheelZoom){
+              // map.removeInteraction(e)
               e.setActive(true)
             }
             if(e instanceof ol.interaction.DragPan){
+              // map.removeInteraction(e)
               e.setActive(true)
             }
             if(e instanceof ol.interaction.PinchZoom){
+              // map.removeInteraction(e)
               e.setActive(true)
             }    
-          })
+          }) 
         }
       }, 200);
     }
