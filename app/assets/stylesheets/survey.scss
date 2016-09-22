@@ -21,6 +21,11 @@ header #images{
 			text-align: right;
 		}
 	}
+	div:nth-of-type(1){
+		@media (min-width: 970px) {
+			text-align: left;
+		}
+	}
 }
 .question{
 	margin-bottom: 15px;
