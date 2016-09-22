@@ -11,8 +11,11 @@ class SurveysController < ApplicationController
     puts survey_params
     puts @survey
   	@survey.save
-  	redirect_to @survey
+  	redirect_to action: "thanks"
 	end
+  def thanks
+    
+  end
   def admin
     @users = Survey.all
 
