@@ -4,16 +4,32 @@ var mapManager = {
 
   initHomeMap: function(){
 
+    var colorlayer = new ol.layer.Tile({
+      opacity: 1,
+      visible: true,
+      source: new ol.source.WMTS({
+        url: 'http://ows.asitvd.ch/wmts/',
+        layer: 'asitvd.fond_couleur',
+        matrixSet: '21781',
+        format: 'image/png',
+        tileGrid: new ol.tilegrid.WMTS({
+            origin: [420000.0, 350000.0],
+            resolutions: [4000.0, 3750.0, 3500.0, 3250.0, 3000.0, 2750.0, 2500.0, 2250.0, 2000.0, 1750.0, 1500.0, 1250.0, 1000.0, 750.0, 650.0, 500.0, 250.0, 100.0, 50.0, 20.0, 10.0, 5.0, 2.5, 2.0, 1.5, 1.0, 0.5, 0.25, 0.1, 0.05],
+            matrixIds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+        }),
+        dimensions: ['DIM1', 'ELEVATION'],
+        params: {
+            'dim1': 'default',
+            'elevation': '0'
+        },
+        style: 'default'
+      })
+    });
+
     var map = new ol.Map({
       view: mapManager.defaultView(),
       target: 'home-map',
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      controls: ol.control.defaults({ attribution: false }),
-      interactions: mapManager.disableRotationInteraction()
+      layers: [colorlayer]
     });
 
     var vectorSource = new ol.source.Vector();
@@ -50,23 +66,42 @@ var mapManager = {
       $('#home-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
     });
 
+    var centerMapButton = document.getElementById('map-home-center');
+    centerMapButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      map.setView(mapManager.defaultView())
+    }, false);
+
   },
   initWorkMap: function(){
     
-    var scrollStarted = false;
-    var timer = null; 
+    var colorlayer = new ol.layer.Tile({
+      opacity: 1,
+      visible: true,
+      source: new ol.source.WMTS({
+        url: 'http://ows.asitvd.ch/wmts/',
+        layer: 'asitvd.fond_couleur',
+        matrixSet: '21781',
+        format: 'image/png',
+        tileGrid: new ol.tilegrid.WMTS({
+            origin: [420000.0, 350000.0],
+            resolutions: [4000.0, 3750.0, 3500.0, 3250.0, 3000.0, 2750.0, 2500.0, 2250.0, 2000.0, 1750.0, 1500.0, 1250.0, 1000.0, 750.0, 650.0, 500.0, 250.0, 100.0, 50.0, 20.0, 10.0, 5.0, 2.5, 2.0, 1.5, 1.0, 0.5, 0.25, 0.1, 0.05],
+            matrixIds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+        }),
+        dimensions: ['DIM1', 'ELEVATION'],
+        params: {
+            'dim1': 'default',
+            'elevation': '0'
+        },
+        style: 'default'
+      })
+    });
 
     var map = new ol.Map({
       view: mapManager.defaultView(),
       target: 'work-map',
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      controls: ol.control.defaults({ attribution: false }),
-      interactions: mapManager.disableRotationInteraction()
-    })
+      layers: [colorlayer]
+    });
 
     var vectorSource = new ol.source.Vector();
 
@@ -102,15 +137,20 @@ var mapManager = {
       $('#work-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
     });
 
+    var centerMapButton = document.getElementById('map-work-center');
+    centerMapButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      map.setView(mapManager.defaultView())
+    }, false);
   },
   initMapVisits: function(){
-    console.log("test")
+    
     var colorlayer = new ol.layer.Tile({
       opacity: 1,
       visible: true,
       source: new ol.source.WMTS({
         url: 'http://ows.asitvd.ch/wmts/',
-        layer: 'asitvd.fond_gris',
+        layer: 'asitvd.fond_couleur',
         matrixSet: '21781',
         format: 'image/png',
         tileGrid: new ol.tilegrid.WMTS({
@@ -128,38 +168,26 @@ var mapManager = {
     });
 
     var map = new ol.Map({
-      view: mapManager.swissView(),
+      view: mapManager.zoomedView(),
       target: 'map-visits',
       layers: [colorlayer]
     });
 
-    // var map = new ol.Map({
-    //   view: mapManager.zoomedView(),
-    //   target: 'map-visits',
-    //   layers: [
-    //     new ol.layer.Tile({
-    //       source: new ol.source.OSM()
-    //     })
-    //   ],
-    //   controls: ol.control.defaults({ attribution: false }),
-    //   interactions: mapManager.disableRotationInteraction()
-    // })
+    var vectorSource = new ol.source.Vector();
 
-    // var vectorSource = new ol.source.Vector();
+    $.get( "/plein.geojson", function( data ) {
+      vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
+    });
 
-    // $.get( "/vide.geojson", function( data ) {
-    //   vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
-    // });
+    var vectorLayer = new ol.layer.Vector({
+      source: vectorSource,
+      style: new ol.style.Style({
+        fill: mapManager.defaultFill(),
+        stroke: mapManager.defaultStroke()
+      })
+    });
 
-    // var vectorLayer = new ol.layer.Vector({
-    //   source: vectorSource,
-    //   style: new ol.style.Style({
-    //     fill: mapManager.defaultFill(),
-    //     stroke: mapManager.defaultStroke()
-    //   })
-    // });
-
-    // map.addLayer(vectorLayer)
+    map.addLayer(vectorLayer)
 
     // var selectSingleClick = new ol.interaction.Select({
     //   condition: ol.events.condition.click,
@@ -177,7 +205,7 @@ var mapManager = {
     var centerMapButton = document.getElementById('map-visits-center');
     centerMapButton.addEventListener('click', function(event) {
       event.preventDefault();
-      map.setView(mapManager.swissView())
+      map.setView(mapManager.zoomedView())
     }, false);
 
     // selectSingleClick.on('select', function(e) {
@@ -192,28 +220,40 @@ var mapManager = {
   },
   initMapBusiness: function(){
     
-    var scrollStarted = false
-    var timer = null; 
+    var colorlayer = new ol.layer.Tile({
+      opacity: 1,
+      visible: true,
+      source: new ol.source.WMTS({
+        url: 'http://ows.asitvd.ch/wmts/',
+        layer: 'asitvd.fond_couleur',
+        matrixSet: '21781',
+        format: 'image/png',
+        tileGrid: new ol.tilegrid.WMTS({
+            origin: [420000.0, 350000.0],
+            resolutions: [4000.0, 3750.0, 3500.0, 3250.0, 3000.0, 2750.0, 2500.0, 2250.0, 2000.0, 1750.0, 1500.0, 1250.0, 1000.0, 750.0, 650.0, 500.0, 250.0, 100.0, 50.0, 20.0, 10.0, 5.0, 2.5, 2.0, 1.5, 1.0, 0.5, 0.25, 0.1, 0.05],
+            matrixIds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+        }),
+        dimensions: ['DIM1', 'ELEVATION'],
+        params: {
+            'dim1': 'default',
+            'elevation': '0'
+        },
+        style: 'default'
+      })
+    });
 
     var map = new ol.Map({
       view: mapManager.zoomedView(),
       target: 'map-business',
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      controls: ol.control.defaults({ attribution: false }),
-      interactions: mapManager.disableRotationInteraction()
-    })
+      layers: [colorlayer]
+    });
 
     var vectorSource = new ol.source.Vector();
 
-    var feats;
     $.get( "/vide.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
-      feats = new ol.format.GeoJSON().readFeatures(data)
     });
+
     var vectorLayer = new ol.layer.Vector({
       source: vectorSource,
       style: new ol.style.Style({
@@ -222,9 +262,10 @@ var mapManager = {
       })
     });
 
-    map.addLayer(vectorLayer);
+    map.addLayer(vectorLayer)
 
     var selectSingleClick = new ol.interaction.Select({
+      condition: ol.events.condition.click,
       toggleCondition: ol.events.condition.click,
       multi: true,
       style: new ol.style.Style({
@@ -276,28 +317,20 @@ var mapManager = {
   },
   defaultView: function(){
     return new ol.View({
-      center:[738228, 5869064],
-      zoom: 12,
-      maxZoom: 19,
-      minZoom: 12,
-      extent: [731311, 5858530, 752636, 5869289]
-    })
-  },
-  swissView: function(){
-    return new ol.View({
-      center:[537906.4772998566, 151908.44192396867],
-      zoom: 18,
-      minZoom: 13,
+      center:[539626.310436273, 156046.1932441873],
+      zoom: 13,
+      minZoom: 8,
+      maxZoom: 18,
       extent: [488738.358855417, 114770.19797019214, 575876.5711005179, 158721.4892341685]
     })
   },
   zoomedView: function(){
     return new ol.View({
-      center:[738004, 5863295],
-      zoom: 16,
-      maxZoom: 19,
-      minZoom: 14,
-      extent: [731311, 5858530, 752636, 5869289]
+      center:[537906.4772998566, 151908.44192396867],
+      zoom: 17,
+      minZoom: 13,
+      maxZoom: 18,
+      extent: [488738.358855417, 114770.19797019214, 575876.5711005179, 158721.4892341685]
     })
   },
   blockedZoomView: function(){

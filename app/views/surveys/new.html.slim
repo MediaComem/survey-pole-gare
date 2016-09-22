@@ -466,6 +466,7 @@ div
                 label
                   = radio_button_tag 'location_choice', 'autre'
                   | Autre&nbsp;
+      button.btn.btn-success.center-map(id="map-home-center")Recentrer la carte
       #home-map
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
@@ -490,6 +491,7 @@ div
                 label
                   = radio_button_tag 'work_location_choice', 'autre'
                   | Autre&nbsp;
+      button.btn.btn-success.center-map(id="map-work-center")Recentrer la carte
       #work-map
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
