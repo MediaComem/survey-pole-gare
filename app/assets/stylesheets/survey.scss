@@ -1,10 +1,26 @@
 // Place all the styles related to the Survey controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 $color-pole-gare: #1a4a5b;
 .btn{
   background-color: $color-pole-gare !important;
   border-color: $color-pole-gare !important;
+}
+#block{
+	height: 50px;
+	width:100%;
+	background-color: $color-pole-gare;
+}
+header #images{
+	div{
+		text-align: center;
+	}
+	div:nth-of-type(2){
+		@media (min-width: 970px) {
+			text-align: right;
+		}
+	}
 }
 .question{
 	margin-bottom: 15px;

@@ -11,7 +11,18 @@
   </head>
 
   <body>
+    <div id="block"></div>
   	<div class="container">
+      <header>
+        <div class="row" id="images">
+          <div class="col-md-6">
+            <%= image_tag("polegare.jpg") %>
+          </div>
+          <div class="col-md-6">
+            <%= image_tag("lausanne.jpg") %>
+          </div>
+        </div>
+      </header>
   		<%= yield %>
   	</div>
   </body>
