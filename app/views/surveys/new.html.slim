@@ -495,4 +495,10 @@ div
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
         = f.text_field :q27, :value => '', :class => "gm-city-autocomplete-input form-control workplace", :maxlength => 256, :placeholder => "Veuillez préciser..."
+    #q28.question
+      h3 Voulez-vous ajouter quelque chose ?
+      = f.text_area(:q28, cols: 20, rows: 10, :class => 'form-control', :placeholder => "Saisissez ici votre message...")
+    #q29.question
+      h3 Souhaitez-vous être informé des suites de la démarche participative?
+      = f.text_field :q29, :class => 'form-control', :placeholder => "Si oui, veuillez saisir votre email..."
     button class="btn form-control gm-submit btn-success" type="submit" Envoyer

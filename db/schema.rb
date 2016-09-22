@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20160824074511) do
     t.string   "q25"
     t.string   "q26"
     t.string   "q27"
+    t.string   "q28"
+    t.string   "q29"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
