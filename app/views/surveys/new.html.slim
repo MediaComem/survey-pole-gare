@@ -53,7 +53,7 @@ div
                 = f.radio_button(:q3,"#{item}")
                 = item
     #q4.only-for-frequentation
-      h3 4. A quelle(s) période(s) de la journée fréquentez-vous le secteur ?
+      h3 A quelle(s) période(s) de la journée fréquentez-vous le secteur ?
       = f.fields_for :q4 do |ff|
         .row
           .col-sm-6
@@ -69,7 +69,7 @@ div
                     = ff.check_box "#{item}"
                     = item
     #q5.only-for-frequentation
-      h3 5. Lorsque vous êtes dans le secteur, combien de temps y restez-vous en moyenne ?
+      h3 Lorsque vous êtes dans le secteur, combien de temps y restez-vous en moyenne ?
       = f.fields_for :q5 do |ff|
         .row
           .col-sm-6
@@ -85,7 +85,7 @@ div
                   = f.radio_button(:q5,"#{item}")
                   = item
     #q6.only-for-frequentation
-      h3 6. Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? 
+      h3 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? 
       = f.fields_for :q6 do |ff|
         .row
           .col-sm-6
@@ -104,7 +104,7 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q7.only-for-frequentation
-      h3 7. Si vous vous rendez dans le secteur en voiture, où stationnez-vous le plus souvent ?
+      h3 Si vous vous rendez dans le secteur en voiture, où stationnez-vous le plus souvent ?
       = f.fields_for :q7 do |ff|
         .row
           .col-sm-6
@@ -123,7 +123,7 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q8.only-for-frequentation
-      h3 8. Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois) ?
+      h3 Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois) ?
       .q8
         = f.fields_for :q8 do |ff|
           - @quartiers_data_hash['features'].each do |n|
@@ -134,7 +134,7 @@ div
         button.btn.btn-success.center-map(id="map-visits-center")Recentrer la carte
         #map-visits
     #q9.only-for-frequentation
-      h3 9. Que faites-vous dans ces rues ou places ?
+      h3 Que faites-vous dans ces rues ou places ?
       = f.fields_for :q9 do |ff|
         .row
           .col-sm-6
@@ -153,7 +153,7 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q10
-      h3 10. Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?
+      h3 Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?
       = f.fields_for :q10 do |ff|
         - Survey.q10_answers.each do |item|
           .radio
@@ -161,7 +161,7 @@ div
               = f.radio_button(:q10,"#{item}")
               = item
     #q10a
-      h3 10a. Si oui, pour quelles activités ?
+      h3 Si oui, pour quelles activités ?
       = f.fields_for :q10a do |ff|
         .row
           .col-sm-6
@@ -180,7 +180,7 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q11
-      h3 11. Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
+      h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
       = f.fields_for :q11 do |ff|
         .row
           .col-sm-6
@@ -199,7 +199,7 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q12
-      h3 12.  Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
+      h3 Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
       .q12
         = f.fields_for :q12 do |ff|
           - @vide_data_hash['features'].each do |n|
@@ -214,7 +214,7 @@ div
         button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
         #map-business
     #q13
-      h3 13.  Etes-vous d’accord avec l’affirmation suivante ? 
+      h3 Etes-vous d’accord avec l’affirmation suivante ? 
       = f.fields_for :q13 do |ff|
         - Survey.q13_answers.each do |item|
           .panel.panel-default
@@ -241,7 +241,7 @@ div
                 = ff.radio_button(item, [""],{checked: true})
                 | null
     #q14
-      h3 14. Comment appréciez-vous ces différentes composantes du secteur ?
+      h3 Comment appréciez-vous ces différentes composantes du secteur ?
       = f.fields_for :q14 do |ff|
         - Survey.q14_answers.each do |item|
           .panel.panel-default
@@ -272,7 +272,7 @@ div
                 = ff.radio_button(item, [""],{checked: true})
                 | null 
     #q15
-      h3 15. Quelle serait pour vous les trois premières choses à faire pour le secteur (3 max) ?
+      h3 Quelle serait pour vous les trois premières choses à faire pour le secteur (3 max) ?
       = f.fields_for :q15 do |ff|
         .row
           .col-sm-6
@@ -291,7 +291,7 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q16
-      h3 16. Est-ce que l’ambiance du secteur sous-gare a changé ces dix dernières années ?
+      h3 Est-ce que l’ambiance du secteur sous-gare a changé ces dix dernières années ?
       = f.fields_for :q16 do |ff|
         .row
           .col-sm-6
@@ -307,7 +307,7 @@ div
                   = f.radio_button(:q16,"#{item}")
                   = item
     #q17
-      h3 17. Avez-vous connaissance des futurs projets dans le secteur ?
+      h3 Avez-vous connaissance des futurs projets dans le secteur ?
       = f.fields_for :q17 do |ff|
         - Survey.q17_answers.each do |item|
           .radio
@@ -315,7 +315,7 @@ div
               = f.radio_button(:q17,"#{item}")
               = item
     #q17a
-      h3 17a. Desquel ?
+      h3 Desquel ?
       = f.fields_for :q17a do |ff|
         - Survey.q17a_answers.each do |item|
           .checkbox
@@ -334,7 +334,7 @@ div
               = f.radio_button(:q17b,"#{item}")
               = item
     #q19
-      h3 19. Sexe ?
+      h3 Sexe ?
       = f.fields_for :q19 do |ff|
         - Survey.q19_answers.each do |item|
           .radio
@@ -342,7 +342,7 @@ div
               = f.radio_button(:q19,"#{item}")
               = item
     #q20
-      h3 20. Quel est votre âge ?
+      h3 Quel est votre âge ?
       = f.fields_for :q20 do |ff|
         .row
           .col-sm-6
@@ -358,7 +358,7 @@ div
                   = f.radio_button(:q20,"#{item}")
                   = item
     #q21
-      h3 21. De combien de personnes se compose votre ménage ?
+      h3 De combien de personnes se compose votre ménage ?
       = f.fields_for :q21 do |ff|
         .row
           .col-sm-6
@@ -374,7 +374,7 @@ div
                   = f.radio_button(:q21,"#{item}")
                   = item
     #q22
-      h3 22. Avez-vous des enfants à charge ? Si oui, combien ? 
+      h3 Avez-vous des enfants à charge ? Si oui, combien ? 
       = f.fields_for :q22 do |ff|
         .row
           .col-sm-6
@@ -390,7 +390,7 @@ div
                   = f.radio_button(:q22,"#{item}")
                   = item
     #q22a
-      h3 22a. Quel âge ont-ils ?
+      h3 Quel âge ont-ils ?
       = f.fields_for :q22a do |ff|
         .row
           .col-sm-6
@@ -406,7 +406,7 @@ div
                   = ff.check_box "#{item}"
                   = item
     #q23
-      h3 23. Êtes-vous propriétaire d’un bien immobilier dans le secteur ?
+      h3 Êtes-vous propriétaire d’un bien immobilier dans le secteur ?
       = f.fields_for :q23 do |ff|
         - Survey.q23_answers.each do |item|
           .radio
@@ -414,7 +414,7 @@ div
               = f.radio_button(:q23,"#{item}")
               = item
     #q24
-      h3 24. Quelle est votre activité professionnelle ? 
+      h3 Quelle est votre activité professionnelle ? 
       = f.fields_for :q24 do |ff|
         .row
           .col-sm-6
@@ -430,7 +430,7 @@ div
                   = f.radio_button(:q24,"#{item}")
                   = item
     #q25
-      h3 25. Quelle est l’activité professionnelle de votre conjoint ? 
+      h3 Quelle est l’activité professionnelle de votre conjoint ? 
       = f.fields_for :q25 do |ff|
         .row
           .col-sm-6
@@ -446,7 +446,7 @@ div
                   = f.radio_button(:q25,"#{item}")
                   = item
     #q26
-      h3 26. Où se situe votre lieu d’habitation ?
+      h3 Où se situe votre lieu d’habitation ?
       .panel.panel-default
         .panel-body
           .row
@@ -471,7 +471,7 @@ div
       .gm-city-autocomplete
         = f.text_field :q26, :value => '', :class => "gm-city-autocomplete-input form-control homeplace", :maxlength => 256, :placeholder => "Veuillez préciser..."
     #q27
-      h3 27. Où se situe votre lieu de travail ?
+      h3 Où se situe votre lieu de travail ?
       .panel.panel-default
         .panel-body
           .row
