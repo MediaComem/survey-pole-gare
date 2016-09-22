@@ -1,13 +1,13 @@
 class Survey < ApplicationRecord
 
-	def self.q1_answers
+  def self.q1_answers
+    ['Au moins une fois par jour', 'Au moins une fois par semaine', 'Occasionnellement', 'Jamais']
+  end
+	def self.q2_answers
     ['Usager des commerces ou des services', 'Habitant', 'Commerçant', 'Usager de la gare', 'Employé ou indépendant', 'Autre']
   end
-  def self.q2_answers
-    ['Moins d’un an', '1 à 2 ans', '3 à 4 ans', '5 à 6 ans', 'Plus de 6 ans']
-  end
   def self.q3_answers
-    ['Au moins une fois par jour', 'Au moins une fois par semaine', 'Occasionnellement', 'Jamais']
+    ['Moins d’un an', '1 à 2 ans', '3 à 4 ans', '5 à 6 ans', 'Plus de 6 ans']
   end
   def self.q4_answers
     ['Matin', 'Midi', 'Après-midi', 'Soir (après 17h)', 'Aucune']

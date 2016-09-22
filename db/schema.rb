@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20160824074511) do
   enable_extension "hstore"
 
   create_table "surveys", force: :cascade do |t|
-    t.hstore   "q1"
-    t.string   "q2"
+    t.string   "q1"
+    t.hstore   "q2"
     t.string   "q3"
     t.hstore   "q4"
     t.string   "q5"

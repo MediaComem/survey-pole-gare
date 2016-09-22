@@ -3,19 +3,33 @@
 div 
 
   = form_for :survey, url: surveys_path do |f|
-
     #q1
-      h3 id="q1" 1. Dans le secteur sous­-gare,vous êtes avant tout...
-      = f.fields_for :q1 do |ff|
+      h3 Quelle est votre fréquentation moyenne du secteur ?
+      .row
+        .col-sm-6
+          - Survey.q1_answers.in_groups(2)[0].each do |item|
+            .radio
+              label
+                = f.radio_button(:q1,"#{item}")
+                = item
+        .col-sm-6
+          - Survey.q1_answers.in_groups(2)[1].compact.each do |item|
+            .radio
+              label
+                = f.radio_button(:q1,"#{item}")
+                = item
+    #q2
+      h3 id="q2" Dans le secteur sous­-gare,vous êtes avant tout...
+      = f.fields_for :q2 do |ff|
         .row
           .col-sm-6
-            - Survey.q1_answers.in_groups(2)[0].each do |item|
+            - Survey.q2_answers.in_groups(2)[0].each do |item|
               .checkbox
                 label
                   = ff.check_box "#{item}"
                   = item
           .col-sm-6
-            - Survey.q1_answers.in_groups(2)[1].each do |item|
+            - Survey.q2_answers.in_groups(2)[1].each do |item|
               .checkbox
                 label
                   = ff.check_box "#{item}"
@@ -23,23 +37,8 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q2 
-      h3 2. Depuis combien de temps fréquentez-vous ce secteur?
-      .row
-        .col-sm-6
-          - Survey.q2_answers.in_groups(2)[0].each do |item|
-            .radio
-              label
-                = f.radio_button(:q2,"#{item}")
-                = item
-        .col-sm-6
-          - Survey.q2_answers.in_groups(2)[1].compact.each do |item|
-            .radio
-              label
-                = f.radio_button(:q2,"#{item}")
-                = item
-    #q3
-      h3 3. Quelle est votre fréquentation moyenne du secteur ?
+    #q3 
+      h3 Depuis combien de temps fréquentez-vous ce secteur?
       .row
         .col-sm-6
           - Survey.q3_answers.in_groups(2)[0].each do |item|

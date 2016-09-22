@@ -1,12 +1,12 @@
 var surveyManager = {
-  setupQ1: function(){
+  setupQ2: function(){
   	var count = 0
-  	$("#q1 .checkbox input").change(function() {
+  	$("#q2 .checkbox input").change(function() {
   		count = $("[type='checkbox']:checked").length;
       if(count == 2){
-      	$("#q1 .checkbox input:not(:checked)").attr("disabled", true);
+      	$("#q2 .checkbox input:not(:checked)").attr("disabled", true);
       }else{
-      	$("#q1 .checkbox input").attr("disabled", false);
+      	$("#q2 .checkbox input").attr("disabled", false);
       }
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(3).siblings('.form-group').show()
@@ -178,7 +178,7 @@ var locationChoice = function(elem,radiogroup,qn){
 	});
 };
 $(function() {
-  surveyManager.setupQ1()
+  surveyManager.setupQ2()
   surveyManager.setupQ6()
   surveyManager.setupQ7()
   surveyManager.setupQ9()
