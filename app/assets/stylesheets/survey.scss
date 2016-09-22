@@ -1,9 +1,19 @@
 // Place all the styles related to the Survey controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+$color-pole-gare: #1a4a5b;
+.btn{
+  background-color: $color-pole-gare !important;
+  border-color: $color-pole-gare !important;
+}
+.question{
+	margin-bottom: 15px;
+	h3 {
+    font-weight: 300;
+  }
+}
 #q13,#q14{
-	.radio+.radio {
+	.radio {
 		@media (min-width: 970px) {
 			margin-top: 10px;
 		}
@@ -44,4 +54,56 @@
 
 .tt-menu {
 	margin-top: -15px;
+}
+
+.center-map {
+  top: 65px;
+  left: .5em;
+}
+.ol-touch .center-map {
+  top: 80px;
+}
+
+.map-box{
+	margin-top: 8px;
+}
+
+.checkbox {
+	margin: 20px 0;
+	line-height: 22px;
+	label {
+		font-size: 18px;
+	}
+}
+
+.radio{
+  margin-bottom: 15px;
+  label {
+      font-size: 18px;
+  }
+}
+
+.radio-map {
+  margin-bottom: 15px;
+  label {
+      font-size: 18px;
+  }
+}
+
+.radio, .checkbox {
+  margin: 20px 0;
+}
+
+.radio-map {
+  margin: 0;
+}
+
+.panel-default > .panel-heading {
+  font-size: 18px;
+}
+button[type="submit"] {
+  margin-bottom: 50px;
+  min-height: 70px;
+  font-size: 24px;
+  letter-spacing: 1px;
 }

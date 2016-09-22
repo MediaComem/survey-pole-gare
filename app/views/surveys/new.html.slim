@@ -3,7 +3,7 @@
 div 
 
   = form_for :survey, url: surveys_path do |f|
-    #q1
+    #q1.question
       h3 Quelle est votre fréquentation moyenne du secteur ?
       .row
         .col-sm-6
@@ -18,7 +18,7 @@ div
               label
                 = f.radio_button(:q1,"#{item}")
                 = item
-    #q2.only-for-frequentation
+    #q2.question.only-for-frequentation
       h3 id="q2" Dans le secteur sous­-gare,vous êtes avant tout...
       = f.fields_for :q2 do |ff|
         .row
@@ -37,7 +37,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q3.only-for-frequentation
+    #q3.question.only-for-frequentation
       h3 Depuis combien de temps fréquentez-vous ce secteur?
       .row
         .col-sm-6
@@ -52,7 +52,7 @@ div
               label
                 = f.radio_button(:q3,"#{item}")
                 = item
-    #q4.only-for-frequentation
+    #q4.question.only-for-frequentation
       h3 A quelle(s) période(s) de la journée fréquentez-vous le secteur ?
       = f.fields_for :q4 do |ff|
         .row
@@ -68,7 +68,7 @@ div
                   label
                     = ff.check_box "#{item}"
                     = item
-    #q5.only-for-frequentation
+    #q5.question.only-for-frequentation
       h3 Lorsque vous êtes dans le secteur, combien de temps y restez-vous en moyenne ?
       = f.fields_for :q5 do |ff|
         .row
@@ -84,7 +84,7 @@ div
                 label
                   = f.radio_button(:q5,"#{item}")
                   = item
-    #q6.only-for-frequentation
+    #q6.question.only-for-frequentation
       h3 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? 
       = f.fields_for :q6 do |ff|
         .row
@@ -103,7 +103,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q7.only-for-frequentation
+    #q7.question.only-for-frequentation
       h3 Si vous vous rendez dans le secteur en voiture, où stationnez-vous le plus souvent ?
       = f.fields_for :q7 do |ff|
         .row
@@ -122,7 +122,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q8.only-for-frequentation
+    #q8.question.only-for-frequentation
       h3 Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois) ?
       .q8
         = f.fields_for :q8 do |ff|
@@ -132,8 +132,8 @@ div
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
         button.btn.btn-success.center-map(id="map-visits-center")Recentrer la carte
-        #map-visits
-    #q9.only-for-frequentation
+        #map-visits.map-box
+    #q9.question.only-for-frequentation
       h3 Que faites-vous dans ces rues ou places ?
       = f.fields_for :q9 do |ff|
         .row
@@ -152,7 +152,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q10
+    #q10.question
       h3 Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?
       = f.fields_for :q10 do |ff|
         - Survey.q10_answers.each do |item|
@@ -160,7 +160,7 @@ div
             label
               = f.radio_button(:q10,"#{item}")
               = item
-    #q10a
+    #q10a.question
       h3 Si oui, pour quelles activités ?
       = f.fields_for :q10a do |ff|
         .row
@@ -179,7 +179,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q11
+    #q11.question
       h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
       = f.fields_for :q11 do |ff|
         .row
@@ -198,7 +198,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q12
+    #q12.question
       h3 Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
       .q12
         = f.fields_for :q12 do |ff|
@@ -212,8 +212,8 @@ div
             = check_box_tag 'select-zones-business'
             | Tout sélectionner
         button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
-        #map-business
-    #q13
+        #map-business.map-box
+    #q13.question
       h3 Etes-vous d’accord avec l’affirmation suivante ? 
       = f.fields_for :q13 do |ff|
         - Survey.q13_answers.each do |item|
@@ -240,7 +240,7 @@ div
               .hidden
                 = ff.radio_button(item, [""],{checked: true})
                 | null
-    #q14
+    #q14.question
       h3 Comment appréciez-vous ces différentes composantes du secteur ?
       = f.fields_for :q14 do |ff|
         - Survey.q14_answers.each do |item|
@@ -271,7 +271,7 @@ div
               .hidden
                 = ff.radio_button(item, [""],{checked: true})
                 | null 
-    #q15
+    #q15.question
       h3 Quelle serait pour vous les trois premières choses à faire pour le secteur (3 max) ?
       = f.fields_for :q15 do |ff|
         .row
@@ -290,7 +290,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q16
+    #q16.question
       h3 Est-ce que l’ambiance du secteur sous-gare a changé ces dix dernières années ?
       = f.fields_for :q16 do |ff|
         .row
@@ -306,7 +306,7 @@ div
                 label
                   = f.radio_button(:q16,"#{item}")
                   = item
-    #q17
+    #q17.question
       h3 Avez-vous connaissance des futurs projets dans le secteur ?
       = f.fields_for :q17 do |ff|
         - Survey.q17_answers.each do |item|
@@ -314,7 +314,7 @@ div
             label
               = f.radio_button(:q17,"#{item}")
               = item
-    #q17a
+    #q17a.question
       h3 Desquel ?
       = f.fields_for :q17a do |ff|
         - Survey.q17a_answers.each do |item|
@@ -325,7 +325,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q17b
+    #q17b.question
       h3 17b. Comment vous sentez-vous face à ces changements ?
       = f.fields_for :q17b do |ff|
         - Survey.q17b_answers.each do |item|
@@ -333,7 +333,7 @@ div
             label
               = f.radio_button(:q17b,"#{item}")
               = item
-    #q19
+    #q19.question
       h3 Sexe ?
       = f.fields_for :q19 do |ff|
         - Survey.q19_answers.each do |item|
@@ -341,7 +341,7 @@ div
             label
               = f.radio_button(:q19,"#{item}")
               = item
-    #q20
+    #q20.question
       h3 Quel est votre âge ?
       = f.fields_for :q20 do |ff|
         .row
@@ -357,7 +357,7 @@ div
                 label
                   = f.radio_button(:q20,"#{item}")
                   = item
-    #q21
+    #q21.question
       h3 De combien de personnes se compose votre ménage ?
       = f.fields_for :q21 do |ff|
         .row
@@ -373,7 +373,7 @@ div
                 label
                   = f.radio_button(:q21,"#{item}")
                   = item
-    #q22
+    #q22.question
       h3 Avez-vous des enfants à charge ? Si oui, combien ? 
       = f.fields_for :q22 do |ff|
         .row
@@ -389,7 +389,7 @@ div
                 label
                   = f.radio_button(:q22,"#{item}")
                   = item
-    #q22a
+    #q22a.question
       h3 Quel âge ont-ils ?
       = f.fields_for :q22a do |ff|
         .row
@@ -405,7 +405,7 @@ div
                 label
                   = ff.check_box "#{item}"
                   = item
-    #q23
+    #q23.question
       h3 Êtes-vous propriétaire d’un bien immobilier dans le secteur ?
       = f.fields_for :q23 do |ff|
         - Survey.q23_answers.each do |item|
@@ -413,7 +413,7 @@ div
             label
               = f.radio_button(:q23,"#{item}")
               = item
-    #q24
+    #q24.question
       h3 Quelle est votre activité professionnelle ? 
       = f.fields_for :q24 do |ff|
         .row
@@ -429,7 +429,7 @@ div
                 label
                   = f.radio_button(:q24,"#{item}")
                   = item
-    #q25
+    #q25.question
       h3 Quelle est l’activité professionnelle de votre conjoint ? 
       = f.fields_for :q25 do |ff|
         .row
@@ -445,7 +445,7 @@ div
                 label
                   = f.radio_button(:q25,"#{item}")
                   = item
-    #q26
+    #q26.question
       h3 Où se situe votre lieu d’habitation ?
       .panel.panel-default
         .panel-body
@@ -466,11 +466,11 @@ div
                   = radio_button_tag 'location_choice', 'autre'
                   | Autre&nbsp;
       button.btn.btn-success.center-map(id="map-home-center")Recentrer la carte
-      #home-map
+      #home-map.map-box
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
         = f.text_field :q26, :value => '', :class => "gm-city-autocomplete-input form-control homeplace", :maxlength => 256, :placeholder => "Veuillez préciser..."
-    #q27
+    #q27.question
       h3 Où se situe votre lieu de travail ?
       .panel.panel-default
         .panel-body
@@ -491,8 +491,8 @@ div
                   = radio_button_tag 'work_location_choice', 'autre'
                   | Autre&nbsp;
       button.btn.btn-success.center-map(id="map-work-center")Recentrer la carte
-      #work-map
+      #work-map.map-box
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
         = f.text_field :q27, :value => '', :class => "gm-city-autocomplete-input form-control workplace", :maxlength => 256, :placeholder => "Veuillez préciser..."
-    = f.submit
+    button class="btn form-control gm-submit btn-success" type="submit" Envoyer
