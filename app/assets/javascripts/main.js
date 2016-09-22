@@ -1,4 +1,13 @@
 var surveyManager = {
+	setupQ1: function(){
+		$("#q1 .radio input").change(function() {
+      if($(this).parent().text().indexOf("Jamais") > -1){
+				$('.only-for-frequentation').hide()
+      }else{
+      	$('.only-for-frequentation').show()
+      }
+		});
+	},
   setupQ2: function(){
   	var count = 0
   	$("#q2 .checkbox input").change(function() {
@@ -178,6 +187,7 @@ var locationChoice = function(elem,radiogroup,qn){
 	});
 };
 $(function() {
+	surveyManager.setupQ1()
   surveyManager.setupQ2()
   surveyManager.setupQ6()
   surveyManager.setupQ7()

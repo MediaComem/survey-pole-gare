@@ -18,7 +18,7 @@ div
               label
                 = f.radio_button(:q1,"#{item}")
                 = item
-    #q2
+    #q2.only-for-frequentation
       h3 id="q2" Dans le secteur sous­-gare,vous êtes avant tout...
       = f.fields_for :q2 do |ff|
         .row
@@ -37,7 +37,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q3 
+    #q3.only-for-frequentation
       h3 Depuis combien de temps fréquentez-vous ce secteur?
       .row
         .col-sm-6
@@ -52,7 +52,7 @@ div
               label
                 = f.radio_button(:q3,"#{item}")
                 = item
-    #q4
+    #q4.only-for-frequentation
       h3 4. A quelle(s) période(s) de la journée fréquentez-vous le secteur ?
       = f.fields_for :q4 do |ff|
         .row
@@ -68,7 +68,7 @@ div
                   label
                     = ff.check_box "#{item}"
                     = item
-    #q5
+    #q5.only-for-frequentation
       h3 5. Lorsque vous êtes dans le secteur, combien de temps y restez-vous en moyenne ?
       = f.fields_for :q5 do |ff|
         .row
@@ -84,7 +84,7 @@ div
                 label
                   = f.radio_button(:q5,"#{item}")
                   = item
-    #q6
+    #q6.only-for-frequentation
       h3 6. Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? 
       = f.fields_for :q6 do |ff|
         .row
@@ -103,7 +103,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q7
+    #q7.only-for-frequentation
       h3 7. Si vous vous rendez dans le secteur en voiture, où stationnez-vous le plus souvent ?
       = f.fields_for :q7 do |ff|
         .row
@@ -122,7 +122,7 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q8
+    #q8.only-for-frequentation
       h3 8. Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois) ?
       .q8
         = f.fields_for :q8 do |ff|
@@ -133,7 +133,7 @@ div
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
         button.btn.btn-success.center-map(id="map-visits-center")Recentrer la carte
         #map-visits
-    #q9
+    #q9.only-for-frequentation
       h3 9. Que faites-vous dans ces rues ou places ?
       = f.fields_for :q9 do |ff|
         .row
