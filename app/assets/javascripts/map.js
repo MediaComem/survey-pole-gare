@@ -189,16 +189,16 @@ var mapManager = {
 
     map.addLayer(vectorLayer)
 
-    // var selectSingleClick = new ol.interaction.Select({
-    //   condition: ol.events.condition.click,
-    //   toggleCondition: ol.events.condition.click,
-    //   style: new ol.style.Style({
-    //     fill: mapManager.selectFill(),
-    //     stroke: mapManager.selectStroke()
-    //   })
-    // });
+    var selectSingleClick = new ol.interaction.Select({
+      condition: ol.events.condition.click,
+      toggleCondition: ol.events.condition.click,
+      style: new ol.style.Style({
+        fill: mapManager.selectFill(),
+        stroke: mapManager.selectStroke()
+      })
+    });
 
-    // map.addInteraction(selectSingleClick);
+    map.addInteraction(selectSingleClick);
 
     mapManager.mapsObjects.push(map)
 
@@ -208,14 +208,13 @@ var mapManager = {
       map.setView(mapManager.zoomedView())
     }, false);
 
-    // selectSingleClick.on('select', function(e) {
-    //   console.log(map.getView().getCenter())
-    //   $('#map-visits').siblings('.checkbox').find(':checked').prop('checked','')
-    //   e.target.getFeatures().forEach(function(f){
-    //     var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
-    //     checkbox.prop('checked', 'checked');
-    //   })
-    // });
+    selectSingleClick.on('select', function(e) {
+      $('#map-visits').siblings('.checkbox').find(':checked').prop('checked','')
+      e.target.getFeatures().forEach(function(f){
+        var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
+        checkbox.prop('checked', 'checked');
+      })
+    });
 
   },
   initMapBusiness: function(){
@@ -281,20 +280,27 @@ var mapManager = {
     // selectSingleClick.dispatchEvent(ol.interaction.SelectEvent)
 
     selectSingleClick.on('select', function(e) {
-      var selectableFeatures = selectSingleClick.getFeatures()
-      e.preventDefault()
-      console.log(this)
-      // console.log('------')
-      // $('#map-business').siblings('.checkbox').find('input[data-polygonid]:checked').prop('checked','')
-      // console.log('****')
-      // console.log(selectSingleClick.getFeatures().getLength())
-      // console.log(e.selected)
-      // console.log('****')
-      // e.target.getFeatures().forEach(function(f){
-      //   var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
-      //   checkbox.prop('checked', 'checked');
-      // })
+      $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
+      e.target.getFeatures().forEach(function(f){
+        var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
+        checkbox.prop('checked', 'checked');
+      })
     });
+    // selectSingleClick.on('select', function(e) {
+    //   // var selectableFeatures = selectSingleClick.getFeatures()
+    //   // e.preventDefault()
+    //   // console.log(this)
+    //   // console.log('------')
+    //   // $('#map-business').siblings('.checkbox').find('input[data-polygonid]:checked').prop('checked','')
+    //   // console.log('****')
+    //   // console.log(selectSingleClick.getFeatures().getLength())
+    //   // console.log(e.selected)
+    //   // console.log('****')
+    //   // e.target.getFeatures().forEach(function(f){
+    //   //   var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
+    //   //   checkbox.prop('checked', 'checked');
+    //   // })
+    // });
 
 
     $('#select-zones-business').change(function() {

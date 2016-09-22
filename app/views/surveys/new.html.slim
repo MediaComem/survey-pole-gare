@@ -207,10 +207,10 @@ div
               label 
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
-        .checkbox.select-zones
-          label
-            = check_box_tag 'select-zones-business'
-            | Tout sélectionner
+        / .checkbox.select-zones
+        /   label
+        /     = check_box_tag 'select-zones-business'
+        /     | Tout sélectionner
         button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
         #map-business.map-box
     #q13.question
