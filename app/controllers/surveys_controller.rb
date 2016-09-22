@@ -2,6 +2,8 @@ class SurveysController < ApplicationController
   def new
     file = File.read('public/plein.geojson')
     @quartiers_data_hash = JSON.parse(file)
+    file = File.read('public/vide.geojson')
+    @vide_data_hash = JSON.parse(file)
   end
   def create
   	# render plain: params[:survey].inspect

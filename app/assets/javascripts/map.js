@@ -16,11 +16,6 @@ var mapManager = {
       interactions: mapManager.disableRotationInteraction()
     });
 
-    
-    // map.removeInteraction(ol.interaction.MouseWheelZoom)
-
-    // map.setProperties({interactions: mapManager.disableRotationAndZoomInteractions()});
-    // map.renderSync()
     var vectorSource = new ol.source.Vector();
 
     $.get( "/lausanne_maillle_reguliere.geojson", function( data ) {
@@ -177,7 +172,13 @@ var mapManager = {
 
     // map.addInteraction(selectSingleClick);
 
-    // mapManager.mapsObjects.push(map)
+    mapManager.mapsObjects.push(map)
+
+    var centerMapButton = document.getElementById('map-visits-center');
+    centerMapButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      map.setView(mapManager.swissView())
+    }, false);
 
     // selectSingleClick.on('select', function(e) {
     //   console.log(map.getView().getCenter())
@@ -208,10 +209,11 @@ var mapManager = {
 
     var vectorSource = new ol.source.Vector();
 
+    var feats;
     $.get( "/vide.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
+      feats = new ol.format.GeoJSON().readFeatures(data)
     });
-
     var vectorLayer = new ol.layer.Vector({
       source: vectorSource,
       style: new ol.style.Style({
@@ -223,8 +225,8 @@ var mapManager = {
     map.addLayer(vectorLayer);
 
     var selectSingleClick = new ol.interaction.Select({
-      condition: ol.events.condition.click,
       toggleCondition: ol.events.condition.click,
+      multi: true,
       style: new ol.style.Style({
         fill: mapManager.selectFill(),
         stroke: mapManager.selectStroke()
@@ -235,13 +237,40 @@ var mapManager = {
 
     mapManager.mapsObjects.push(map);
 
+    // selectSingleClick.dispatchEvent(ol.interaction.SelectEvent)
+
     selectSingleClick.on('select', function(e) {
-      $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
-      e.target.getFeatures().forEach(function(f){
-        console.log(f.get('id'))
-        var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
-        checkbox.prop('checked', 'checked');
-      })
+      var selectableFeatures = selectSingleClick.getFeatures()
+      e.preventDefault()
+      console.log(this)
+      // console.log('------')
+      // $('#map-business').siblings('.checkbox').find('input[data-polygonid]:checked').prop('checked','')
+      // console.log('****')
+      // console.log(selectSingleClick.getFeatures().getLength())
+      // console.log(e.selected)
+      // console.log('****')
+      // e.target.getFeatures().forEach(function(f){
+      //   var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
+      //   checkbox.prop('checked', 'checked');
+      // })
+    });
+
+
+    $('#select-zones-business').change(function() {
+      if(($(this).prop('checked'))){
+        var selectableFeatures = selectSingleClick.getFeatures()
+        for (i = 0; i < feats.length; i++) { 
+          selectableFeatures.push(feats[i])
+          var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+feats[i].get('id')+']')
+          checkbox.prop('checked', 'checked');
+        }
+      }else{
+        var selectableFeatures = selectSingleClick.getFeatures()
+        selectableFeatures.clear()
+        for (i = 0; i < feats.length; i++) { 
+          var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid]').prop('checked', '');
+        }
+      }
     });
 
   },

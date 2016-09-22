@@ -132,6 +132,7 @@ div
               label 
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
+        button.btn.btn-success.center-map(id="map-visits-center")Recentrer la carte
         #map-visits
     #q9
       h3 9. Que faites-vous dans ces rues ou places ?
@@ -202,11 +203,16 @@ div
       h3 12.  Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
       .q12
         = f.fields_for :q12 do |ff|
-          - @quartiers_data_hash['features'].each do |n|
+          - @vide_data_hash['features'].each do |n|
             .checkbox
               label 
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
+        .checkbox.select-zones
+          label
+            = check_box_tag 'select-zones-business'
+            | Tout sélectionner
+        button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
         #map-business
     #q13
       h3 13.  Etes-vous d’accord avec l’affirmation suivante ? 
