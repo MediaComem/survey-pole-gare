@@ -1,5 +1,3 @@
-<h1>Survey#new</h1>
-<p>Find me in app/views/survey/new.html.erb</p>
 div 
 
   = form_for :survey, url: surveys_path do |f|
@@ -102,15 +100,6 @@ div
             span.hidden
               = ff.text_field "Autre", :value => 0, :maxlength => 256, :class => 'sortable-list-value'
             = image_tag("drag_reorder_256.png")
-          /   .col-sm-6
-          /     - Survey.q6_answers.in_groups(2)[1].compact.each do |item|
-          /       .checkbox
-          /         label
-          /           = ff.text_field item, :value => 0, :maxlength => 256
-          /           = item
-          / .form-group.precision
-          /   label Veuillez préciser
-          /   = ff.text_field :autre_precision, :class => 'form-control other'
     #q7.question.only-for-frequentation
       h3 Si vous vous rendez dans le secteur en voiture, où stationnez-vous le plus souvent ?
       = f.fields_for :q7 do |ff|
@@ -188,11 +177,12 @@ div
               label 
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
-        .checkbox.select-zones
-          label
-            = check_box_tag 'select-zones-business'
-            | Tout sélectionner
-        button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
+        .map-buttons
+          button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
+          .checkbox.select-zones
+            label
+              = check_box_tag 'select-zones-business'
+              | Tout sélectionner
         #map-business.map-box
     #q12.question
       h3 Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?

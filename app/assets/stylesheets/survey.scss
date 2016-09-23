@@ -12,19 +12,24 @@ $color-pole-gare: #1a4a5b;
 	width:100%;
 	background-color: $color-pole-gare;
 }
-header #images{
-	div{
-		text-align: center;
-	}
-	div:nth-of-type(2){
-		@media (min-width: 970px) {
-			text-align: right;
+header{
+	#images{
+		div{
+			text-align: center;
+		}
+		div:nth-of-type(2){
+			@media (min-width: 970px) {
+				text-align: right;
+			}
+		}
+		div:nth-of-type(1){
+			@media (min-width: 970px) {
+				text-align: left;
+			}
 		}
 	}
-	div:nth-of-type(1){
-		@media (min-width: 970px) {
-			text-align: left;
-		}
+	#sous-gare img{
+		width: 100%;
 	}
 }
 .question{
@@ -178,4 +183,12 @@ li {
 	height: 40px;
 	border: 1px dashed #939393;
 	background-color: #ececec;
+}
+.map-buttons {
+  display: flex; /* or inline-flex */
+  .checkbox{
+  	margin-left: 20px;
+  	margin-bottom: 10px;
+  	margin-top: 10px;
+  }
 }

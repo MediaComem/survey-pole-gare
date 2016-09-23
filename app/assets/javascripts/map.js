@@ -279,15 +279,11 @@ var mapManager = {
 
     mapManager.mapsObjects.push(map);
 
-    // selectSingleClick.dispatchEvent(ol.interaction.SelectEvent)
-
     selectSingleClick.on('select', function(e) {
       $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
-      // console.log(e.selected[0].get('id'))
-      // console.log(e.deselected)
-
+      $('#select-zones-business').prop('checked','')
       var tempFeatures = e.target.getFeatures().getArray()
-      // console.log(tempFeatures[0].get('id'))
+
       var valueArr = tempFeatures.map(function(item){ return item.get('id') });
       var isDuplicate = valueArr.some(function(item, idx){ 
           return valueArr.indexOf(item) != idx 
@@ -295,13 +291,9 @@ var mapManager = {
       var duplicates = valueArr.filter(function(item, idx){ 
         return valueArr.indexOf(item) != idx 
       });
-      console.log(isDuplicate);
-      console.log(duplicates);
 
       tempFeaturesCol = e.target.getFeatures()
 
-      // console.log(tempFeatures)
-      // console.log(tempFeatures)
       if(isDuplicate){
         tempFeaturesCol.forEach(function (el,index) {
           if(el.get('id') == duplicates[0]){
@@ -309,27 +301,13 @@ var mapManager = {
           }
         });
       }
-      // if(tempFeatures.contains(e.selected[0]))
+
       e.target.getFeatures().forEach(function(f){
         var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
         checkbox.prop('checked', 'checked');
       })
     });
-    // selectSingleClick.on('select', function(e) {
-    //   // var selectableFeatures = selectSingleClick.getFeatures()
-    //   // e.preventDefault()
-    //   // console.log(this)
-    //   // console.log('------')
-    //   // $('#map-business').siblings('.checkbox').find('input[data-polygonid]:checked').prop('checked','')
-    //   // console.log('****')
-    //   // console.log(selectSingleClick.getFeatures().getLength())
-    //   // console.log(e.selected)
-    //   // console.log('****')
-    //   // e.target.getFeatures().forEach(function(f){
-    //   //   var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
-    //   //   checkbox.prop('checked', 'checked');
-    //   // })
-    // });
+
 
     var centerMapButton = document.getElementById('map-business-center');
     centerMapButton.addEventListener('click', function(event) {
