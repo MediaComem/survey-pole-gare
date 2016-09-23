@@ -54,21 +54,21 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ10: function(){
-		$("#q10a").hide()
-		$("#q10 .radio input").change(function() {
+	setupQ12: function(){
+		$("#q12a").hide()
+		$("#q12 .radio input").change(function() {
 			console.log($(this).parent().text().indexOf("Oui"))
       if($(this).parent().text().indexOf("Oui") > -1){
-				$("#q10a").show()
+				$("#q12a").show()
       }else{
-      	$('#q10a .checkbox').find(':checked').prop('checked','')
-      	$('#q10a input[type=text]').val("")
-      	$("#q10a").hide()
+      	$('#q12a .checkbox').find(':checked').prop('checked','')
+      	$('#q12a input[type=text]').val("")
+      	$("#q12a").hide()
       }
 		});
 	},
-	setupQ10a: function(){
-		$("#q10a .checkbox input").change(function() {
+	setupQ12a: function(){
+		$("#q12a .checkbox input").change(function() {
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(3).next('.form-group').show()
       }
@@ -77,8 +77,8 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ11: function(){
-		$("#q11 .checkbox input").change(function() {
+	setupQ10: function(){
+		$("#q10 .checkbox input").change(function() {
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(3).next('.form-group').show()
       }
@@ -192,9 +192,9 @@ $(function() {
   surveyManager.setupQ6()
   surveyManager.setupQ7()
   surveyManager.setupQ9()
+  surveyManager.setupQ12()
+  surveyManager.setupQ12a()
   surveyManager.setupQ10()
-  surveyManager.setupQ10a()
-  surveyManager.setupQ11()
   surveyManager.setupQ15()
   surveyManager.setupQ17()
   surveyManager.setupQ17a()

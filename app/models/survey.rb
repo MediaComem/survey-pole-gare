@@ -25,13 +25,13 @@ class Survey < ApplicationRecord
     ['Traverser','Shopping','Se promener','Se rencontrer & attendre','Manger sur le pouce','Autre']
   end
   def self.q10_answers
+    ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
+  end
+  def self.q12_answers
     ['Oui (enfants accompagnés)','Oui (enfants seuls)','Non']
   end
-  def self.q10a_answers
+  def self.q12a_answers
     ['Aller à l’école','Aller à la garderie','Aller à la gare','Se promener','Shopping','Autre']
-  end
-  def self.q11_answers
-    ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
   end
   def self.q13_answers
     ['L’ambiance est « villageoise », les habitants se connaissent','Les commerces sont variés','Les commerces sont proches','L’offre en transports publics est bonne','Le secteur est animé','Le secteur est convivial ','Le secteur est bruyant ','Les bâtiments sont beaux','La vue sur le grand paysage est belle','Il est facile d’y stationner']

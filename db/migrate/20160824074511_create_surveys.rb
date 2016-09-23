@@ -10,10 +10,10 @@ class CreateSurveys < ActiveRecord::Migration[5.0]
       t.hstore :q7
       t.hstore :q8
       t.hstore :q9
-      t.string :q10
-      t.hstore :q10a
+      t.hstore :q10
       t.hstore :q11
-      t.hstore :q12
+      t.string :q12
+      t.hstore :q12a
       t.hstore :q13
       t.hstore :q14
       t.hstore :q15

@@ -152,18 +152,18 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q11.question.only-for-frequentation
+    #q10.question.only-for-frequentation
       h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
-      = f.fields_for :q11 do |ff|
+      = f.fields_for :q10 do |ff|
         .row
           .col-sm-6
-            - Survey.q11_answers.in_groups(2)[0].each do |item|
+            - Survey.q10_answers.in_groups(2)[0].each do |item|
               .checkbox
                 label
                   = ff.check_box "#{item}"
                   = item
           .col-sm-6
-            - Survey.q11_answers.in_groups(2)[1].compact.each do |item|
+            - Survey.q10_answers.in_groups(2)[1].compact.each do |item|
               .checkbox
                 label
                   = ff.check_box "#{item}"
@@ -171,10 +171,10 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q12.question.only-for-frequentation
+    #q11.question.only-for-frequentation
       h3 Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
-      .q12
-        = f.fields_for :q12 do |ff|
+      .q11
+        = f.fields_for :q11 do |ff|
           - @vide_data_hash['features'].each do |n|
             .checkbox
               label 
@@ -186,26 +186,26 @@ div
         /     | Tout sélectionner
         button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
         #map-business.map-box
-    #q10.question
+    #q12.question
       h3 Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?
-      = f.fields_for :q10 do |ff|
-        - Survey.q10_answers.each do |item|
+      = f.fields_for :q12 do |ff|
+        - Survey.q12_answers.each do |item|
           .radio
             label
-              = f.radio_button(:q10,"#{item}")
+              = f.radio_button(:q12,"#{item}")
               = item
-    #q10a.question
+    #q12a.question
       h3 Si oui, pour quelles activités ?
-      = f.fields_for :q10a do |ff|
+      = f.fields_for :q12a do |ff|
         .row
           .col-sm-6
-            - Survey.q10a_answers.in_groups(2)[0].each do |item|
+            - Survey.q12a_answers.in_groups(2)[0].each do |item|
               .checkbox
                 label
                   = ff.check_box "#{item}"
                   = item
           .col-sm-6
-            - Survey.q10a_answers.in_groups(2)[1].compact.each do |item|
+            - Survey.q12a_answers.in_groups(2)[1].compact.each do |item|
               .checkbox
                 label
                   = ff.check_box "#{item}"
