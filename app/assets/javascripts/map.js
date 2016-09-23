@@ -249,8 +249,10 @@ var mapManager = {
 
     var vectorSource = new ol.source.Vector();
 
+    var feats = []
     $.get( "/vide.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
+      feats = new ol.format.GeoJSON().readFeatures(data)
     });
 
     var vectorLayer = new ol.layer.Vector({
@@ -281,6 +283,33 @@ var mapManager = {
 
     selectSingleClick.on('select', function(e) {
       $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
+      // console.log(e.selected[0].get('id'))
+      // console.log(e.deselected)
+
+      var tempFeatures = e.target.getFeatures().getArray()
+      // console.log(tempFeatures[0].get('id'))
+      var valueArr = tempFeatures.map(function(item){ return item.get('id') });
+      var isDuplicate = valueArr.some(function(item, idx){ 
+          return valueArr.indexOf(item) != idx 
+      });
+      var duplicates = valueArr.filter(function(item, idx){ 
+        return valueArr.indexOf(item) != idx 
+      });
+      console.log(isDuplicate);
+      console.log(duplicates);
+
+      tempFeaturesCol = e.target.getFeatures()
+
+      // console.log(tempFeatures)
+      // console.log(tempFeatures)
+      if(isDuplicate){
+        tempFeaturesCol.forEach(function (el,index) {
+          if(el.get('id') == duplicates[0]){
+            tempFeaturesCol.remove(el)
+          }
+        });
+      }
+      // if(tempFeatures.contains(e.selected[0]))
       e.target.getFeatures().forEach(function(f){
         var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
         checkbox.prop('checked', 'checked');
@@ -312,6 +341,7 @@ var mapManager = {
     $('#select-zones-business').change(function() {
       if(($(this).prop('checked'))){
         var selectableFeatures = selectSingleClick.getFeatures()
+        selectableFeatures.clear()
         for (i = 0; i < feats.length; i++) { 
           selectableFeatures.push(feats[i])
           var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+feats[i].get('id')+']')

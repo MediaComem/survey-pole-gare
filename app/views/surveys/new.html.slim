@@ -92,13 +92,13 @@ div
             - Survey.q6_answers.in_groups(2)[0].each do |item|
               .checkbox
                 label
-                  = ff.check_box "#{item}"
+                  = ff.text_field item, :value => 0, :maxlength => 256
                   = item
           .col-sm-6
             - Survey.q6_answers.in_groups(2)[1].compact.each do |item|
               .checkbox
                 label
-                  = ff.check_box "#{item}"
+                  = ff.text_field item, :value => 0, :maxlength => 256
                   = item
         .form-group.precision
           label Veuillez préciser
@@ -180,10 +180,10 @@ div
               label 
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
-        / .checkbox.select-zones
-        /   label
-        /     = check_box_tag 'select-zones-business'
-        /     | Tout sélectionner
+        .checkbox.select-zones
+          label
+            = check_box_tag 'select-zones-business'
+            | Tout sélectionner
         button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
         #map-business.map-box
     #q12.question
