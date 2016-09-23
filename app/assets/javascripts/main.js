@@ -186,6 +186,91 @@ var locationChoice = function(elem,radiogroup,qn){
 		}
 	});
 };
+var makeSortableV2 = function(questionId, maxActiveElements) {
+
+	questionId = "#" + questionId;
+
+	var dragImg = $(questionId + ' .other-item img'),
+	listPlaceholder = $(questionId + ' .sort-placeholder'),
+	otherInput = $(questionId + ' .other-input'),
+	otherSpan = $(questionId + ' .other-span');
+
+	otherSpan.hide();
+
+	$( function() {
+		console.log($( questionId + ' .source-list, ' + questionId + ' .sortable-list' ))
+		$( questionId + ' .source-list, ' + questionId + ' .sortable-list' ).sortable({
+			connectWith: ".connected-sortable",
+			handle: "img",
+			stop: function( event, ui ) {
+				var listCount = $(questionId + ' .sortable-list').children("li").length,
+				sourceList = $(questionId + ' .source-list');
+
+                if(listCount == 0) {                                            // displays placeholder if list is empty
+                	listPlaceholder.css('visibility', 'visible');
+                } else if(listCount == maxActiveElements){                        // if max answer choice reached the source list elements are disabled
+                	sourceList.children('li').addClass("gm-inactive");
+                	sourceList.children('li').children('img').addClass("hidden");
+                } else {
+                    if($('img.hidden').length > 0) {                            // if elements are disabled it will remove the disabeling class
+                    	sourceList.children('li').children('img').removeClass("hidden");
+                    	sourceList.children('li').removeClass("gm-inactive");
+                    }
+                    listPlaceholder.css('visibility', 'hidden');
+                  }
+
+                  $('ol').css("list-style-type", "decimal")
+
+                if(ui.item.hasClass('other-item')){                                // check if other-item was dropped in a zone;
+                	displayOtherItemSpan(questionId, otherSpan, otherInput);
+                	displayOtherItemInput(questionId, otherSpan, otherInput);
+                };
+                
+                changeItemValue(questionId, maxActiveElements);
+              },
+              start: function(event, ui) {
+              	$(questionId + ' ol').css("list-style-type", "none")
+              }
+            });
+	});
+
+	$(questionId + ' .other-item').on('click', function() {
+		displayOtherItemSpan(questionId, otherSpan, otherInput);
+		otherInput.focus();
+	})
+
+	otherInput.focusout(function() {
+		displayOtherItemInput(questionId, otherSpan, otherInput);
+	})
+
+};
+
+var displayOtherItemInput = function(questionId, otherSpan, otherInput) {
+	if(otherInput.parents(questionId + ' .sortable-list').length == 1){    
+		var content = otherInput.val();
+		otherSpan.html(content);
+
+		otherInput.hide();
+		otherSpan.show();
+	}
+}
+
+var displayOtherItemSpan = function(questionId, otherSpan, otherInput) {
+	if($(questionId + ' li.other-item .other-input').css('display') == 'none') {
+		var content = otherSpan.html();                            
+		otherInput.val(content);
+
+		otherSpan.hide();                                                                                 
+		otherInput.show();
+	}
+}
+
+var changeItemValue = function(questionId, maxActiveElements) {
+	$.each($(questionId + ' .sortable-list .sort-item'), function(i, item) {
+		var value = maxActiveElements - i;
+		$(item).find('.sortable-list-value').attr('value', value);
+	})
+}
 $(function() {
 	surveyManager.setupQ1()
   surveyManager.setupQ2()
@@ -201,6 +286,7 @@ $(function() {
   surveyManager.setupQ22()
   surveyManager.setupQ26()
   surveyManager.setupQ27()
+  makeSortableV2("q6", 4);
   $('.precision').hide()
   $("form").submit(function() {
     $("input").removeAttr("disabled");

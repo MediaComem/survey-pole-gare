@@ -128,3 +128,54 @@ button[type="submit"] {
   font-size: 24px;
   letter-spacing: 1px;
 }
+.source-list {
+	border:1px solid #000;
+	width: 100%;
+}
+.sortable-list {
+	margin-top: 10px;
+	min-height: 60px;
+	position: relative;
+}
+.sortable-list .sort-item {
+	margin-left: 40px;
+}
+.sort-item {
+	padding:10px 0;
+	-ms-user-select:none;
+	-moz-user-select:-moz-none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	user-select:none;
+	border-bottom: 1px solid black;
+}
+.sort-item img {
+	height:20px;
+	width:20px;
+	float:right;
+	cursor:hand;
+}
+ul {
+	list-style-type:none;
+	margin: 0px;
+	padding: 10px 0px;
+}
+ol {
+	list-style-type: decimal;
+	margin: 0px;
+	padding: 10px 0px;
+}
+li {
+	margin:5px 15px;
+	padding:5px;
+}
+.sort-placeholder {
+	position: absolute;
+	z-index: -100;
+	width: 100%;
+	margin-top: 15px;
+	padding: 10px;
+	height: 40px;
+	border: 1px dashed #939393;
+	background-color: #ececec;
+}

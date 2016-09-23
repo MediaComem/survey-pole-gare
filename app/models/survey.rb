@@ -16,7 +16,7 @@ class Survey < ApplicationRecord
     ['Moins de 15mn', '15-30mn', '30mn à 2h', '½ journée', 'Plus d’1/2 journée']
   end
   def self.q6_answers
-    ['Marche','Vélo','Train','Bus','Métro','Voiture personnelle','Covoiturage','Mobility','Taxi','2 roues motorisé', 'Autre']
+    ['Marche','Vélo','Train','Bus','Métro','Voiture personnelle','Covoiturage','Mobility','Taxi','2 roues motorisé']
   end
   def self.q7_answers
     ['Dans une rue du secteur','Dans une rue en dehors du secteur','Parking privé','Parking du Simplon','Parking de la Coop','Jamais en voiture','Autre']

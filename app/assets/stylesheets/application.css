@@ -12,5 +12,6 @@
  *
  *= require ol
  *= require_self
+ *= require jquery-ui/sortable
  *= require_tree .
  */
