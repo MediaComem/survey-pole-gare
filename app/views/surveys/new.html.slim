@@ -152,6 +152,40 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
+    #q11.question.only-for-frequentation
+      h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
+      = f.fields_for :q11 do |ff|
+        .row
+          .col-sm-6
+            - Survey.q11_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q11_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+        .form-group.precision
+          label Veuillez préciser
+          = ff.text_field :autre_precision, :class => 'form-control other'
+    #q12.question.only-for-frequentation
+      h3 Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
+      .q12
+        = f.fields_for :q12 do |ff|
+          - @vide_data_hash['features'].each do |n|
+            .checkbox
+              label 
+                = n['properties']['id']
+                = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
+        / .checkbox.select-zones
+        /   label
+        /     = check_box_tag 'select-zones-business'
+        /     | Tout sélectionner
+        button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
+        #map-business.map-box
     #q10.question
       h3 Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?
       = f.fields_for :q10 do |ff|
@@ -179,40 +213,6 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q11.question
-      h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
-      = f.fields_for :q11 do |ff|
-        .row
-          .col-sm-6
-            - Survey.q11_answers.in_groups(2)[0].each do |item|
-              .checkbox
-                label
-                  = ff.check_box "#{item}"
-                  = item
-          .col-sm-6
-            - Survey.q11_answers.in_groups(2)[1].compact.each do |item|
-              .checkbox
-                label
-                  = ff.check_box "#{item}"
-                  = item
-        .form-group.precision
-          label Veuillez préciser
-          = ff.text_field :autre_precision, :class => 'form-control other'
-    #q12.question
-      h3 Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
-      .q12
-        = f.fields_for :q12 do |ff|
-          - @vide_data_hash['features'].each do |n|
-            .checkbox
-              label 
-                = n['properties']['id']
-                = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
-        / .checkbox.select-zones
-        /   label
-        /     = check_box_tag 'select-zones-business'
-        /     | Tout sélectionner
-        button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
-        #map-business.map-box
     #q13.question
       h3 Etes-vous d’accord avec l’affirmation suivante ? 
       = f.fields_for :q13 do |ff|
@@ -258,21 +258,21 @@ div
                   | <div>Peu satisfaisant</div>  
               .col-xs-12.col-md-2.radio
                 label
-                  = ff.radio_button(item, ["Sans avis"])
-                  | <div>Sans avis</div>
-              .col-xs-12.col-md-2.radio
-                label
                   = ff.radio_button(item, ["Satisfaisant"])
                   | <div>Satisfaisant</div>
               .col-xs-12.col-md-2.radio
                 label
                   = ff.radio_button(item, ["Très satisfaisant"])
-                  | <div>Très satisfaisant</div>  
+                  | <div>Très satisfaisant</div>
+              .col-xs-12.col-md-2.radio
+                label
+                  = ff.radio_button(item, ["Sans avis"])
+                  | <div>Sans avis</div>
               .hidden
                 = ff.radio_button(item, [""],{checked: true})
                 | null 
     #q15.question
-      h3 Quelle serait pour vous les trois premières choses à faire pour le secteur (3 max) ?
+      h3 Quelles seraient pour vous les trois premières choses à faire pour le secteur ?
       = f.fields_for :q15 do |ff|
         .row
           .col-sm-6

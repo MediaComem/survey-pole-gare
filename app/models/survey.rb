@@ -10,13 +10,13 @@ class Survey < ApplicationRecord
     ['Moins d’un an', '1 à 2 ans', '3 à 4 ans', '5 à 6 ans', 'Plus de 6 ans']
   end
   def self.q4_answers
-    ['Matin', 'Midi', 'Après-midi', 'Soir (après 17h)', 'Aucune']
+    ['Matin', 'Midi', 'Après-midi', 'Soir (après 17h)']
   end
   def self.q5_answers
     ['Moins de 15mn', '15-30mn', '30mn à 2h', '½ journée', 'Plus d’1/2 journée']
   end
   def self.q6_answers
-    ['marche','vélo','train','bus','métro','voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé', 'Autre']
+    ['Marche','Vélo','Train','Bus','Métro','Voiture personnelle','Covoiturage','Mobility','Taxi','2 roues motorisé', 'Autre']
   end
   def self.q7_answers
     ['Dans une rue du secteur','Dans une rue en dehors du secteur','Parking privé','Parking du Simplon','Parking de la Coop','Jamais en voiture','Autre']
@@ -58,7 +58,7 @@ class Survey < ApplicationRecord
     ['Femme','Homme']
   end
   def self.q20_answers
-    ['- de 18 ans','de 18 à 29 ans','de 30 à 39 ans','de 40 à 49 ans','de 50 à 64 ans','de 65 à 80 ans','+ de 80 ans','sans réponse']
+    ['- de 18 ans','de 18 à 29 ans','de 30 à 39 ans','de 40 à 49 ans','de 50 à 64 ans','de 65 à 80 ans','+ de 80 ans']
   end
   def self.q21_answers
     ['1','2','3','4','5','Plus de 5']
@@ -76,7 +76,7 @@ class Survey < ApplicationRecord
     ['Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre']
   end
   def self.q25_answers
-    ['Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre','Pas de conjoint']
+    ['Pas de conjoint','Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre']
   end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']

@@ -302,6 +302,12 @@ var mapManager = {
     //   // })
     // });
 
+    var centerMapButton = document.getElementById('map-business-center');
+    centerMapButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      map.setView(mapManager.zoomedView())
+    }, false);
+
 
     $('#select-zones-business').change(function() {
       if(($(this).prop('checked'))){
