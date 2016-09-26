@@ -14,6 +14,14 @@ $color-pole-gare: #1a4a5b;
 }
 header{
 	#images{
+		img{
+			max-width: 100%;
+			margin: 5px 0;
+			@media (min-width: 970px) {
+				max-width: 300px;
+				margin: 15px 0;
+			}
+		}
 		div{
 			text-align: center;
 		}
