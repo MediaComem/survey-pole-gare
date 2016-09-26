@@ -35,6 +35,22 @@ var surveyManager = {
       }
 		});
 	},
+	setupQ101: function(){
+		$("#q101 .checkbox input").change(function() {
+			count = $("#q101 [type='checkbox']:checked").length;
+      if(count == 3){
+      	$("#q101 .checkbox input:not(:checked)").attr("disabled", true);
+      }else{
+      	$("#q101 .checkbox input").attr("disabled", false);
+      }
+      if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
+				$(this).parents().eq(3).next('.form-group').show()
+      }
+      if($(this).parent().text() == 'Autre' && !($(this).prop('checked'))){
+				$(this).parents().eq(3).next('.form-group').hide()
+      }
+		});
+	},
 	setupQ7: function(){
 		$("#q7 .radio input").change(function() {
       if($(this).parent().text() == 'Autre'){
@@ -277,6 +293,7 @@ $(function() {
   surveyManager.setupQ6()
   surveyManager.setupQ7()
   surveyManager.setupQ9()
+  surveyManager.setupQ101()
   surveyManager.setupQ12()
   surveyManager.setupQ12a()
   surveyManager.setupQ10()

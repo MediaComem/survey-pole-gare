@@ -173,6 +173,25 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
+    #q101.question.only-for-frequentation
+      h3 Pourriez-vous décrire le secteur en 3 qualificatifs ?
+      = f.fields_for :q101 do |ff|
+        .row
+          .col-sm-6
+            - Survey.q101_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-6
+            - Survey.q101_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+        .form-group.precision
+          label Veuillez préciser
+          = ff.text_field :autre_precision, :class => 'form-control other'
     #q11.question.only-for-frequentation
       h3 Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
       .q11

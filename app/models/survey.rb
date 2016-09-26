@@ -27,6 +27,9 @@ class Survey < ApplicationRecord
   def self.q10_answers
     ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
   end
+  def self.q101_answers
+    ['Convivial','Villageois','Central','Calme','Bruyant','Animé','Bobo','Sympa','Sûr','Autre']
+  end
   def self.q12_answers
     ['Oui (enfants accompagnés)','Oui (enfants seuls)','Non']
   end
