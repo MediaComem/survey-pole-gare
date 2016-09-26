@@ -11,7 +11,7 @@ var surveyManager = {
   setupQ2: function(){
   	var count = 0
   	$("#q2 .checkbox input").change(function() {
-  		count = $("[type='checkbox']:checked").length;
+  		count = $("#q2 [type='checkbox']:checked").length;
       if(count == 2){
       	$("#q2 .checkbox input:not(:checked)").attr("disabled", true);
       }else{
@@ -90,7 +90,7 @@ var surveyManager = {
 	setupQ15: function(){
 		var count = 0
   	$("#q15 .checkbox input").change(function() {
-  		count = $("[type='checkbox']:checked").length;
+  		count = $("#q15 [type='checkbox']:checked").length;
       if(count == 3){
       	$("#q15 .checkbox input:not(:checked)").attr("disabled", true);
       }else{
