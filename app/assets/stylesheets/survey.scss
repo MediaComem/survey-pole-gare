@@ -36,8 +36,25 @@ header{
 			}
 		}
 	}
-	#sous-gare img{
-		width: 100%;
+	#sous-gare{
+		img{
+			width: 100%;
+		}
+		.desktop{
+			display: none;
+		}
+		.mobile{
+			display: block;
+			margin-top: 25px;
+		}
+		@media (min-width: 768px) {
+			.desktop{
+				display: block;
+			}
+			.mobile{
+				display: none;
+			}
+		}
 	}
 }
 .question{
