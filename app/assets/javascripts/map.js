@@ -175,8 +175,10 @@ var mapManager = {
 
     var vectorSource = new ol.source.Vector();
 
+    var feats = []
     $.get( "/plein.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
+      feats = new ol.format.GeoJSON().readFeatures(data)
     });
 
     var vectorLayer = new ol.layer.Vector({
@@ -210,10 +212,58 @@ var mapManager = {
 
     selectSingleClick.on('select', function(e) {
       $('#map-visits').siblings('.checkbox').find(':checked').prop('checked','')
+      var tempFeatures = e.target.getFeatures().getArray()
+
+      var valueArr = tempFeatures.map(function(item){ return item.get('id') });
+      var isDuplicate = valueArr.some(function(item, idx){ 
+          return valueArr.indexOf(item) != idx 
+      });
+      var duplicates = valueArr.filter(function(item, idx){ 
+        return valueArr.indexOf(item) != idx 
+      });
+
+      tempFeaturesCol = e.target.getFeatures()
+
+      if(isDuplicate){
+        tempFeaturesCol.forEach(function (el,index) {
+          if(el.get('id') == duplicates[0]){
+            tempFeaturesCol.remove(el)
+          }
+        });
+      }
+
       e.target.getFeatures().forEach(function(f){
         var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid='+f.get('id')+']')
         checkbox.prop('checked', 'checked');
       })
+    });
+
+
+    var centerMapButton = document.getElementById('map-visits-center');
+    centerMapButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      map.setView(mapManager.businessAndVisitsMapsView())
+    }, false);
+
+
+    $('#map-select-all').on('click',function(e) {
+        e.preventDefault();
+        var selectableFeatures = selectSingleClick.getFeatures()
+        selectableFeatures.clear()
+        for (i = 0; i < feats.length; i++) { 
+          selectableFeatures.push(feats[i])
+          var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid='+feats[i].get('id')+']')
+          checkbox.prop('checked', 'checked');
+        }
+    });
+
+    $('#map-unselect-all').on('click',function(e) {
+        e.preventDefault();
+        var selectableFeatures = selectSingleClick.getFeatures()
+        selectableFeatures.clear()
+        for (i = 0; i < feats.length; i++) { 
+          var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid]').prop('checked', '');
+        }
     });
 
   },
