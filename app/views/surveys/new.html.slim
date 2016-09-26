@@ -84,22 +84,24 @@ div
                   = item
     #q6.question.only-for-frequentation
       h3 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ?
-      .sort-placeholder glisser vos réponses ici
-      ol.connected-sortable.sortable-list
-      ul.connected-sortable.source-list
-        = f.fields_for :q6 do |ff|
-          - Survey.q6_answers.each do |item|
-            li.sort-item
-              span = item
-              span.hidden
-                = ff.text_field item, :value => 0, :maxlength => 256, :class => 'sortable-list-value'
-              = image_tag("drag_reorder_256.png")
-          li.sort-item.other-item
-            span.other-span Autre
-            = ff.text_field :autre_precision, :class => 'other-input', :placeholder => "Autre"
-            span.hidden
-              = ff.text_field "Autre", :value => 0, :maxlength => 256, :class => 'sortable-list-value'
-            = image_tag("drag_reorder_256.png")
+      .row
+        .col-sm-12
+          .sort-placeholder glisser vos réponses ici
+          ol.connected-sortable.sortable-list
+          ul.connected-sortable.source-list
+            = f.fields_for :q6 do |ff|
+              - Survey.q6_answers.each do |item|
+                li.sort-item
+                  span = item
+                  span.hidden
+                    = ff.text_field item, :value => 0, :maxlength => 256, :class => 'sortable-list-value'
+                  = image_tag("drag_reorder_256.png")
+              li.sort-item.other-item
+                span.other-span Autre
+                = ff.text_field :autre_precision, :class => 'other-input', :placeholder => "Autre"
+                span.hidden
+                  = ff.text_field "Autre", :value => 0, :maxlength => 256, :class => 'sortable-list-value'
+                = image_tag("drag_reorder_256.png")
     #q7.question.only-for-frequentation
       h3 Si vous vous rendez dans le secteur en voiture, où stationnez-vous le plus souvent ?
       = f.fields_for :q7 do |ff|
@@ -335,10 +337,12 @@ div
       h3 Sexe ?
       = f.fields_for :q19 do |ff|
         - Survey.q19_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q19,"#{item}")
-              = item
+          .row
+            .col-md-12
+              .radio
+                label
+                  = f.radio_button(:q19,"#{item}")
+                  = item
     #q20.question
       h3 Quel est votre âge ?
       = f.fields_for :q20 do |ff|
@@ -406,11 +410,13 @@ div
     #q23.question
       h3 Êtes-vous propriétaire d’un bien immobilier dans le secteur ?
       = f.fields_for :q23 do |ff|
-        - Survey.q23_answers.each do |item|
-          .radio
-            label
-              = f.radio_button(:q23,"#{item}")
-              = item
+        .row
+          .col-sm-12
+            - Survey.q23_answers.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q23,"#{item}")
+                  = item
     #q24.question
       h3 Quelle est votre activité professionnelle ? 
       = f.fields_for :q24 do |ff|
