@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 20160824074511) do
     t.hstore   "q7"
     t.hstore   "q8"
     t.hstore   "q9"
-    t.string   "q12"
-    t.hstore   "q12a"
     t.hstore   "q10"
     t.hstore   "q11"
+    t.string   "q12"
+    t.hstore   "q12a"
     t.hstore   "q13"
     t.hstore   "q14"
     t.hstore   "q15"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20160824074511) do
     t.string   "q27"
     t.string   "q28"
     t.string   "q29"
+    t.string   "user_agent"
+    t.string   "ip_adress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

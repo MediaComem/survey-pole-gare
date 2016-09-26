@@ -33,6 +33,8 @@ class CreateSurveys < ActiveRecord::Migration[5.0]
       t.string :q27
       t.string :q28
       t.string :q29
+      t.string :user_agent
+      t.string :ip_adress
       t.timestamps
     end
   end

@@ -93,7 +93,9 @@ class Survey < ApplicationRecord
       			head.push(attr_name+" "+key)
       		end
       	else
-      		head.push(attr_name)
+          if(attr_name != "ip_adress" && attr_name != "user_agent")
+      		  head.push(attr_name)
+          end
       	end
 			end
 			csv << head
@@ -105,7 +107,9 @@ class Survey < ApplicationRecord
       			answers.push(value)
       		end
 	      	else
-	      		answers.push(attr_value)
+            if(attr_name != "ip_adress" && attr_name != "user_agent")
+	      		 answers.push(attr_value)
+            end
 	      	end
         end
         csv << answers

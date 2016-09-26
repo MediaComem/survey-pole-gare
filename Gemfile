@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'httparty'
 gem 'slim'
 
 group :development, :test do
