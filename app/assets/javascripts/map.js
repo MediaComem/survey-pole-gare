@@ -168,7 +168,7 @@ var mapManager = {
     });
 
     var map = new ol.Map({
-      view: mapManager.zoomedView(),
+      view: mapManager.businessAndVisitsMapsView(),
       target: 'map-visits',
       layers: [colorlayer]
     });
@@ -205,7 +205,7 @@ var mapManager = {
     var centerMapButton = document.getElementById('map-visits-center');
     centerMapButton.addEventListener('click', function(event) {
       event.preventDefault();
-      map.setView(mapManager.zoomedView())
+      map.setView(mapManager.businessAndVisitsMapsView())
     }, false);
 
     selectSingleClick.on('select', function(e) {
@@ -242,7 +242,7 @@ var mapManager = {
     });
 
     var map = new ol.Map({
-      view: mapManager.zoomedView(),
+      view: mapManager.businessAndVisitsMapsView(),
       target: 'map-business',
       layers: [colorlayer]
     });
@@ -312,7 +312,7 @@ var mapManager = {
     var centerMapButton = document.getElementById('map-business-center');
     centerMapButton.addEventListener('click', function(event) {
       event.preventDefault();
-      map.setView(mapManager.zoomedView())
+      map.setView(mapManager.businessAndVisitsMapsView())
     }, false);
 
 
@@ -339,18 +339,18 @@ var mapManager = {
     return new ol.View({
       center:[539626.310436273, 156046.1932441873],
       zoom: 13,
-      minZoom: 8,
+      minZoom: 11,
       maxZoom: 18,
-      extent: [488738.358855417, 114770.19797019214, 575876.5711005179, 158721.4892341685]
+      extent: [496057.20431372256, 134070.54761219912, 583195.4165588234, 178021.8388761755]
     })
   },
-  zoomedView: function(){
+  businessAndVisitsMapsView: function(){
     return new ol.View({
       center:[537906.4772998566, 151908.44192396867],
       zoom: 17,
-      minZoom: 13,
+      minZoom: 14,
       maxZoom: 18,
-      extent: [488738.358855417, 114770.19797019214, 575876.5711005179, 158721.4892341685]
+      extent: [532460.3390345378, 149161.48621997016, 543352.6155651754, 154655.39762796718]
     })
   },
   blockedZoomView: function(){
@@ -394,8 +394,6 @@ var mapManager = {
     var scrollStarted = false
     var timer = null; 
     window.onscroll = function (e) {
-      console.log("scroll")
-      
       if(!scrollStarted){
         scrollStarted = true
         for (var i = 0, l = mapManager.mapsObjects.length; i < l; i++) {
@@ -440,7 +438,40 @@ var mapManager = {
         }
       }, 200);
     }
-  } 
+  },
+  resizeMapsForMobile: function(mq){
+    if (mq.matches) {
+      for (var i = 0, l = mapManager.mapsObjects.length; i < l; i++) {
+        var map = mapManager.mapsObjects[i];
+        if(map.getTarget() == "map-business" || map.getTarget() == "map-visits"){
+          map.setView(mapManager.businessAndVisitsMapsView())
+        }else{
+          map.setView(mapManager.defaultView())
+        }
+      }
+    } else {
+      for (var i = 0, l = mapManager.mapsObjects.length; i < l; i++) {
+        var map = mapManager.mapsObjects[i];
+        if(map.getTarget() == "map-business" || map.getTarget() == "map-visits"){
+          map.setView(new ol.View({
+            center:[537906.4772998566, 151908.44192396867],
+            zoom: 15,
+            minZoom: 13,
+            maxZoom: 18,
+            extent: [536425.5098768313, 151116.00491979346, 539196.3521521689, 152549.1992001405]
+          }));
+        }else{
+          map.setView(new ol.View({
+            center:[539492.545636774, 155931.53770175955],
+            zoom: 11,
+            minZoom: 10,
+            maxZoom: 18,
+            extent: [514726.9484723769, 144465.98345898313, 559060.4248777791, 167397.09194453602]
+          }));
+        }
+      }
+    }
+  }
 }
 
 $(function() {
@@ -449,4 +480,10 @@ $(function() {
   mapManager.initMapVisits()
   mapManager.initMapBusiness()
   mapManager.disableZoomAndPanWhenScrolling()
+  if (matchMedia) {
+    var mq = window.matchMedia("(min-width: 650px)");
+    mq.addListener(mapManager.resizeMapsForMobile);
+    mapManager.resizeMapsForMobile(mq)
+  }
+
 })
