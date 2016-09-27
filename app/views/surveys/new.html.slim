@@ -452,34 +452,14 @@ div
       h3 Quelle est votre activité professionnelle ? 
       = f.fields_for :q24 do |ff|
         .row
-          .col-sm-6
-            - Survey.q24_answers.in_groups(2)[0].each do |item|
-              .radio
-                label
-                  = f.radio_button(:q24,"#{item}")
-                  = item
-          .col-sm-6
-            - Survey.q24_answers.in_groups(2)[1].compact.each do |item|
-              .radio
-                label
-                  = f.radio_button(:q24,"#{item}")
-                  = item
+          .col-sm-12.col-md-6
+            = f.select(:q24, Survey.q24_answers, {:include_blank => true}, {:class => "form-control"})
     #q25.question
       h3 Quelle est l’activité professionnelle de votre conjoint ? 
       = f.fields_for :q25 do |ff|
         .row
-          .col-sm-6
-            - Survey.q25_answers.in_groups(2)[0].each do |item|
-              .radio
-                label
-                  = f.radio_button(:q25,"#{item}")
-                  = item
-          .col-sm-6
-            - Survey.q25_answers.in_groups(2)[1].compact.each do |item|
-              .radio
-                label
-                  = f.radio_button(:q25,"#{item}")
-                  = item
+          .col-sm-12.col-md-6
+            = f.select(:q25, Survey.q25_answers, {:include_blank => true}, {:class => "form-control"})
     #q26.question
       h3 
         | Où se situe votre lieu d’habitation ?
