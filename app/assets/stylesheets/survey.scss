@@ -12,6 +12,10 @@ $color-pole-gare: #1a4a5b;
 	width:100%;
 	background-color: $color-pole-gare;
 }
+p.info {
+  padding: 10px;
+  margin: 20px 0;
+}
 .mobile-additional-info{
 	@media (min-width: 768px) {
 		display: none;
