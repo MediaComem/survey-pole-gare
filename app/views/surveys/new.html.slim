@@ -19,7 +19,7 @@ div
                 = f.radio_button(:q1,"#{item}")
                 = item
     #q2.question.only-for-frequentation
-        h3 test
+        h3 Dans le secteur sous­-gare,vous êtes avant tout...
         ul.gm-form-question-content
           .gm-selected
           .gm-unselected
@@ -36,25 +36,6 @@ div
                 = ff.text_field :autre_precision, :class => 'other-input', :placeholder => "Autre"
                 span.hidden
                   = ff.text_field "Autre", :value => 0, :maxlength => 256, :class => 'sortable-list-value'
-    / #q2.question.only-for-frequentation
-    /   h3 id="q2" Dans le secteur sous­-gare,vous êtes avant tout...
-    /   = f.fields_for :q2 do |ff|
-    /     .row
-    /       .col-sm-6
-    /         - Survey.q2_answers.in_groups(2)[0].each do |item|
-    /           .checkbox
-    /             label
-    /               = ff.check_box "#{item}"
-    /               = item
-    /       .col-sm-6
-    /         - Survey.q2_answers.in_groups(2)[1].each do |item|
-    /           .checkbox
-    /             label
-    /               = ff.check_box "#{item}"
-    /               = item
-    /     .form-group.precision
-    /       label Veuillez préciser
-    /       = ff.text_field :autre_precision, :class => 'form-control other'
     #q3.question.only-for-frequentation
       h3 Depuis combien de temps fréquentez-vous ce secteur?
       .row
