@@ -12,6 +12,11 @@ $color-pole-gare: #1a4a5b;
 	width:100%;
 	background-color: $color-pole-gare;
 }
+.mobile-additional-info{
+	@media (min-width: 768px) {
+		display: none;
+	}
+}
 header{
 	#images{
 		img{
@@ -60,8 +65,10 @@ header{
 .question{
 	margin-bottom: 40px;
 	h3 {
-    font-weight: 300;
-  }
+    	font-weight: 300;
+    	border-bottom: 1px solid #eee;
+    	padding-bottom: 9px;
+		}
 }
 #q13,#q14{
 	.radio {

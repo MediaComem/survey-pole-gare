@@ -191,6 +191,20 @@ var mapManager = {
 
     map.addLayer(vectorLayer)
 
+    var target = map.getTarget(),
+    jTarget = typeof target === "string" ? $("#" + target) : $(target);
+    $(map.getViewport()).on('mousemove', function(e) {
+      var pixel = map.getEventPixel(e.originalEvent);
+      var hit = map.forEachFeatureAtPixel(pixel, function() {
+        return true;
+      });
+      if (hit) {
+        jTarget.css("cursor", "pointer");
+      } else {
+        jTarget.css("cursor", "");
+      }
+    });
+
     var selectSingleClick = new ol.interaction.Select({
       condition: ol.events.condition.click,
       toggleCondition: ol.events.condition.click,
@@ -314,6 +328,20 @@ var mapManager = {
     });
 
     map.addLayer(vectorLayer)
+
+    var target = map.getTarget(),
+    jTarget = typeof target === "string" ? $("#" + target) : $(target);
+    $(map.getViewport()).on('mousemove', function(e) {
+      var pixel = map.getEventPixel(e.originalEvent);
+      var hit = map.forEachFeatureAtPixel(pixel, function() {
+        return true;
+      });
+      if (hit) {
+        jTarget.css("cursor", "pointer");
+      } else {
+        jTarget.css("cursor", "");
+      }
+    });
 
     var selectSingleClick = new ol.interaction.Select({
       condition: ol.events.condition.click,

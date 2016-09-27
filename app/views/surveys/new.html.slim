@@ -123,7 +123,10 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q8.question.only-for-frequentation
-      h3 Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois) ?
+      h3 
+        | Quelles rues ou places fréquentez-vous régulièrement plusieurs fois par mois ?
+        span.mobile-additional-info
+          |&nbsp;(cliquer sur une ou plusieurs zones)
       .q8
         = f.fields_for :q8 do |ff|
           - @quartiers_data_hash['features'].each do |n|
@@ -194,7 +197,10 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q11.question.only-for-frequentation
-      h3 Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ? 
+      h3 
+        | Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ?
+        span.mobile-additional-info
+          |&nbsp;(cliquer sur une ou plusieurs zones)
       .q11
         = f.fields_for :q11 do |ff|
           - @vide_data_hash['features'].each do |n|
