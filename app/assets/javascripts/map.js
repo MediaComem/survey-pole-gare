@@ -72,6 +72,8 @@ var mapManager = {
       map.setView(mapManager.defaultView())
     }, false);
 
+    $('#home-map').data('map', map);
+
   },
   initWorkMap: function(){
     
@@ -132,7 +134,6 @@ var mapManager = {
     mapManager.mapsObjects.push(map);
 
     selectSingleClick.on('select', function(e) {
-      console.log(e.target.getFeatures().item(0).get('id'))
       $('#work-map').siblings('.gm-city-autocomplete').find('input[name*=q27]').val(e.target.getFeatures().item(0).get('id'))
       $('#work-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
     });
@@ -142,6 +143,9 @@ var mapManager = {
       event.preventDefault();
       map.setView(mapManager.defaultView())
     }, false);
+
+    $('#work-map').data('map', map);
+
   },
   initMapVisits: function(){
     
@@ -279,6 +283,8 @@ var mapManager = {
           var checkbox = $('#map-visits').siblings('.checkbox').find('input[data-polygonid]').prop('checked', '');
         }
     });
+
+    $('#map-visits').data('map', map);
 
   },
   initMapBusiness: function(){
@@ -552,12 +558,45 @@ var mapManager = {
   }
 }
 
+/* Display Map or commune autocomplete for location */
+var locationChoice = function(elem,radiogroup,qn){
+  $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').hide();
+  $(elem).hide();
+  $(elem).siblings('.map-tools').hide();
+  $("input[name="+radiogroup+"]:radio").change(function(){
+    $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').val('');
+    if($(this).val() == 'autre'){
+      $(elem).hide();
+      $(elem).siblings('.map-tools').hide();
+      surveyManager.disableTypeaheadQ28()
+      $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').show();
+    }
+    if($(this).val() == 'map'){
+      $(elem).siblings('.map-tools').show();
+      $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').hide();
+      $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').val($(elem).siblings('.mapPlaceId').attr('data-id'));
+      $(elem).show();
+      $(elem).data('map').updateSize()
+    }
+    if($(this).val() == 'commune'){
+      console.log($(elem))
+      $(elem).siblings('.map-tools').hide();
+      $(elem).hide();
+      surveyManager.enableTypeaheadQ28()
+      $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+' ]').show();
+    }
+  });
+};
+
 $(function() {
   mapManager.initHomeMap()
   mapManager.initWorkMap()
   mapManager.initMapVisits()
   mapManager.initMapBusiness()
   mapManager.disableZoomAndPanWhenScrolling()
+  locationChoice($('#home-map'),'location_choice',26);
+  locationChoice($('#work-map'),'work_location_choice',27);
+  
   if (matchMedia) {
     var mq = window.matchMedia("(min-width: 650px)");
     mq.addListener(mapManager.resizeMapsForMobile);

@@ -157,12 +157,6 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ26: function(){
-		locationChoice($('#home-map'),'location_choice',26);
-	},
-	setupQ27: function(){
-		locationChoice($('#work-map'),'work_location_choice',27);
-	},
 	enableTypeaheadQ28: function(){
 		var engine = new Bloodhound({
     	local: gmVilles,
@@ -176,32 +170,7 @@ var surveyManager = {
 	}
 }
 
-/* Display Map or commune autocomplete for location */
-var locationChoice = function(elem,radiogroup,qn){
-	$(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').hide();
-	$("input[name="+radiogroup+"]:radio").change(function(){
-		$(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').val('');
-		if($(this).val() == 'autre'){
-			$(elem).hide();
-			$(elem).siblings('.center-map').hide();
-			surveyManager.disableTypeaheadQ28()
-			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').show();
-		}
-		if($(this).val() == 'map'){
-			$(elem).siblings('.center-map').show();
-			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').hide();
-			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').val($(elem).siblings('.mapPlaceId').attr('data-id'));
-			$(elem).show();
-		}
-		if($(this).val() == 'commune'){
-			console.log($(elem))
-			$(elem).siblings('.center-map').hide();
-			$(elem).hide();
-			surveyManager.enableTypeaheadQ28()
-			$(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+'	]').show();
-		}
-	});
-};
+
 var makeSortableV2 = function(questionId, maxActiveElements) {
 
 	questionId = "#" + questionId;
@@ -301,9 +270,8 @@ $(function() {
   surveyManager.setupQ17()
   surveyManager.setupQ17a()
   surveyManager.setupQ22()
-  surveyManager.setupQ26()
-  surveyManager.setupQ27()
   makeSortableV2("q6", 4);
+
   $('.precision').hide()
   $("form").submit(function() {
     $("input").removeAttr("disabled");

@@ -481,14 +481,15 @@ div
                   = f.radio_button(:q25,"#{item}")
                   = item
     #q26.question
-      h3 Où se situe votre lieu d’habitation ?
+      h3 
+        | Où se situe votre lieu d’habitation ?
       .panel.panel-default
         .panel-body
           .row
             .col-sm-12.col-md-2
               .radio.radio-map
                 label
-                  = radio_button_tag 'location_choice', 'map', true
+                  = radio_button_tag 'location_choice', 'map'
                   | Lausanne &nbsp;
             .col-sm-12.col-md-3
               .radio.radio-map
@@ -500,7 +501,12 @@ div
                 label
                   = radio_button_tag 'location_choice', 'autre'
                   | Autre&nbsp;
-      button.btn.btn-success.center-map(id="map-home-center")Recentrer la carte
+      .map-tools
+        .row
+          .col-md-12
+            p
+              | &nbsp;Veuillez cliquer sur votre emplacement
+        button.btn.btn-success.center-map(id="map-home-center")Recentrer la carte
       #home-map.map-box
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
@@ -513,7 +519,7 @@ div
             .col-sm-12.col-md-2
               .radio.radio-map
                 label
-                  = radio_button_tag 'work_location_choice', 'map', true
+                  = radio_button_tag 'work_location_choice', 'map'
                   | Lausanne &nbsp;
             .col-sm-12.col-md-3
               .radio.radio-map
@@ -525,7 +531,12 @@ div
                 label
                   = radio_button_tag 'work_location_choice', 'autre'
                   | Autre&nbsp;
-      button.btn.btn-success.center-map(id="map-work-center")Recentrer la carte
+      .map-tools
+        .row
+          .col-md-12
+            p
+              | &nbsp;Veuillez cliquer sur votre emplacement
+        button.btn.btn-success.center-map(id="map-work-center")Recentrer la carte
       #work-map.map-box
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
