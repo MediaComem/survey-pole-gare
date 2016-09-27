@@ -202,8 +202,13 @@ li {
 	margin:5px 15px;
 	padding:5px;
 }
-.sort-placeholder {
+.placeholder-parent{
 	position: absolute;
+	width: 100%;
+	padding-right: 30px;
+}
+.sort-placeholder {
+	position: relative;
 	z-index: -100;
 	width: 100%;
 	margin-top: 15px;
@@ -214,6 +219,7 @@ li {
 }
 .map-buttons {
   display: flex; /* or inline-flex */
+  flex-wrap: wrap;
   .checkbox, .btn-success{
   	margin-left: 20px;
   	margin-bottom: 10px;

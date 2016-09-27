@@ -86,7 +86,8 @@ div
       h3 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ?
       .row
         .col-sm-12
-          .sort-placeholder glisser vos réponses ici
+          .placeholder-parent
+            .sort-placeholder glisser vos réponses ici
           ol.connected-sortable.sortable-list
           ul.connected-sortable.source-list
             = f.fields_for :q6 do |ff|
