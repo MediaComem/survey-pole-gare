@@ -19,24 +19,42 @@ div
                 = f.radio_button(:q1,"#{item}")
                 = item
     #q2.question.only-for-frequentation
-      h3 id="q2" Dans le secteur sous­-gare,vous êtes avant tout...
-      = f.fields_for :q2 do |ff|
-        .row
-          .col-sm-6
-            - Survey.q2_answers.in_groups(2)[0].each do |item|
-              .checkbox
-                label
-                  = ff.check_box "#{item}"
-                  = item
-          .col-sm-6
-            - Survey.q2_answers.in_groups(2)[1].each do |item|
-              .checkbox
-                label
-                  = ff.check_box "#{item}"
-                  = item
-        .form-group.precision
-          label Veuillez préciser
-          = ff.text_field :autre_precision, :class => 'form-control other'
+        h3 test
+        ul.gm-form-question-content
+          .gm-selected
+          .gm-unselected
+            = f.fields_for :q2 do |ff|
+              - Survey.q2_answers.each do |item|
+                li.gm-selectable
+                  .btn.btn-default.glyphicon.glyphicon-plus
+                  span.gm-label.gm-selectable-label = item
+                  span.hidden
+                    = ff.text_field item, :value => 0, :maxlength => 256
+              li.gm-selectable.other-item
+                .btn.btn-default.glyphicon.glyphicon-plus
+                span.gm-label.gm-selectable-label.other-span Autre
+                = ff.text_field :autre_precision, :class => 'other-input', :placeholder => "Autre"
+                span.hidden
+                  = ff.text_field "Autre", :value => 0, :maxlength => 256, :class => 'sortable-list-value'
+    / #q2.question.only-for-frequentation
+    /   h3 id="q2" Dans le secteur sous­-gare,vous êtes avant tout...
+    /   = f.fields_for :q2 do |ff|
+    /     .row
+    /       .col-sm-6
+    /         - Survey.q2_answers.in_groups(2)[0].each do |item|
+    /           .checkbox
+    /             label
+    /               = ff.check_box "#{item}"
+    /               = item
+    /       .col-sm-6
+    /         - Survey.q2_answers.in_groups(2)[1].each do |item|
+    /           .checkbox
+    /             label
+    /               = ff.check_box "#{item}"
+    /               = item
+    /     .form-group.precision
+    /       label Veuillez préciser
+    /       = ff.text_field :autre_precision, :class => 'form-control other'
     #q3.question.only-for-frequentation
       h3 Depuis combien de temps fréquentez-vous ce secteur?
       .row
@@ -490,7 +508,9 @@ div
       #home-map.map-box
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
-        = f.text_field :q26, :value => '', :class => "gm-city-autocomplete-input form-control homeplace", :maxlength => 256, :placeholder => "Veuillez préciser..."
+        .row
+          .col-sm-12
+            = f.text_field :q26, :value => '', :class => "gm-city-autocomplete-input form-control homeplace", :maxlength => 256, :placeholder => ""
     #q27.question
       h3 Où se situe votre lieu de travail ?
       .panel.panel-default
@@ -520,7 +540,9 @@ div
       #work-map.map-box
       .mapPlaceId.hidden(data-id="")
       .gm-city-autocomplete
-        = f.text_field :q27, :value => '', :class => "gm-city-autocomplete-input form-control workplace", :maxlength => 256, :placeholder => "Veuillez préciser..."
+        .row
+          .col-sm-12
+            = f.text_field :q27, :value => '', :class => "gm-city-autocomplete-input form-control workplace", :maxlength => 256, :placeholder => ""
     #q28.question
       h3 Voulez-vous ajouter quelque chose ?
       = f.text_area(:q28, cols: 20, rows: 10, :class => 'form-control', :placeholder => "Saisissez ici votre message...")

@@ -562,13 +562,18 @@ var mapManager = {
 var locationChoice = function(elem,radiogroup,qn){
   $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').hide();
   $(elem).hide();
+  
   $(elem).siblings('.map-tools').hide();
   $("input[name="+radiogroup+"]:radio").change(function(){
     $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').val('');
     if($(this).val() == 'autre'){
       $(elem).hide();
       $(elem).siblings('.map-tools').hide();
-      surveyManager.disableTypeaheadQ28()
+      
+      $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input").typeahead('destroy');
+      $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input").attr("placeholder", "Précisez");
+      
+      
       $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').show();
     }
     if($(this).val() == 'map'){
@@ -576,13 +581,21 @@ var locationChoice = function(elem,radiogroup,qn){
       $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').hide();
       $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').val($(elem).siblings('.mapPlaceId').attr('data-id'));
       $(elem).show();
+      $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input").typeahead('destroy');
       $(elem).data('map').updateSize()
     }
     if($(this).val() == 'commune'){
       console.log($(elem))
       $(elem).siblings('.map-tools').hide();
       $(elem).hide();
-      surveyManager.enableTypeaheadQ28()
+      var engine = new Bloodhound({
+        local: gmVilles,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        datumTokenizer: Bloodhound.tokenizers.whitespace
+      });
+      console.log($(elem).siblings())
+      $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input").typeahead({hint: true, highlight: true}, {source: engine});
+      $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input:nth-child(2)").attr("placeholder", "Indiquez le nom de la ville");
       $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+' ]').show();
     }
   });

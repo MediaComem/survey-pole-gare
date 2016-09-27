@@ -156,17 +156,6 @@ var surveyManager = {
       	$('#q22a').show()
       }
 		});
-	},
-	enableTypeaheadQ28: function(){
-		var engine = new Bloodhound({
-    	local: gmVilles,
-    	queryTokenizer: Bloodhound.tokenizers.whitespace,
-    	datumTokenizer: Bloodhound.tokenizers.whitespace
-  	});
-		$(".gm-city-autocomplete-input").typeahead({hint: true, highlight: true}, {source: engine});
-	},
-	disableTypeaheadQ28: function(){
-		$(".gm-city-autocomplete-input").typeahead('destroy');
 	}
 }
 
@@ -256,6 +245,85 @@ var changeItemValue = function(questionId, maxActiveElements) {
 		$(item).find('.sortable-list-value').attr('value', value);
 	})
 }
+
+var makeSortableV3 = function(questionId, maxActiveElements) {
+    var questionId = "#" + questionId;
+    var activeEl, inactiveEl, active, inactive = null;
+    var activeElementsCount = 0;
+    var otherInput = $(questionId + ' .other-input');
+    var otherSpan = $(questionId + ' .other-span');
+    
+    otherSpan.hide();
+    
+    activeEl =  $(questionId + ' .gm-selected').get(0);
+    inactiveEl =  $(questionId + ' .gm-unselected').get(0);
+    $(inactiveEl).on('click', '.btn', function(event) {
+        activeElementsCount = $(activeEl).find("li").length;
+        
+        $(questionId + ' .other-item').on('click', function() {
+            console.log("other item clicked");
+            displayOtherItemSpanV3(questionId, otherSpan, otherInput);
+            otherInput.focus();
+        })
+        
+        if ( activeElementsCount < maxActiveElements) { // Limit the number of choices
+            $(this).closest('li').appendTo(activeEl); // Move the list item up into the selected area
+            $(this).removeClass('glyphicon-plus').addClass('glyphicon-minus'); // Change the buttons icon from + to -
+            // Renumber the hidden inputs
+            $(activeEl).find('li').each(function(counter, el) {
+                $(el).find('.hidden input').val(maxActiveElements-counter);
+            });
+            // Replace the event to do the inverse
+            $(this).off('click').on('click', function(event) {
+                $(this).closest('li').prependTo(inactiveEl); // Move down
+                $(this).removeClass('glyphicon-minus').addClass('glyphicon-plus'); // Swap icons
+                $(this).closest('li').find('.hidden input').val(0); // Set 0 as default value
+                $(inactiveEl).children('li').removeClass("gm-inactive"); // Make sure elements are visually active again
+                $(inactiveEl).find('.btn').removeClass('btn-disabled');
+                
+                $(this).off('click'); // And be sure to remove this event when the element has been moved
+            });
+        }
+        
+        if (activeElementsCount === maxActiveElements -1){                // When the maximum number of options is reached, visually display that no more can be added.
+            $(inactiveEl).children('li').addClass("gm-inactive");
+            $(inactiveEl).find('.btn').addClass('btn-disabled');
+        }
+        
+        if($(this).parent('.gm-selectable').hasClass('other-item')){                                // check if other-item was dropped in a zone;
+            console.log("added");
+            displayOtherItemInputV3(questionId, otherSpan, otherInput);
+        };
+        
+    });
+    
+    otherInput.focusout(function() {
+        console.log("focus out");
+        displayOtherItemInputV3(questionId, otherSpan, otherInput);
+    })
+}
+
+var displayOtherItemInputV3 = function(questionId, otherSpan, otherInput) {
+    if(otherInput.parents(questionId + ' .gm-unselected').length == 0 && otherInput.val() != ''){    
+        console.log("other span show");
+        var content = otherInput.val();
+        otherSpan.html(content);
+        
+        otherInput.hide();
+        otherSpan.show();
+    }
+}
+
+var displayOtherItemSpanV3 = function(questionId, otherSpan, otherInput) {
+    console.log("show input", $(questionId + ' li.other-item .other-input').css('display'))
+    if($(questionId + ' li.other-item .other-input').css('display') == 'none') {
+        var content = otherSpan.html();                            
+        otherInput.val(content);
+        
+        otherSpan.hide();                                                                                 
+        otherInput.show();
+    }
+}
 $(function() {
 	surveyManager.setupQ1()
   surveyManager.setupQ2()
@@ -271,6 +339,7 @@ $(function() {
   surveyManager.setupQ17a()
   surveyManager.setupQ22()
   makeSortableV2("q6", 4);
+  makeSortableV3("q2", 2);
 
   $('.precision').hide()
   $("form").submit(function() {
