@@ -564,7 +564,9 @@ var locationChoice = function(elem,radiogroup,qn){
   $(elem).hide();
   
   $(elem).siblings('.map-tools').hide();
+  
   $("input[name="+radiogroup+"]:radio").change(function(){
+    
     $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').val('');
     if($(this).val() == 'autre'){
       $(elem).hide();
@@ -580,11 +582,22 @@ var locationChoice = function(elem,radiogroup,qn){
       $(elem).siblings('.map-tools').show();
       $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').hide();
       $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+']').val($(elem).siblings('.mapPlaceId').attr('data-id'));
-      $(elem).show();
+      
       $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input").typeahead('destroy');
-      $(elem).data('map').updateSize()
+      
+      console.log($(elem).attr('id'))
+      $(elem).show()
+      if($(elem).attr('id') == "home-map"){
+        mapManager.initHomeMap()
+        checkScreenSize()
+      }else{
+        mapManager.initWorkMap()
+        checkScreenSize()
+      }
+      
     }
     if($(this).val() == 'commune'){
+      
       console.log($(elem))
       $(elem).siblings('.map-tools').hide();
       $(elem).hide();
@@ -601,19 +614,19 @@ var locationChoice = function(elem,radiogroup,qn){
   });
 };
 
-$(function() {
-  mapManager.initHomeMap()
-  mapManager.initWorkMap()
-  mapManager.initMapVisits()
-  mapManager.initMapBusiness()
-  mapManager.disableZoomAndPanWhenScrolling()
-  locationChoice($('#home-map'),'location_choice',26);
-  locationChoice($('#work-map'),'work_location_choice',27);
-  
+var checkScreenSize = function(){
   if (matchMedia) {
     var mq = window.matchMedia("(min-width: 650px)");
     mq.addListener(mapManager.resizeMapsForMobile);
     mapManager.resizeMapsForMobile(mq)
   }
+}
 
+$(function() {
+  mapManager.initMapVisits()
+  mapManager.initMapBusiness()
+  mapManager.disableZoomAndPanWhenScrolling()
+  locationChoice($('#home-map'),'location_choice',26);
+  locationChoice($('#work-map'),'work_location_choice',27);
+  checkScreenSize()
 })
