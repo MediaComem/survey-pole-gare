@@ -141,10 +141,10 @@ var surveyManager = {
 	setupQ17a: function(){
 		$("#q17a .checkbox input").change(function() {
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
-				$(this).parents().eq(1).next('.form-group').show()
+				$(this).parents().eq(3).next('.form-group').show()
       }
       if($(this).parent().text() == 'Autre' && !($(this).prop('checked'))){
-				$(this).parents().eq(1).next('.form-group').hide()
+				$(this).parents().eq(3).next('.form-group').hide()
       }
 		});
 	},

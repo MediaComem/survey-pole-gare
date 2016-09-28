@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $color-pole-gare: #1a4a5b;
-.btn{
+.btn, .btn:hover{
   background-color: $color-pole-gare;
   border-color: $color-pole-gare;
 }
