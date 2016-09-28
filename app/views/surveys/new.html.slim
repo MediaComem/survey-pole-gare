@@ -40,8 +40,18 @@ div
     #q3.question.only-for-frequentation
       h3 Depuis combien de temps fréquentez-vous ce secteur?
       .row
-        .col-sm-12.col-md-6
-          = f.select(:q3, Survey.q3_answers, {:include_blank => true}, {:class => "form-control"})
+        .col-sm-2.col-xs-6
+          - Survey.q3_answers.in_groups(2)[0].each do |item|
+            .radio
+              label
+                = f.radio_button(:q3,"#{item}")
+                = item
+        .col-sm-2.col-xs-6
+          - Survey.q3_answers.in_groups(2)[1].compact.each do |item|
+            .radio
+              label
+                = f.radio_button(:q3,"#{item}")
+                = item
     #q4.question.only-for-frequentation
       h3 A quelle(s) période(s) de la journée fréquentez-vous le secteur ?
       = f.fields_for :q4 do |ff|
@@ -62,8 +72,18 @@ div
       h3 Lorsque vous êtes dans le secteur, combien de temps y restez-vous en moyenne ?
       = f.fields_for :q5 do |ff|
         .row
-          .col-sm-12.col-md-6
-            = f.select(:q5, Survey.q5_answers, {:include_blank => true}, {:class => "form-control"})
+          .col-sm-2.col-xs-6
+            - Survey.q5_answers.in_groups(2)[0].each do |item|
+              .radio
+                label
+                  = f.radio_button(:q5,"#{item}")
+                  = item
+          .col-sm-3.col-xs-6
+            - Survey.q5_answers.in_groups(2)[1].compact.each do |item|
+              .radio
+                label
+                  = f.radio_button(:q5,"#{item}")
+                  = item
     #q6.question.only-for-frequentation
       h3 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? (4 choix possibles)
       ul.gm-form-question-content
