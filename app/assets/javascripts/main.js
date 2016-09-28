@@ -52,11 +52,12 @@ var surveyManager = {
 		});
 	},
 	setupQ7: function(){
-		$("#q7 .radio input").change(function() {
-      if($(this).parent().text() == 'Autre'){
-				$(this).parents().eq(3).next('.form-group').show()
+		$("#q7 select").change(function() {
+      if($(this).val() == 'Autre'){
+      	console.log($(this).parents().eq(2))
+				$(this).parents().eq(2).find('.form-group').show()
       }else{
-      	$(this).parents().eq(3).siblings('.form-group').hide()
+      	$(this).parents().eq(2).find('.form-group').hide()
       }
 		});
 	},
@@ -149,8 +150,8 @@ var surveyManager = {
 	},
 	setupQ22: function(){
 		$('#q22a').hide()
-		$("#q22 .radio input").change(function() {
-      if($(this).parent().text() == 'Pas d\'enfants'){
+		$("#q22 select").change(function() {
+      if($(this).val() == 'Pas d\'enfants'){
 				$('#q22a').hide()
       }else{
       	$('#q22a').show()
