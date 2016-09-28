@@ -339,7 +339,7 @@ $(function() {
   surveyManager.setupQ17()
   surveyManager.setupQ17a()
   surveyManager.setupQ22()
-  makeSortableV2("q6", 4);
+  makeSortableV3("q6", 4);
   makeSortableV3("q2", 2);
 
   $('.precision').hide()
