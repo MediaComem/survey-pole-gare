@@ -180,7 +180,7 @@ var mapManager = {
     var vectorSource = new ol.source.Vector();
 
     var feats = []
-    $.get( "/plein.geojson", function( data ) {
+    $.get( "/vide.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
       feats = new ol.format.GeoJSON().readFeatures(data)
     });
@@ -320,7 +320,7 @@ var mapManager = {
     var vectorSource = new ol.source.Vector();
 
     var feats = []
-    $.get( "/vide.geojson", function( data ) {
+    $.get( "/plein.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
       feats = new ol.format.GeoJSON().readFeatures(data)
     });

@@ -19,19 +19,19 @@ class Survey < ApplicationRecord
     ['Marche','Vélo','Train','Bus','Métro','Voiture personnelle','Covoiturage','Mobility','Taxi','2 roues motorisé']
   end
   def self.q7_answers
-    ['Dans une rue du secteur','Dans une rue en dehors du secteur','Parking privé','Parking du Simplon','Parking de la Coop','Jamais en voiture','Autre']
+    ['Jamais en voiture','Dans une rue du secteur','Dans une rue en dehors du secteur','Parking privé','Parking du Simplon','Parking de la Coop','Autre']
   end
   def self.q9_answers
     ['Traverser','Shopping','Se promener','Se rencontrer & attendre','Manger sur le pouce','Autre']
   end
   def self.q10_answers
-    ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
+    ['Aucune','Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
   end
   def self.q101_answers
     ['Convivial','Villageois','Central','Calme','Bruyant','Animé','Bobo','Sympa','Sûr','Autre']
   end
   def self.q12_answers
-    ['Oui (enfants accompagnés)','Oui (enfants seuls)','Non']
+    ['Non','Oui (enfants accompagnés)','Oui (enfants seuls)']
   end
   def self.q12a_answers
     ['Aller à l’école','Aller à la garderie','Aller à la gare','Se promener','Shopping','Autre']
@@ -46,7 +46,7 @@ class Survey < ApplicationRecord
     ['Accroître la présence de la végétation ','Améliorer l\'éclairage','Créer/développer des places et parcs publics','Développer les espaces piétons','Accroître les infrastructures cyclables','Développer la signalétique (métro, lac, musées)','Animer le quartier avec les commerçants et habitants','Réduire le trafic automobile','Autre']
   end
   def self.q16_answers
-    ['Oui, et j’en suis heureux','Oui, et je le regrette','Non, et j’en suis heureux','Non, et je le regrette','Je ne sais pas']
+    ['Je ne sais pas','Oui, et j’en suis heureux','Oui, et je le regrette','Non, et j’en suis heureux','Non, et je le regrette']
   end
   def self.q17_answers
     ['Oui','Non']
@@ -67,7 +67,7 @@ class Survey < ApplicationRecord
     ['1','2','3','4','5','Plus de 5']
   end
   def self.q22_answers
-    ['1','2','3','4','Plus de 4','Pas d\'enfants']
+    ['Pas d\'enfants','1','2','3','4','Plus de 4']
   end
   def self.q22a_answers
     ['- de 5 ans','de 5 à 10 ans','de 11 à 15 ans','de 16 à 18 ans','+ de 18 ans']

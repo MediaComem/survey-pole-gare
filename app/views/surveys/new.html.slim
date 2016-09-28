@@ -1,7 +1,8 @@
 div 
   p.info 
     | Ce sondage ne vous prendra pas plus de 10 minutes. Il est optimisé pour les <strong>navigateurs récents</strong>, tablettes tactiles et smartphones y compris. 
-    br Il n'est pas obligatoire de répondre à toutes les questions.
+    br 
+    | Aucune question n’est obligatoire
   = form_for :survey, url: surveys_path do |f|
     #q1.question
       h3 Quelle est votre fréquentation moyenne du secteur ?
@@ -93,12 +94,12 @@ div
             = ff.text_field :autre_precision, :class => 'form-control other'
     #q8.question.only-for-frequentation
       h3 
-        | Quelles rues ou places fréquentez-vous régulièrement plusieurs fois par mois ?
+        | Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois) ?
         span.mobile-additional-info
           |&nbsp;(cliquer sur une ou plusieurs zones)
       .q8
         = f.fields_for :q8 do |ff|
-          - @quartiers_data_hash['features'].each do |n|
+          - @vide_data_hash['features'].each do |n|
             .checkbox
               label 
                 = n['properties']['id']
@@ -127,6 +128,25 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
+    #q11.question.only-for-frequentation
+      h3 
+        | Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ?
+        span.mobile-additional-info
+          |&nbsp;(cliquer sur une ou plusieurs zones)
+      .q11
+        = f.fields_for :q11 do |ff|
+          - @quartiers_data_hash['features'].each do |n|
+            .checkbox
+              label 
+                = n['properties']['id']
+                = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
+        .map-buttons
+          button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
+          .checkbox.select-zones
+            label
+              = check_box_tag 'select-zones-business'
+              | Tout sélectionner
+        #map-business.map-box
     #q10.question.only-for-frequentation
       h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
       = f.fields_for :q10 do |ff|
@@ -165,25 +185,6 @@ div
         .form-group.precision
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
-    #q11.question.only-for-frequentation
-      h3 
-        | Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ?
-        span.mobile-additional-info
-          |&nbsp;(cliquer sur une ou plusieurs zones)
-      .q11
-        = f.fields_for :q11 do |ff|
-          - @vide_data_hash['features'].each do |n|
-            .checkbox
-              label 
-                = n['properties']['id']
-                = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
-        .map-buttons
-          button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
-          .checkbox.select-zones
-            label
-              = check_box_tag 'select-zones-business'
-              | Tout sélectionner
-        #map-business.map-box
     #q12.question
       h3 Des enfants (moins de 15 ans) sous votre responsabilité se déplacent-ils dans le secteur ?
       = f.fields_for :q12 do |ff|
@@ -212,7 +213,7 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q13.question
-      h3 Etes-vous d’accord avec l’affirmation suivante ?
+      h3 Etes-vous d’accord avec les affirmations suivantes ?
       pre.gm-pre
         = fa_icon "thumbs-up"
         |&nbsp;
@@ -256,7 +257,7 @@ div
                       = ff.radio_button(item, [""],{checked: true})
                       | null 
     #q14.question
-      h3 Comment appréciez-vous ces différentes composantes du secteur ?
+      h3 Etes-vous satisfait par les composantes suivantes du secteur ?
       pre.gm-pre
         = fa_icon "smile-o"
         |&nbsp;
@@ -387,7 +388,7 @@ div
                   = f.radio_button(:q17b,"#{item}")
                   = item
     #q19.question
-      h3 Sexe ?
+      h3 Quel est votre sexe ?
       = f.fields_for :q19 do |ff|
         .row
           .col-sm-2.col-xs-6
@@ -533,6 +534,6 @@ div
       h3 Voulez-vous ajouter quelque chose ?
       = f.text_area(:q28, cols: 20, rows: 10, :class => 'form-control', :placeholder => "Saisissez ici votre message...")
     #q29.question
-      h3 Laissez nous votre adresse e-mail si vous souhaitez être informé des suites de la démarche participative
+      h3 Laissez-nous votre adresse e-mail si vous souhaitez être informé des suites de la démarche participative
       = f.text_field :q29, :class => 'form-control', :placeholder => "email"
     button class="btn form-control gm-submit btn-success" type="submit" Envoyer
