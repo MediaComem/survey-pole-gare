@@ -86,7 +86,7 @@ div
       = f.fields_for :q7 do |ff|
         .row
           .col-sm-12.col-md-6
-            = f.select(:q7, Survey.q7_answers, {:include_blank => true}, {:class => "form-control"})
+            = ff.select(:q7, Survey.q7_answers, {:include_blank => true}, {:class => "form-control"})
         .row
           .form-group.precision.col-sm-12.col-md-6
             label Veuillez préciser
