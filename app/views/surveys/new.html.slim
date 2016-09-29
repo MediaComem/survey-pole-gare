@@ -236,39 +236,26 @@ div
       h3 Etes-vous d’accord avec les affirmations suivantes ?
       pre.gm-pre
         = fa_icon "thumbs-up"
-        |&nbsp;
-        = fa_icon "thumbs-up"
-        |&nbsp;D’accord et important
-        br 
-        = fa_icon "thumbs-up"
-        |&nbsp;
-        = fa_icon "thumbs-up", class: "icon-alibi"
-        |&nbsp;D’accord mais peu important
+        |&nbsp;D’accord
         br 
         = fa_icon "thumbs-down"
-        |&nbsp;
-        = fa_icon "thumbs-down", class: "icon-alibi"
         |&nbsp;Pas d’accord
       = f.fields_for :q13 do |ff|
         - Survey.q13_answers.each do |item|
+          .row
+            .col-xs-12.col-md-6
               .panel.panel-default
                 .panel-heading
                   = item
                 .panel-body
                   .row
                     .col-xs-12
-                      .col-xs-4.text-center
+                      .col-xs-3.col-xs-offset-3.col-sm-2.col-sm-offset-4.text-center
                         label
-                          = ff.radio_button(item, ["D’accord et important"])
+                          = ff.radio_button(item, ["D’accord"])
                           div
                             = fa_icon "thumbs-up"
-                            = fa_icon "thumbs-up"
-                      .col-xs-4.text-center
-                        label
-                          = ff.radio_button(item, ["D’accord mais peu important"])
-                          div
-                            = fa_icon "thumbs-up"
-                      .col-xs-4.text-center
+                      .col-xs-3.col-sm-2.text-center
                         label
                           = ff.radio_button(item, ["Pas d’accord"])
                           div
