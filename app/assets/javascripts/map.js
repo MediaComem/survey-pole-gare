@@ -264,7 +264,7 @@ var mapManager = {
     }, false);
 
 
-    $('#map-select-all').on('click',function(e) {
+    $('#q8 #map-select-all').on('click',function(e) {
         e.preventDefault();
         var selectableFeatures = selectSingleClick.getFeatures()
         selectableFeatures.clear()
@@ -275,7 +275,7 @@ var mapManager = {
         }
     });
 
-    $('#map-unselect-all').on('click',function(e) {
+    $('#q8 #map-unselect-all').on('click',function(e) {
         e.preventDefault();
         var selectableFeatures = selectSingleClick.getFeatures()
         selectableFeatures.clear()
@@ -365,7 +365,6 @@ var mapManager = {
 
     selectSingleClick.on('select', function(e) {
       $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
-      $('#select-zones-business').prop('checked','')
       var tempFeatures = e.target.getFeatures().getArray()
 
       var valueArr = tempFeatures.map(function(item){ return item.get('id') });
@@ -392,7 +391,6 @@ var mapManager = {
       })
     });
 
-
     var centerMapButton = document.getElementById('map-business-center');
     centerMapButton.addEventListener('click', function(event) {
       event.preventDefault();
@@ -400,8 +398,8 @@ var mapManager = {
     }, false);
 
 
-    $('#select-zones-business').change(function() {
-      if(($(this).prop('checked'))){
+    $('#q11 #map-select-all').on('click',function(e) {
+        e.preventDefault();
         var selectableFeatures = selectSingleClick.getFeatures()
         selectableFeatures.clear()
         for (i = 0; i < feats.length; i++) { 
@@ -409,13 +407,15 @@ var mapManager = {
           var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid='+feats[i].get('id')+']')
           checkbox.prop('checked', 'checked');
         }
-      }else{
+    });
+
+    $('#q11 #map-unselect-all').on('click',function(e) {
+        e.preventDefault();
         var selectableFeatures = selectSingleClick.getFeatures()
         selectableFeatures.clear()
         for (i = 0; i < feats.length; i++) { 
           var checkbox = $('#map-business').siblings('.checkbox').find('input[data-polygonid]').prop('checked', '');
         }
-      }
     });
 
   },

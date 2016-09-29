@@ -125,11 +125,9 @@ div
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
         .map-buttons
-          button.btn.btn-success.center-map(id="map-business-center")Recentrer la carte
-          .checkbox.select-zones
-            label
-              = check_box_tag 'select-zones-business'
-              | Tout sélectionner
+          button.btn.center-map(id="map-business-center")Recentrer la carte
+          button.btn.select(id="map-select-all")Tout sélectionner
+          button.btn.select(id="map-unselect-all")Tout désélectionner
         #map-business.map-box
     #q10.question.only-for-frequentation
       h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
