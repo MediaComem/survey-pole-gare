@@ -264,7 +264,7 @@ var mapManager = {
     }, false);
 
 
-    $('#q8 #map-select-all').on('click',function(e) {
+    $('#q10 #map-select-all').on('click',function(e) {
         e.preventDefault();
         var selectableFeatures = selectSingleClick.getFeatures()
         selectableFeatures.clear()
@@ -275,7 +275,7 @@ var mapManager = {
         }
     });
 
-    $('#q8 #map-unselect-all').on('click',function(e) {
+    $('#q10 #map-unselect-all').on('click',function(e) {
         e.preventDefault();
         var selectableFeatures = selectSingleClick.getFeatures()
         selectableFeatures.clear()
@@ -398,7 +398,7 @@ var mapManager = {
     }, false);
 
 
-    $('#q11 #map-select-all').on('click',function(e) {
+    $('#q8 #map-select-all').on('click',function(e) {
         e.preventDefault();
         var selectableFeatures = selectSingleClick.getFeatures()
         selectableFeatures.clear()
@@ -409,7 +409,7 @@ var mapManager = {
         }
     });
 
-    $('#q11 #map-unselect-all').on('click',function(e) {
+    $('#q8 #map-unselect-all').on('click',function(e) {
         e.preventDefault();
         var selectableFeatures = selectSingleClick.getFeatures()
         selectableFeatures.clear()

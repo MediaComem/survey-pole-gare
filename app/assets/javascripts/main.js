@@ -61,8 +61,8 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ9: function(){
-		$("#q9 .checkbox input").change(function() {
+	setupQ11: function(){
+		$("#q11 .checkbox input").change(function() {
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(3).next('.form-group').show()
       }
@@ -94,8 +94,8 @@ var surveyManager = {
       }
 		});
 	},
-	setupQ10: function(){
-		$("#q10 .checkbox input").change(function() {
+	setupQ9: function(){
+		$("#q9 .checkbox input").change(function() {
       if($(this).parent().text() == 'Autre' && ($(this).prop('checked'))){
 				$(this).parents().eq(3).next('.form-group').show()
       }
@@ -331,10 +331,10 @@ $(function() {
   surveyManager.setupQ6()
   surveyManager.setupQ7()
   surveyManager.setupQ9()
+  surveyManager.setupQ11()
   surveyManager.setupQ101()
   surveyManager.setupQ12()
   surveyManager.setupQ12a()
-  surveyManager.setupQ10()
   surveyManager.setupQ15()
   surveyManager.setupQ17()
   surveyManager.setupQ17a()

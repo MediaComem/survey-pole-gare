@@ -21,10 +21,10 @@ class Survey < ApplicationRecord
   def self.q7_answers
     ['Jamais en voiture','Dans une rue du secteur','Dans une rue en dehors du secteur','Parking privé','Parking du Simplon','Parking de la Coop','Autre']
   end
-  def self.q9_answers
+  def self.q11_answers
     ['Traverser','Shopping','Se promener','Se rencontrer & attendre','Manger sur le pouce','Autre']
   end
-  def self.q10_answers
+  def self.q9_answers
     ['Aucune','Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
   end
   def self.q101_answers

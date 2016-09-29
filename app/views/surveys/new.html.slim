@@ -112,13 +112,13 @@ div
           .form-group.precision.col-sm-12.col-md-6
             label Veuillez préciser
             = ff.text_field :autre_precision, :class => 'form-control other'
-    #q11.question.only-for-frequentation
+    #q8.question.only-for-frequentation
       h3 
         | Où se situent les commerces et services que vous fréquentez régulièrement dans le secteur ?
         span.mobile-additional-info
           |&nbsp;(cliquer sur une ou plusieurs zones)
-      .q11
-        = f.fields_for :q11 do |ff|
+      .q8
+        = f.fields_for :q8 do |ff|
           - @quartiers_data_hash['features'].each do |n|
             .checkbox
               label 
@@ -129,44 +129,8 @@ div
           button.btn.select(id="map-select-all")Tout sélectionner
           button.btn.select(id="map-unselect-all")Tout désélectionner
         #map-business.map-box
-    #q10.question.only-for-frequentation
-      h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
-      = f.fields_for :q10 do |ff|
-        .row
-          .col-sm-4
-            - Survey.q10_answers.in_groups(2)[0].each do |item|
-              .checkbox
-                label
-                  = ff.check_box "#{item}"
-                  = item
-          .col-sm-4
-            - Survey.q10_answers.in_groups(2)[1].compact.each do |item|
-              .checkbox
-                label
-                  = ff.check_box "#{item}"
-                  = item
-        .form-group.precision
-          label Veuillez préciser
-          = ff.text_field :autre_precision, :class => 'form-control other'
-    #q8.question.only-for-frequentation
-      h3 
-        | Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois) ?
-        span.mobile-additional-info
-          |&nbsp;(cliquer sur une ou plusieurs zones)
-      .q8
-        = f.fields_for :q8 do |ff|
-          - @vide_data_hash['features'].each do |n|
-            .checkbox
-              label 
-                = n['properties']['id']
-                = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
-        .map-buttons
-          button.btn.center-map(id="map-visits-center")Recentrer la carte
-          button.btn.select(id="map-select-all")Tout sélectionner
-          button.btn.select(id="map-unselect-all")Tout désélectionner
-        #map-visits.map-box
     #q9.question.only-for-frequentation
-      h3 Que faites-vous dans ces rues ou places ?
+      h3 Quelle(s) catégorie(s) de commerces et services fréquentez-vous régulièrement (plusieurs fois par mois) dans le secteur ?
       = f.fields_for :q9 do |ff|
         .row
           .col-sm-4
@@ -177,6 +141,42 @@ div
                   = item
           .col-sm-4
             - Survey.q9_answers.in_groups(2)[1].compact.each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+        .form-group.precision
+          label Veuillez préciser
+          = ff.text_field :autre_precision, :class => 'form-control other'
+    #q10.question.only-for-frequentation
+      h3 
+        | Quelles rues ou places fréquentez-vous régulièrement (plusieurs fois par mois) ?
+        span.mobile-additional-info
+          |&nbsp;(cliquer sur une ou plusieurs zones)
+      .q10
+        = f.fields_for :q10 do |ff|
+          - @vide_data_hash['features'].each do |n|
+            .checkbox
+              label 
+                = n['properties']['id']
+                = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
+        .map-buttons
+          button.btn.center-map(id="map-visits-center")Recentrer la carte
+          button.btn.select(id="map-select-all")Tout sélectionner
+          button.btn.select(id="map-unselect-all")Tout désélectionner
+        #map-visits.map-box
+    #q11.question.only-for-frequentation
+      h3 Que faites-vous dans ces rues ou places ?
+      = f.fields_for :q11 do |ff|
+        .row
+          .col-sm-4
+            - Survey.q11_answers.in_groups(2)[0].each do |item|
+              .checkbox
+                label
+                  = ff.check_box "#{item}"
+                  = item
+          .col-sm-4
+            - Survey.q11_answers.in_groups(2)[1].compact.each do |item|
               .checkbox
                 label
                   = ff.check_box "#{item}"
