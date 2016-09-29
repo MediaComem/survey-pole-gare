@@ -4,7 +4,7 @@ class Survey < ApplicationRecord
     ['Au moins une fois par jour', 'Au moins une fois par semaine', 'Occasionnellement', 'Jamais']
   end
 	def self.q2_answers
-    ['Usager des commerces ou des services', 'Habitant', 'Commerçant', 'Usager de la gare', 'Employé ou indépendant']
+    ['Usager des commerces ou des services', 'Habitant', 'Commerçant', 'Usager de la gare', 'Employé/Indépendant', 'Employeur']
   end
   def self.q3_answers
     ['Moins d’un an', '1 à 2 ans', '3 à 4 ans', '5 à 6 ans', 'Plus de 6 ans']
@@ -22,7 +22,7 @@ class Survey < ApplicationRecord
     ['Jamais en voiture','Dans une rue du secteur','Dans une rue en dehors du secteur','Parking privé','Parking du Simplon','Parking de la Coop','Autre']
   end
   def self.q11_answers
-    ['Traverser','Shopping','Se promener','Se rencontrer & attendre','Manger sur le pouce','Autre']
+    ['Traverser','Shopping ou services','Se promener','Se rencontrer & attendre','Manger sur le pouce','Autre']
   end
   def self.q9_answers
     ['Aucune','Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
@@ -52,7 +52,7 @@ class Survey < ApplicationRecord
     ['Oui','Non']
   end
   def self.q17a_answers
-    ['Gare Léman 2030','Nouvelle place des Saugettes','Plateforme10 Pôle muséal','Projet Rasude','Métro M3','Démolitions','Autre']
+    ['Projet Léman 2030','Nouvelle place dite "des Saugettes"','Plateforme10 (pôle muséal)','Projet Rasude','Nouveau métro M3','Démolitions','Autre']
   end
   def self.q17b_answers
     ['Enthousiaste','Confiant','Indifférent','Méfiant','Opposé']
