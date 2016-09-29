@@ -7,9 +7,16 @@ $color-pole-gare: #1a4a5b;
   background-color: $color-pole-gare;
   border-color: $color-pole-gare;
 }
-#block{
+#slogan{
 	height: 50px;
 	width:100%;
+	color: white;
+	font-size: 34px;
+	@media (max-width: 450px) {
+		font-size: 24px;
+		padding-top: 5px;
+	}
+	font-style: italic;
 	background-color: $color-pole-gare;
 }
 p.info {
