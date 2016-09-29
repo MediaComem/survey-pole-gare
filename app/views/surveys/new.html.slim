@@ -40,13 +40,13 @@ div
     #q3.question.only-for-frequentation
       h3 Depuis combien de temps fréquentez-vous ce secteur?
       .row
-        .col-sm-2.col-xs-6
+        .col-sm-3.col-md-2.col-xs-12
           - Survey.q3_answers.in_groups(2)[0].each do |item|
             .radio
               label
                 = f.radio_button(:q3,"#{item}")
                 = item
-        .col-sm-2.col-xs-6
+        .col-sm-3.col-md-2.col-xs-12
           - Survey.q3_answers.in_groups(2)[1].compact.each do |item|
             .radio
               label
@@ -56,13 +56,13 @@ div
       h3 A quelle(s) période(s) de la journée fréquentez-vous le secteur ?
       = f.fields_for :q4 do |ff|
         .row
-          .col-sm-2.col-xs-6
+          .col-sm-3.col-md-2.col-xs-12
             - Survey.q4_answers.in_groups(2)[0].each do |item|
                 .checkbox
                   label
                     = ff.check_box "#{item}"
                     = item
-          .col-sm-2.col-xs-6
+          .col-sm-3.col-md-2.col-xs-12
             - Survey.q4_answers.in_groups(2)[1].compact.each do |item|
                 .checkbox
                   label
@@ -72,13 +72,13 @@ div
       h3 Lorsque vous êtes dans le secteur, combien de temps y restez-vous en moyenne ?
       = f.fields_for :q5 do |ff|
         .row
-          .col-sm-2.col-xs-6
+          .col-sm-3.col-md-2.col-xs-12
             - Survey.q5_answers.in_groups(2)[0].each do |item|
               .radio
                 label
                   = f.radio_button(:q5,"#{item}")
                   = item
-          .col-sm-3.col-xs-6
+          .col-sm-3.col-md-2.col-xs-12
             - Survey.q5_answers.in_groups(2)[1].compact.each do |item|
               .radio
                 label
@@ -163,9 +163,9 @@ div
                 = n['properties']['id']
                 = ff.check_box n['properties']['id'], {'data-polygonid'=>n['properties']['id']}
         .map-buttons
-          button.btn.btn-success.center-map(id="map-visits-center")Recentrer la carte
-          button.btn.btn-success.select(id="map-select-all")Tout sélectionner
-          button.btn.btn-success.select(id="map-unselect-all")Tout désélectionner
+          button.btn.center-map(id="map-visits-center")Recentrer la carte
+          button.btn.select(id="map-select-all")Tout sélectionner
+          button.btn.select(id="map-unselect-all")Tout désélectionner
         #map-visits.map-box
     #q9.question.only-for-frequentation
       h3 Que faites-vous dans ces rues ou places ?

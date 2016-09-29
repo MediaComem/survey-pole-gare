@@ -3,10 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $color-pole-gare: #1a4a5b;
-.btn, .btn:hover{
+.btn, .btn:hover,.btn:visited,.btn:active,.btn:focus{
   background-color: $color-pole-gare;
   border-color: $color-pole-gare;
+  color: white;
 }
+.btn:active{
+  background-color: #356778;
+  border-color: #356778;
+  color: white;
+}
+.map-buttons .btn {
+  margin-left: 2%;
+  margin-right: 0px;
+  font-size: smaller;
+  white-space: normal !important;
+	&:first-child{
+		margin-left: 0;
+		width: 26%
+	}
+	&:nth-child(2){
+		width: 35%
+	}
+	&:nth-child(3){
+		width: 35%
+	}
+	@media (min-width: 768px) {
+    width: 25% !important;
+    font-size: 14px;
+	}
+}
+
 #slogan{
 	height: 50px;
 	width:100%;
@@ -241,18 +268,18 @@ li {
 	border: 1px dashed #939393;
 	background-color: #ececec;
 }
-.map-buttons {
-  display: flex; /* or inline-flex */
-  flex-wrap: wrap;
-  .checkbox, .btn-success{
-  	margin-left: 20px;
-  	margin-bottom: 10px;
-  	margin-top: 10px;
-  }
-  .btn-success:first-child{
-  	margin-left: 0;
-  }
-}
+// .map-buttons {
+//   display: flex; /* or inline-flex */
+//   flex-wrap: wrap;
+//   .checkbox, .btn-success{
+//   	margin-left: 20px;
+//   	margin-bottom: 10px;
+//   	margin-top: 10px;
+//   }
+//   .btn-success:first-child{
+//   	margin-left: 0;
+//   }
+// }
 .gm-selectable {
 	list-style:  none;
 	border-bottom: 1px solid #777;
@@ -269,6 +296,7 @@ li {
 #q2, #q6{
 	.btn{
 		background-color: white;
+		color: black;
 	}
 	.gm-selected li{
 		color: white;
@@ -350,3 +378,10 @@ pre.gm-pre {
 .icon-alibi{
 	visibility: hidden;
 }
+.row > div:nth-child(2){
+	.radio:first-child,.checkbox:first-child{
+		@media (max-width: 768px) {
+			margin-top:-5px;
+		}
+	}	
+} 
