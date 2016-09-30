@@ -474,6 +474,18 @@ var mapManager = {
       width: 2
     })
   },
+  mapExist: function(id){
+    console.log("mapExist")
+    for (var i = 0, l = mapManager.mapsObjects.length; i < l; i++) {
+      var map = mapManager.mapsObjects[i];
+      console.log(map.getTarget())
+      if(map.getTarget() == id){
+        return true
+      }else{
+        console.log("ELLE EXISTE PAS")
+      }
+    }
+  },
   disableZoomAndPanWhenScrolling: function(){
     var scrollStarted = false
     var timer = null; 
@@ -587,7 +599,8 @@ var locationChoice = function(elem,radiogroup,qn){
       
       console.log($(elem).attr('id'))
       $(elem).show()
-      if($(elem).attr('id') == "home-map"){
+      mapManager.mapExist($(elem).attr('id'))
+      if($(elem).attr('id') == "home-map" && !mapManager.mapExist($(elem).attr('id'))){
         mapManager.initHomeMap()
         checkScreenSize()
       }else{
