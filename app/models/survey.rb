@@ -25,7 +25,7 @@ class Survey < ApplicationRecord
     ['Traverser','Shopping ou services','Se promener','Se rencontrer & attendre','Manger sur le pouce','Autre']
   end
   def self.q9_answers
-    ['Aucune','Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
+    ['Supermarchés','Petits commerces','Cafés','Restaurants','Marché','Associations','Santé','Sport et beauté','Autre']
   end
   def self.q101_answers
     ['Convivial','Villageois','Central','Calme','Bruyant','Animé','Bobo','Sympa','Sûr','Autre']
