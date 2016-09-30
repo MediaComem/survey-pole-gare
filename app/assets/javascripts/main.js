@@ -287,6 +287,7 @@ var makeSortableV3 = function(questionId, maxActiveElements) {
         }
         
         if (activeElementsCount === maxActiveElements -1){                // When the maximum number of options is reached, visually display that no more can be added.
+            console.log($(inactiveEl).children('li'))
             $(inactiveEl).children('li').addClass("gm-inactive");
             $(inactiveEl).find('.btn').addClass('btn-disabled');
         }

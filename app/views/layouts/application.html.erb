@@ -14,13 +14,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag 'favicon.ico' %>
+     <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
 
   <body>
     <div id="slogan">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">«Sous-Gare, prend Place»</div>
+          <div class="col-md-12"></div>
         </div>
       </div>
     </div>
@@ -36,12 +37,7 @@
         </div>
         <div class="row" id="sous-gare">
           <div class="col-md-12">
-            <div class="desktop">
-              <%= image_tag("header.jpg") %>
-            </div>
-            <div class="mobile">
-              <%= image_tag("header-mobile.jpg") %>
-            </div>
+            <p><b>« Sous-Gare, prends Place ! »</b> enquête en ligne du 3 au 31 octobre 2016. Votre avis nous intéresse!</p>
           </div>
         </div>
       </header>

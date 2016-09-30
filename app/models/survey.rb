@@ -4,7 +4,7 @@ class Survey < ApplicationRecord
     ['Au moins une fois par jour', 'Au moins une fois par semaine', 'Occasionnellement', 'Jamais']
   end
 	def self.q2_answers
-    ['Usager des commerces ou des services', 'Habitant', 'Commerçant', 'Usager de la gare', 'Employé/Indépendant', 'Employeur']
+    ['Usager des commerces ou des services', 'Habitant', 'Commerçant', 'Usager de la gare', 'Employé/Indépendant/Employeur']
   end
   def self.q3_answers
     ['Moins d’un an', '1 à 2 ans', '3 à 4 ans', '5 à 6 ans', 'Plus de 6 ans']
@@ -67,7 +67,7 @@ class Survey < ApplicationRecord
     ['1','2','3','4','5','Plus de 5']
   end
   def self.q22_answers
-    ['Pas d\'enfants','1','2','3','4','Plus de 4']
+    ['Pas d\'enfant','1','2','3','4','Plus de 4']
   end
   def self.q22a_answers
     ['- de 5 ans','de 5 à 10 ans','de 11 à 15 ans','de 16 à 18 ans','+ de 18 ans']
