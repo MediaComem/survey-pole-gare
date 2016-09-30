@@ -79,21 +79,42 @@ body.thanks {
 		margin: 20px 0;
 		width: 100%;
 	}
-	.fb-share-button {
+	.fb-share-button, .twitter-button, .mail-button {
 		display: inline-block;
 	}
 
+	.fb-share-button {
+		position: relative;
+		top: 2px;
+	}
+
+	.twitter-button {
+		margin-left: 7px;
+		position: relative;
+		top: 5px;
+	}
+
 	button{
-    background-color: #a8a8a8; /* Green */
-    border: none;
-    color: white;
-    border-radius: 6px;
-    padding: 8px 10px;
-    margin-left: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+		position: relative;
+	    background-color: #a8a8a8; /* Green */
+	    border: none;
+	    color: white;
+	    border-radius: 6px;
+	    padding: 5px 8px;
+	    margin-left: 7px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 16px;
+	    top: -3px;
+	    &:hover {
+	    	background-color: #7f8c8d;
+	    	cursor: hand;
+	    }
+	    a {
+	    	text-decoration: none;
+	    	color: white;
+	    }
 	}
 
 	.container {
@@ -166,13 +187,13 @@ body.thanks {
 	}
 
 	/* Triangles */
-	.ss-style-triangles::after {
-		left: 50%;
-		width: $trangleSize;
-		height: $trangleSize;
-		-webkit-transform: translateX(-50%) rotate(45deg);
-		transform: translateX(-50%) rotate(45deg);
-	}
+	// .ss-style-triangles::after {
+	// 	left: 50%;
+	// 	width: $trangleSize;
+	// 	height: $trangleSize;
+	// 	-webkit-transform: translateX(-50%) rotate(45deg);
+	// 	transform: translateX(-50%) rotate(45deg);
+	// }
 
 	.ss-style-triangles::after {
 		bottom: -$trangleSize / 2;
@@ -192,6 +213,11 @@ body.thanks {
 	}
 
 	@media screen and (max-width: 884px) {
+		#image {
+			height: 200px;
+			overflow: hidden;
+		}
+
 		.column {
 			display: block;
 			width: 100% !important;
