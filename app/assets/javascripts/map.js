@@ -61,7 +61,7 @@ var mapManager = {
     mapManager.mapsObjects.push(map);
 
     selectSingleClick.on('select', function(e) {
-    	console.log(e.target.getFeatures().item(0).get('id'))
+    	
       $('#home-map').siblings('.gm-city-autocomplete').find('input[name*=q26]').val(e.target.getFeatures().item(0).get('id'))
       $('#home-map').siblings('.mapPlaceId').attr('data-id',e.target.getFeatures().item(0).get('id'))
     });
@@ -475,14 +475,14 @@ var mapManager = {
     })
   },
   mapExist: function(id){
-    console.log("mapExist")
+    
     for (var i = 0, l = mapManager.mapsObjects.length; i < l; i++) {
       var map = mapManager.mapsObjects[i];
-      console.log(map.getTarget())
+      
       if(map.getTarget() == id){
         return true
       }else{
-        console.log("ELLE EXISTE PAS")
+        
       }
     }
   },
@@ -597,7 +597,7 @@ var locationChoice = function(elem,radiogroup,qn){
       
       $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input").typeahead('destroy');
       
-      console.log($(elem).attr('id'))
+      
       $(elem).show()
       mapManager.mapExist($(elem).attr('id'))
       if($(elem).attr('id') == "home-map" && !mapManager.mapExist($(elem).attr('id'))){
@@ -612,7 +612,7 @@ var locationChoice = function(elem,radiogroup,qn){
     }
     if($(this).val() == 'commune'){
       
-      console.log($(elem))
+      
       $(elem).siblings('.map-tools').hide();
       $(elem).hide();
       var engine = new Bloodhound({
@@ -620,7 +620,7 @@ var locationChoice = function(elem,radiogroup,qn){
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         datumTokenizer: Bloodhound.tokenizers.whitespace
       });
-      console.log($(elem).siblings())
+      
       $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input").typeahead({hint: true, highlight: true}, {source: engine});
       $(elem).siblings('.gm-city-autocomplete').find(".gm-city-autocomplete-input:nth-child(2)").attr("placeholder", "Indiquez le nom de la ville");
       $(elem).siblings('.gm-city-autocomplete').find('input[name*=q'+qn+' ]').show();

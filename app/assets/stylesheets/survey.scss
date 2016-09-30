@@ -297,6 +297,15 @@ li {
 			height: 33px;
 		}
 	}
+	.btn-disabled{
+		color: #bbb !important;
+	}
+	&.gm-inactive {
+  	color: #bbb;
+	}
+}
+.gm-form{
+
 }
 #q2, #q6{
 	.btn{
@@ -316,6 +325,8 @@ li {
 	top: 3px;
 	margin-left: 12px;
 }
+
+
 
 .gm-selected {
 	margin-bottom: 50px;
