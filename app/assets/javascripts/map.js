@@ -603,7 +603,8 @@ var locationChoice = function(elem,radiogroup,qn){
       if($(elem).attr('id') == "home-map" && !mapManager.mapExist($(elem).attr('id'))){
         mapManager.initHomeMap()
         checkScreenSize()
-      }else{
+      }
+      if($(elem).attr('id') == "work-map" && !mapManager.mapExist($(elem).attr('id'))){
         mapManager.initWorkMap()
         checkScreenSize()
       }
