@@ -237,7 +237,8 @@ div
         = fa_icon "thumbs-down"
         |&nbsp;Pas d’accord
         br
-        |Sans avis : laisser vide
+        br
+        |Sans avis: laisser vide
       = f.fields_for :q13 do |ff|
         - Survey.q13_answers.each do |item|
           .row
@@ -276,7 +277,8 @@ div
         span.icon-S1
         |&nbsp;Pas du tout satisfait
         br
-        |Sans avis : laisser vide
+        br
+        |Sans avis: laisser vide
       = f.fields_for :q14 do |ff|
         - Survey.q14_answers.each do |item|
               .panel.panel-default
