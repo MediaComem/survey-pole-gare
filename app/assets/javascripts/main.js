@@ -151,7 +151,7 @@ var surveyManager = {
 	setupQ22: function(){
 		$('#q22a').hide()
 		$("#q22 select").change(function() {
-      if($(this).val() == 'Pas d\'enfants'){
+      if($(this).val() == 'Pas d\'enfant'){
 				$('#q22a').hide()
       }else{
       	$('#q22a').show()
@@ -287,7 +287,6 @@ var makeSortableV3 = function(questionId, maxActiveElements) {
         }
         
         if (activeElementsCount === maxActiveElements -1){                // When the maximum number of options is reached, visually display that no more can be added.
-            console.log($(inactiveEl).children('li'))
             $(inactiveEl).children('li').addClass("gm-inactive");
             $(inactiveEl).find('.btn').addClass('btn-disabled');
         }
