@@ -16,7 +16,7 @@ class SurveysController < ApplicationController
   	redirect_to action: "thanks"
 	end
   def thanks
-    
+    render layout: "thanks"
   end
   def admin
     @users = Survey.all

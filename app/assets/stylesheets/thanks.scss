@@ -1,0 +1,224 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+$color1: white;
+$footer: #ffee00;
+$darkBlue:  #1a4a5b;
+$cloudColor:#ecf0f1;
+$trangleSize: 80px;
+
+body.thanks {
+	margin: 0;
+	padding: 0;
+	color: $darkBlue;
+	background: $color1;
+	font-family: 'Lato', Arial, sans-serif;
+	padding:0px;
+	margin:0px;
+
+	.container{
+		overflow: hidden;
+		width:100%;
+		margin:0px;
+	}
+	.header {
+		height: 100px;
+		width: 100%;
+		background-color: $darkBlue;
+		margin-bottom: 0;
+	}
+	.row {
+		width: 100%;
+		background-color: red;
+		overflow: auto;
+	}
+
+	.footer {
+		background-color: $footer;
+	}
+	.main{
+		background-color: $color1;
+	}
+	.content {
+		padding: 5%;
+	}
+	h1 {
+		margin-top: 80px;
+		font-size: 4em;
+		
+	}
+	h4 {
+		font-size: medium;
+		margin-bottom: 30px;
+	}
+
+	*, *:after, *::before {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.illu {
+		width: 100%;
+		margin-bottom: -4px;
+	}
+	.logos {
+		vertical-align: bottom;
+	}
+	.logo {
+		width: 40%;
+		float: right;
+	}
+	.logo:first-child {
+		float: left;
+	}
+
+	.footer .column {
+		padding: 50px;
+		text-align: center;
+	}
+
+	.social, .link {
+		margin: 20px 0;
+		width: 100%;
+	}
+	.fb-share-button {
+		display: inline-block;
+	}
+
+	button{
+    background-color: #a8a8a8; /* Green */
+    border: none;
+    color: white;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-left: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	}
+
+	.container {
+		width:100%;
+		margin:0px;
+		/* we don't want the pseudo-elements sticking out */
+	}
+
+	.container svg {
+		display: block;
+	}
+
+	section {
+		position: relative;
+		background: $color1;
+	}
+
+	section h2 {
+		margin: 0;
+		padding: 0;
+		font-size: 2.8em;
+		font-weight: 400;
+	}
+
+	section p {
+		color: lighten($color1, 65%);
+		font-size: 1.3em;
+		line-height: 1.5;
+	}
+
+	.text:first-child {
+		text-align: right;
+	}
+
+	.text:nth-child(2) {
+		text-align: left;
+	}
+
+	.col-2 .column {
+		width: 49%;
+	}
+
+	.col-3 .column {
+		padding: 0 1%;
+		width: 33%;
+		text-align: center;
+	}
+
+	.col-3 .column p {
+		padding: 1.4em;
+	}
+
+	.column {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+
+	.color {
+		background: darken($color1, 7%);
+	}
+
+	/*** Individual section styles and separators ***/
+
+	/* Common style for pseudo-elements */
+	section::after {
+		position: absolute;
+		content: '';
+		pointer-events: none;
+	}
+
+	/* Triangles */
+	.ss-style-triangles::after {
+		left: 50%;
+		width: $trangleSize;
+		height: $trangleSize;
+		-webkit-transform: translateX(-50%) rotate(45deg);
+		transform: translateX(-50%) rotate(45deg);
+	}
+
+	.ss-style-triangles::after {
+		bottom: -$trangleSize / 2;
+		z-index: 10;
+		background: inherit;
+	}
+
+	/* Media Queries for the layout */
+	@media screen and (max-width: 68em) {
+		section {
+			font-size: 80%;
+		}
+		.illu {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+
+	@media screen and (max-width: 884px) {
+		.column {
+			display: block;
+			width: 100% !important;
+		}
+
+		.text:first-child,
+		.text:nth-child(2) {
+			text-align: center;
+		}
+
+		.icon {
+			margin: 0 auto;
+		}
+
+		.col-2 .column:first-child .icon {
+			margin: 0 auto 50px;
+		}
+
+		.col-2 .column:nth-child(2) .icon {
+		//margin: 50px auto 0;
+	}
+	.logo {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.footer .column:first-child {
+		padding-top: 100px;
+	}
+}
+}

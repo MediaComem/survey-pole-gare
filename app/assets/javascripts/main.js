@@ -347,8 +347,15 @@ $(function() {
     $("input").removeAttr("disabled");
 	});
 	$("form").bind("keypress", function(e) {
-	    if (e.keyCode == 13) {
-	      return false;
-	    }
-	  });
+    if (e.keyCode == 13) {
+      return false;
+    }
+  });
+  $(window).resize(function() {
+		if(Modernizr.mq('(max-width: 884px)')){	
+			$('#image').insertAfter('.footer');
+		} else {
+			$('#image').insertBefore('.content');
+		}
+	});
 })

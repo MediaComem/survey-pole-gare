@@ -1,1 +1,31 @@
-h1 Thanks
+section.col-2.main.ss-style-triangles
+	#image.column
+		= image_tag("photoPG.png", class: "illu")
+	.content.column
+		.logos
+			= image_tag("lausanne.png", class: "logo")
+			= image_tag("polegare.png", class: "logo")
+		h1 
+			| Sous-Gare
+			br
+			| prends Place !
+		h4 Merci pour votre participation, nous nous réjouissons de découvrir vos réponses !</h4>
+.col-2.footer
+	.column
+		span Partagez le sondage avec votre entourage !
+		.social
+			.fb-share-button(data-href="http://www.polegare.ch/" data-layout="button_count")
+			button Envoyer par mail
+	.column
+		span Pour plus d'informations sur le projet Pôle Gare
+		.link
+			a(href="http://www.polegare.ch/") polegare.ch
+#fb-root
+javascript:
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.7&appId=561505900538545";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
