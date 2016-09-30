@@ -29,7 +29,7 @@ body.thanks {
 	}
 	.row {
 		width: 100%;
-		background-color: red;
+		// background-color: red;
 		overflow: auto;
 	}
 
@@ -59,17 +59,38 @@ body.thanks {
 	}
 	.illu {
 		width: 100%;
-		margin-bottom: -4px;
+		// margin-bottom: -4px;
 	}
 	.logos {
 		vertical-align: bottom;
 	}
-	.logo {
-		width: 40%;
-		float: right;
+	// .logo {
+	// 	width: 40%;
+	// 	// float: right;
+	// }
+	.gmcol {
+		text-align: right
 	}
-	.logo:first-child {
-		float: left;
+	// .logo:first-child {
+	// 	float: left;
+	// }
+	
+	.centershare {
+		text-align: center;
+		margin-top: 100px;
+	}
+
+	.biggerlogo {
+		img {
+			max-width: 300px;
+		}
+	}
+	
+	.footer {
+		.row {
+			text-align: center;
+			padding: 20px 0;
+		}
 	}
 
 	.footer .column {
@@ -88,12 +109,21 @@ body.thanks {
 	.fb-share-button {
 		position: relative;
 		top: 2px;
+		margin-right: 5px;
 	}
 
 	.twitter-button {
 		margin-left: 7px;
 		position: relative;
-		top: 5px;
+		top: 7px;
+	}
+
+	.mail-button {
+		position: relative;
+		top: -3px;
+		.btn {
+			padding: 3px 8px;
+		}
 	}
 
 	button{
@@ -156,7 +186,7 @@ body.thanks {
 	}
 
 	.col-2 .column {
-		width: 49%;
+		width: 50%;
 	}
 
 	.col-3 .column {
@@ -172,6 +202,10 @@ body.thanks {
 	.column {
 		display: inline-block;
 		vertical-align: top;
+	}
+
+	.ta-right {
+		text-align: right;
 	}
 
 
@@ -212,13 +246,21 @@ body.thanks {
 			width: 100%;
 			margin-left: 0;
 		}
+
+		.centershare {
+			margin-top: 20px;
+		}
+
+		.fb-share-button {
+			top: 5px;
+		}
+
+		.logo {
+			width: 75%;
+		}
 	}
 
 	@media screen and (max-width: 884px) {
-		#image {
-			height: 200px;
-			overflow: hidden;
-		}
 
 		.column {
 			display: block;
