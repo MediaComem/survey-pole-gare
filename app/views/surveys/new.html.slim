@@ -342,7 +342,7 @@ div
           .col-sm-12.col-md-6
             = f.select(:q16, Survey.q16_answers, {:include_blank => true}, {:class => "form-control"})
     #q17.question
-      h3 Avez-vous connaissance des futurs projets dans le secteur ?
+      h3 Avez-vous connaissance des futurs projets dans le secteur (p.ex. Léman 2030, Plateforme 10)?
       = f.fields_for :q17 do |ff|
         .row
           .col-sm-2.col-xs-6
