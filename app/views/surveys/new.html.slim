@@ -267,22 +267,22 @@ div
         = fa_icon "smile-o"
         |&nbsp;
         = fa_icon "smile-o"
-        |&nbsp;Très satisfaisant
+        |&nbsp;Très satisfait
         br 
         = fa_icon "smile-o"
         |&nbsp;
         = fa_icon "smile-o", class: "icon-alibi"
-        |&nbsp;Satisfaisant
+        |&nbsp;Satisfait
         br 
         = fa_icon "frown-o"
         |&nbsp;
         = fa_icon "frown-o", class: "icon-alibi"
-        |&nbsp;Peu satisfaisant
+        |&nbsp;Peu satisfait
         br 
         = fa_icon "frown-o"
         |&nbsp;
         = fa_icon "frown-o"
-        |&nbsp;Pas du tout satisfaisant
+        |&nbsp;Pas du tout satisfait
       = f.fields_for :q14 do |ff|
         - Survey.q14_answers.each do |item|
               .panel.panel-default
@@ -293,23 +293,23 @@ div
                     .col-xs-12
                       .col-xs-3.text-center
                         label
-                          = ff.radio_button(item, ["Très satisfaisant"])
+                          = ff.radio_button(item, ["Très satisfait"])
                           div
                             = fa_icon "smile-o"
                             = fa_icon "smile-o"
                       .col-xs-3.text-center
                         label
-                          = ff.radio_button(item, ["Satisfaisant"])
+                          = ff.radio_button(item, ["Satisfait"])
                           div
                             = fa_icon "smile-o"
                       .col-xs-3.text-center
                         label
-                          = ff.radio_button(item, ["Peu satisfaisant"])
+                          = ff.radio_button(item, ["Peu satisfait"])
                           div
                             = fa_icon "frown-o"
                       .col-xs-3.text-center
                         label
-                          = ff.radio_button(item, ["Pas du tout satisfaisant"])
+                          = ff.radio_button(item, ["Pas du tout satisfait"])
                           div
                             = fa_icon "frown-o"
                             = fa_icon "frown-o"
@@ -539,6 +539,6 @@ div
       h3 Voulez-vous ajouter quelque chose ?
       = f.text_area(:q28, cols: 20, rows: 10, :class => 'form-control', :placeholder => "Saisissez ici votre message...")
     #q29.question
-      h3 Laissez-nous votre adresse e-mail si vous souhaitez recevoir le résultats du sondage
+      h3 Laissez-nous votre adresse e-mail si vous souhaitez recevoir les résultats du sondage
       = f.text_field :q29, :class => 'form-control', :placeholder => "email"
     button class="btn form-control gm-submit" type="submit" Envoyer
