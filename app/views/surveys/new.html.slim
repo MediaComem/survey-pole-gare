@@ -251,12 +251,12 @@ div
                     .col-xs-12
                       .col-xs-3.col-xs-offset-3.col-sm-2.col-sm-offset-4.text-center
                         label
-                          = ff.radio_button(item, ["D’accord"])
+                          = ff.radio_button(item, ["D\’accord"])
                           div
                             = fa_icon "thumbs-up"
                       .col-xs-3.col-sm-2.text-center
                         label
-                          = ff.radio_button(item, ["Pas d’accord"])
+                          = ff.radio_button(item, ["Pas d\’accord"])
                           div
                             = fa_icon "thumbs-down"
                     .hidden
@@ -371,7 +371,7 @@ div
           label Veuillez préciser
           = ff.text_field :autre_precision, :class => 'form-control other'
     #q17b.question
-      h3 17b. Comment vous sentez-vous face à ces changements?
+      h3 Comment vous sentez-vous face à ces changements?
       = f.fields_for :q17b do |ff|
         .row
           .col-sm-6
