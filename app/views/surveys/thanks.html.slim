@@ -1,15 +1,15 @@
 section.col-2.main.ss-style-triangles
-	.content.column.pull-right
-		.logos
-			= image_tag("polegare.png", class: "logo")
+	#image.column
+		= image_tag("photoPG.jpg", class: "illu")
+	.content.column
+		.logos.hidden-sm
 			= image_tag("lausanne.png", class: "logo")
+			= image_tag("polegare.png", class: "logo")
 		h1 
 			| Sous-Gare,
 			br
 			| prends Place !
 		h4 Merci pour votre participation, nous nous réjouissons de découvrir vos réponses !
-	#image.column
-		= image_tag("photoPG.jpg", class: "illu")
 .col-2.footer
 	.column
 		span Partagez le sondage avec votre entourage !
@@ -18,7 +18,7 @@ section.col-2.main.ss-style-triangles
 			.mail-button
 				a.btn.btn-default(href="mailto:?subject=Sous-Gare, prends Place!&body=J'ai répondu au sondage, essaie aussi! http://sondage.pole-gare.ch" role="button") Envoyer par mail
 			.twitter-button
-				a.twitter-share-button.(href="https://twitter.com/share" data-show-count="false" data-size="large" data-text="Sous-Gare, prends Place! Donne aussi ton avis sur http://sondage.pole-gare.ch" data-url="http://sondage.polegare.ch") Tweet
+				a.twitter-share-button.(href="https://twitter.com/share" data-show-count="false" data-size="large" data-text="Sous-Gare, prends Place! Donnez-nous votre avis..." data-url="http://sondage.polegare.ch") Tweet
 	.column
 		span Pour plus d'informations sur le projet Pôle Gare
 		.link
