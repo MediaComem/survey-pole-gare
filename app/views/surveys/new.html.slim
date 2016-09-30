@@ -1,6 +1,6 @@
 div 
   p.info 
-    | Ce sondage ne vous prendra pas plus de 10 minutes. Il est optimisé pour les <strong>navigateurs récents</strong>, tablettes tactiles et smartphones y compris. 
+    | Ce <strong>sondage</strong> ne vous prendra pas plus de 10 minutes. Il est optimisé pour les navigateurs récents, tablettes tactiles et smartphones y compris. 
     br 
     | Aucune question n’est obligatoire
   = form_for :survey, url: surveys_path do |f|
@@ -20,7 +20,7 @@ div
                 = f.radio_button(:q1,"#{item}")
                 = item
     #q2.question.only-for-frequentation
-        h3 Dans le secteur sous­-gare,vous êtes avant tout... (2 choix possibles)
+        h3 Dans le secteur sous­-gare,vous êtes avant tout... (2 choix possibles, hiérarchisés)
         ul.gm-form-question-content
           .gm-selected
           .gm-unselected
@@ -85,7 +85,7 @@ div
                   = f.radio_button(:q5,"#{item}")
                   = item
     #q6.question.only-for-frequentation
-      h3 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? (4 choix possibles)
+      h3 Quel(s) moyen(s) de transport utilisez-vous lorsque vous vous rendez dans le secteur ? (4 choix possibles, hiérarchisés)
       ul.gm-form-question-content
         .gm-selected
         .gm-unselected
