@@ -1,6 +1,4 @@
-div 
-  p.info 
-    | Ce <strong>sondage</strong> ne vous prendra pas plus de 10 minutes. Il est optimisé pour les navigateurs récents, tablettes tactiles et smartphones y compris. Aucune question n’est obligatoire.
+div
   = form_for :survey, url: surveys_path do |f|
     #q1.question
       h3 Quelle est votre fréquentation moyenne du secteur?

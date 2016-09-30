@@ -13,6 +13,30 @@ $color-pole-gare: #1a4a5b;
   border-color: #356778;
   color: white;
 }
+.head{
+	img{
+		width: 100%;
+	}
+	.head-medium,.head-large{
+		display: none
+	}
+	@media (min-width: 768px) {
+		.head-small,.head-large{
+			display: none
+		}
+		.head-medium{
+			display: inline-block;
+		}
+	}
+	@media (min-width: 1920px) {
+		.head-small,.head-medium{
+			display: none
+		}
+		.head-large{
+			display: inline-block;
+		}
+	}
+}
 .map-buttons .btn {
   margin-left: 2%;
   margin-right: 0px;
@@ -83,7 +107,6 @@ header{
 		font-size: 18px;
 		p{
 			margin-top: 20px;
-			padding:10px;
 		}
 		img{
 			width: 100%;
