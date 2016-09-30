@@ -383,10 +383,12 @@ pre.gm-pre {
 .icon-alibi{
 	visibility: hidden;
 }
-.row > div:nth-child(2){
-	.radio:first-child,.checkbox:first-child{
-		@media (max-width: 768px) {
-			margin-top:-5px;
-		}
-	}	
-} 
+#q3,#q4,#q5{
+	.row > div:nth-child(2){
+		.radio:first-child,.checkbox:first-child{
+			@media (max-width: 768px) {
+				margin-top:-5px;
+			}
+		}	
+	} 
+}
