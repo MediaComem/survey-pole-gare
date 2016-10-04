@@ -282,8 +282,8 @@ div
         span.icon-S1
         |&nbsp;Pas du tout satisfait
         br
-        = fa_icon "minus"
-        |&nbsp;Sans avis
+        |-
+        |&nbsp;&nbsp;Sans avis
         br
       = f.fields_for :q14 do |ff|
         - Survey.q14_answers.each do |item|
@@ -318,7 +318,7 @@ div
                             label
                               = ff.radio_button(item, [""])
                               div
-                                = fa_icon "minus"
+                                |-
                     .hidden
                       = ff.radio_button(item, [""],{checked: true})
                       | null 
