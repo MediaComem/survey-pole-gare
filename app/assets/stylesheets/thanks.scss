@@ -83,6 +83,7 @@ body.thanks-page {
 
 	.container-fluid {
 	    padding: 0px;
+	    overflow-x: hidden;
 	}
 
 	#container {
@@ -147,13 +148,29 @@ body.thanks-page {
 	}
 
 	@media (max-width: 638px) {
+		#container {
+			padding: 0;
+		}
+		.social {
+			margin-bottom: 15px;
+		}
+		.thanks {
+			margin-bottom: 15px;
+		}
+		#s-img {
+			img {
+				padding-right: 0;
+			}
+		}
 		#logos {
 			padding: 0 15px;
 			img {
-				width: 100%;
+				width: 46%;
 				margin-left: 0;
 				&:first-child {
+					width: 60%;
 					margin-left: 0;
+					margin-bottom: 0;
 				}
 			}
 		}
