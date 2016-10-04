@@ -39,6 +39,16 @@ body.thanks-page {
 		background-color: $darkBlue;
 	}
 
+	h1 {
+    	position: relative;
+		top: 224px;
+		left: 50px;
+		font-size: 4.8em;
+		font-weight: bold;
+		color: white;
+		text-transform: uppercase;
+	}
+
 	.footer {
 		text-align: center;
 		display: block;
@@ -73,6 +83,13 @@ body.thanks-page {
 	#l-img {
 		width: 50%;
 		display: none;
+		position: absolute;
+		background-color: white;
+		background-image: image-url("votre-gare_big.png");
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: left top;
+		height: 100%;
 	}
 	#s-logos {
 		display: block;	
@@ -87,7 +104,7 @@ body.thanks-page {
 	}
 
 	#container {
-		margin-left: -15px;
+		margin-left: 50%;
 		padding: 20px;
 		text-align: center;
 	}
