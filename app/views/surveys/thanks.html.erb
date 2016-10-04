@@ -25,7 +25,7 @@
 						<p class="thanks">Merci pour votre participation, nous nous réjouissons de découvrir vos réponses !</p>
 						<p>partager le sondage avec votre entourage !</p>
 						<div class="social">
-							<div class="fb-share-button" href="http://sondage.pole-gare.ch/" data-layout="button" data-size="large">
+							<div class="fb-share-button" data-href="http://sondage.pole-gare.ch/" data-layout="button" data-size="large"></div>
 							<div class="mail-button">
 								<a class="btn btn-default" href="mailto:?subject=Sous-Gare, prends Place!&body=J'ai répondu au sondage, essayez aussi! http://sondage.pole-gare.ch" role="button"> Envoyer par mail</a>
 							</div>
@@ -33,30 +33,27 @@
 								<a class="twitter-share-button" href="https://twitter.com/share" data-show-count="false" data-size="large" data-text="Sous-Gare, prends Place! Donnez-nous votre avis..." data-url="http://sondage.pole-gare.ch"> Tweet</a>
 							</div>
 						</div>
-						<p>Plus d’informa on sur le projet Pôle Gare</p>
-						<a class="button" href="http://pole-gare.ch" >pole-gare.ch</a>
+						<p>Plus d’information sur le projet Pôle Gare</p>
+						<a class="btn button" href="http://pole-gare.ch" >pole-gare.ch</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	<script>
-		$(document).ready(function() {
-	
-			testSize();
+		testSize();
 			
-			$(window).resize(function() {
-				testSize();
-			});
+		$(window).resize(function() {
+			testSize();
 		});
 
 		function testSize() {
+			console.log("debug");
 			if(Modernizr.mq('(max-width: 1199px)')){
 				if($('#s-img').is(":visible")){
 					$('.footer .col-lg-12').prepend($('#content'))
 					$('#s-logos').prepend($('#logos'));
 				}
 			} else {
-				console.log('debug');
 				if(!$('#s-img').is(":visible")){
 					$('#container').append($('#content'))
 					$('#l-logos').prepend($('#logos'));

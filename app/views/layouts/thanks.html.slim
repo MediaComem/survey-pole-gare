@@ -2,6 +2,7 @@
 html(lang="fr")
 	head
 		title Pôlegare | Sondage
+		meta name="viewport" content="width=device-width, initial-scale=1"
 		meta property="og:url" content="http://sondage.pole-gare.ch"
 		meta property="og:type" content="website"
 		meta property="og:title" content="Sous-Gare, prends Place!"
@@ -14,7 +15,7 @@ html(lang="fr")
 		= favicon_link_tag 'favicon.ico'
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 		= analytics_init if GoogleAnalytics.valid_tracker?
-	body.thanks
+	body.thanks-page
 		#fb-root
 		javascript:
 			(function(d, s, id) {
@@ -25,6 +26,6 @@ html(lang="fr")
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 		script async=true src="//platform.twitter.com/widgets.js" charset="utf-8"
-		#slogan
-		.container
-			= yield
+		/ #slogan
+		/ .container
+		= yield

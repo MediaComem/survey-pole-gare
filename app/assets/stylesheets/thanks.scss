@@ -11,7 +11,9 @@ $yellow: #f7ee5b;
   src: url(font-path('BanderaPro-Bold.eot')),
   	url(font-path('BanderaPro-Bold.eot?syx9v0')) format('embedded-opentype'),
     url(font-path('BanderaPro-Bold.woff?syx9v0')) format('woff'),
-    url(font-path('BanderaPro-Bold.ttf?syx9v0'))  format('truetype'),
+    url(font-path('BanderaPro-Bold.ttf?syx9v0'))  format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
@@ -19,12 +21,15 @@ $yellow: #f7ee5b;
   src: url(font-path('BanderaPro.eot')),
   	url(font-path('BanderaPro.eot?syx9v0')) format('embedded-opentype'),
     url(font-path('BanderaPro.woff?syx9v0')) format('woff'),
-    url(font-path('BanderaPro.ttf?syx9v0'))  format('truetype'),
+    url(font-path('BanderaPro.ttf?syx9v0'))  format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
 	color: black;
 	font-family: 'Bandera Pro' !important;
+	overflow-x: hidden;
 }
 
 img {
@@ -49,11 +54,13 @@ img {
 }
 
 .button {
+	margin-top: 10px;
 	padding: 5px 10px;
-	background-color: $yellow;
-	color: black;
+	background-color: $yellow !important;
+	color: black !important;
 	border-radius: 5px;
 	font-weight: bold;
+	border: none !important;
 }
 
 .thanks {
@@ -79,6 +86,7 @@ img {
 }
 
 #container {
+	margin-left: -15px;
 	padding: 20px;
 	text-align: center;
 }
@@ -87,14 +95,32 @@ img {
 	padding: 20px;
 }
 
-@media (min-width: 1200px) {
-	.container {
-		width: 100%;
-		padding-left: 0;
-		padding-right: 0;
+.social div {
+	display: inline-block;
+}
+
+.social {
+	margin-bottom: 30px;
+	.fb-share-button {
+
 	}
+	.twitter-button {
+		position: relative;
+		top: 6px;
+	}
+	.mail-button {
+		position: relative;
+		top: -5px;
+		a {
+			padding: 3px 8px;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
 	.thanks {
-		font-size: 3em;
+		font-size: 2em;
+		margin-top: 100px;
 	}
 	.footer {
 		display: none;
@@ -117,5 +143,18 @@ img {
 	}
 	#l-logo {
 		display: block;
+	}
+}
+
+@media (max-width: 638px) {
+	#logos {
+		padding: 0 15px;
+		img {
+			width: 100%;
+			margin-left: 0;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
 	}
 }
