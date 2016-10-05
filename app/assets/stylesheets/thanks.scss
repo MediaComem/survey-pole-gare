@@ -41,12 +41,20 @@ body.thanks-page {
 
 	h1 {
     	position: relative;
-		top: 224px;
 		left: 50px;
-		font-size: 4.8em;
+		font-size: 4.2em;
 		font-weight: bold;
 		color: white;
 		text-transform: uppercase;
+	}
+
+	p.copyright{
+		position: absolute;
+		color: white;
+		bottom: 0;
+		right: 0;
+		margin-right: 20px;
+		margin-bottom: 0;
 	}
 
 	.footer {
@@ -79,13 +87,20 @@ body.thanks-page {
 	}
 	#s-img {
 		display: block;
+		position: relative;
+		div {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
 	}
 	#l-img {
 		width: 50%;
 		display: none;
 		position: absolute;
 		background-color: white;
-		background-image: image-url("votre-gare_big.png");
+		background-image: image-url("votre-gare_big.jpg");
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: left top;
@@ -136,6 +151,15 @@ body.thanks-page {
 	}
 
 	@media (min-width: 1200px) {
+		h1 {
+	    	position: relative;
+			top: 224px;
+			left: 50px;
+			font-size: 4.8em;
+			font-weight: bold;
+			color: white;
+			text-transform: uppercase;
+		}
 		.thanks {
 			font-size: 2em;
 			margin-top: 100px;
@@ -165,6 +189,9 @@ body.thanks-page {
 	}
 
 	@media (max-width: 638px) {
+		h1 {
+			font-size: 3em;
+		}
 		#container {
 			padding: 0;
 		}
