@@ -235,8 +235,9 @@ div
         = fa_icon "thumbs-down"
         |&nbsp;Pas d’accord
         br
+        = fa_icon "minus"
+        |&nbsp;Sans avis
         br
-        |Sans avis: laisser vide
       = f.fields_for :q13 do |ff|
         - Survey.q13_answers.each do |item|
           .row
@@ -247,16 +248,22 @@ div
                 .panel-body
                   .row
                     .col-xs-12
-                      .col-xs-3.col-xs-offset-3.col-sm-2.col-sm-offset-4.text-center
-                        label
-                          = ff.radio_button(item, ["D\’accord"])
-                          div
-                            = fa_icon "thumbs-up"
-                      .col-xs-3.col-sm-2.text-center
-                        label
-                          = ff.radio_button(item, ["Pas d\’accord"])
-                          div
-                            = fa_icon "thumbs-down"
+                      .row
+                        .col-xs-4.text-center
+                          label
+                            = ff.radio_button(item, ["D\’accord"])
+                            div
+                              = fa_icon "thumbs-up"
+                        .col-xs-4.text-center
+                          label
+                            = ff.radio_button(item, ["Pas d\’accord"])
+                            div
+                              = fa_icon "thumbs-down"
+                        .col-xs-4.text-center
+                          label
+                            = ff.radio_button(item, [""])
+                            div
+                              = fa_icon "minus"
                     .hidden
                       = ff.radio_button(item, [""],{checked: true})
                       | null 
@@ -275,8 +282,9 @@ div
         span.icon-S1
         |&nbsp;Pas du tout satisfait
         br
+        |-
+        |&nbsp;&nbsp;Sans avis
         br
-        |Sans avis: laisser vide
       = f.fields_for :q14 do |ff|
         - Survey.q14_answers.each do |item|
               .panel.panel-default
@@ -284,27 +292,33 @@ div
                   = item
                 .panel-body
                   .row
-                    .col-xs-12
-                      .col-xs-3.text-center
-                        label
-                          = ff.radio_button(item, ["Très satisfait"])
-                          div
-                            span.icon-S4
-                      .col-xs-3.text-center
-                        label
-                          = ff.radio_button(item, ["Satisfait"])
-                          div
-                            span.icon-S3
-                      .col-xs-3.text-center
-                        label
-                          = ff.radio_button(item, ["Peu satisfait"])
-                          div
-                            span.icon-S2
-                      .col-xs-3.text-center
-                        label
-                          = ff.radio_button(item, ["Pas du tout satisfait"])
-                          div
-                            span.icon-S1
+                    .col-xs-12.col-xs-offset-1
+                      .row
+                        .col-xs-2.text-center
+                          label
+                            = ff.radio_button(item, ["Très satisfait"])
+                            div
+                              span.icon-S4
+                        .col-xs-2.text-center
+                          label
+                            = ff.radio_button(item, ["Satisfait"])
+                            div
+                              span.icon-S3
+                        .col-xs-2.text-center
+                          label
+                            = ff.radio_button(item, ["Peu satisfait"])
+                            div
+                              span.icon-S2
+                        .col-xs-2.text-center
+                          label
+                            = ff.radio_button(item, ["Pas du tout satisfait"])
+                            div
+                              span.icon-S1
+                        .col-xs-2.text-center
+                            label
+                              = ff.radio_button(item, [""])
+                              div
+                                |-
                     .hidden
                       = ff.radio_button(item, [""],{checked: true})
                       | null 

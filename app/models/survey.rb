@@ -76,10 +76,10 @@ class Survey < ApplicationRecord
     ['Oui','Non']
   end
   def self.q24_answers
-    ['Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre']
+    ['Dirigeant','Profession libérale','Indépendant','Prof. intellectuelle ou cadre','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre']
   end
   def self.q25_answers
-    ['Pas de conjoint','Dirigeant','Profession libérale','Indépendant','Profession intellectuelle et d’encadrement','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre']
+    ['Pas de conjoint','Dirigeant','Profession libérale','Indépendant','Prof. intellectuelle ou cadre','Profession intermédiaire','Employé','Ouvrier','Travailleur non-qualifié','Apprenti','Etudiant','Retraité','Au foyer','Sans emploi','Autre']
   end
   def self.q41_answers
     ['marche', 'vélo', 'train', 'train', 'métro', 'voiture personnelle','covoiturage','Mobility','taxi','2 roues motorisé']
