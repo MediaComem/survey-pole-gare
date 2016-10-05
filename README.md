@@ -20,4 +20,4 @@ We have a very long page and people should scroll to navigate throug the questio
 
 We would like to avoid it. When users are scrolling they sould not be stopped by maps. Our workaround is to detect window scroll event and disable map's default 
 
-[Screencast!](docs/images/pole-gare-screencast1.gif)
+![Screencast](docs/images/pole-gare-screencast1.gif)
