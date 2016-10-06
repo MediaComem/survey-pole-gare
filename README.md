@@ -14,6 +14,9 @@ Example
     
 `.env` content
   `DB_USER=[your_db_username]`
+  
+## General infos about libs and stuffs we use
+[Complete here]
 
 ## Scroll page without blocking on maps
 We have a very long page and people should scroll to navigate throug the questions or just to have a look of the form. We have multiple maps and they are taking all the page's width. Maps have native user behaviours with user's interactions, you can zoom it with the mouse's scroll (on desktop) or drag it with your fingers (on mobile). But these interactions are also used to scroll the page. So what happens when you are scrolling the page and your finger or your cursor hit the map? The map takes control of the scroll. Your smooth scroll is suddenly stopped and you are zooming on max level (desktop) or draging the map to the top of its bbox (mobile).
@@ -69,3 +72,11 @@ window.onscroll = function (e) { // 1
 
 Now we can scroll our page as smoothly as it should be.
 ![Screencast](docs/images/pole-gare-screencast2.gif)
+
+## ol3 Select all features then unselect them individually
+
+We have some geographical questions in our survey. Basically users can select area(s) where they usually go. A map can have until 20 areas to select so we choose to put a button to select or unselect all area with one click.
+
+Here an exemple of our map with the 20 areas that we can select. Buttons above the map help to _re-center the map_, _select all areas_ and _unselect all areas_.
+
+This is pretty cool. But it was pretty hard to achieve this because of the default behaviour of `ol.interaction.Select`.
