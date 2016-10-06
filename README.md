@@ -22,47 +22,45 @@ We have a very long page and people should scroll to navigate throug the questio
 
 We would like to avoid it. When users are scrolling they sould not be stopped by maps. Our **workaround** is to detect window scroll event and disable map's default behaviour. 
 
-```
-disableZoomAndPanWhenScrolling: function(){
-  var scrollStarted = false;
-  var timer = null; 
-  window.onscroll = function (e) { // 1
-    if(!scrollStarted){
-      scrollStarted = true
-      var map = mapManager.getMap();
-      map.getInteractions().forEach(function(e){ // 2 
-        if(e instanceof ol.interaction.MouseWheelZoom){
-          e.setActive(false);
-        }
-        if(e instanceof ol.interaction.DragPan){
-          e.setActive(false);
-        }
-        if(e instanceof ol.interaction.PinchZoom){
-          e.setActive(false);
-        }    
-      }); 
-    }
-    if(timer !== null) { // 3
-      clearTimeout(timer);     
-    }
-    timer = setTimeout(function() { // 4
-      scrollStarted = false;
-      var map = mapManager.getMap();
-      map.getInteractions().forEach(function(e){
-        if(e instanceof ol.interaction.MouseWheelZoom){
-          e.setActive(true);
-        }
-        if(e instanceof ol.interaction.DragPan){
-          e.setActive(true);
-        }
-        if(e instanceof ol.interaction.PinchZoom){
-          e.setActive(true);
-        }    
-      }) 
-    }, 200);
+```javascript
+var scrollStarted = false;
+var timer = null; 
+window.onscroll = function (e) { // 1
+  if(!scrollStarted){
+    scrollStarted = true
+    var map = mapManager.getMap();
+    map.getInteractions().forEach(function(e){ // 2 
+      if(e instanceof ol.interaction.MouseWheelZoom){
+        e.setActive(false);
+      }
+      if(e instanceof ol.interaction.DragPan){
+        e.setActive(false);
+      }
+      if(e instanceof ol.interaction.PinchZoom){
+        e.setActive(false);
+      }    
+    }); 
   }
+  if(timer !== null) { // 3
+    clearTimeout(timer);     
+  }
+  timer = setTimeout(function() { // 4
+    scrollStarted = false;
+    var map = mapManager.getMap();
+    map.getInteractions().forEach(function(e){
+      if(e instanceof ol.interaction.MouseWheelZoom){
+        e.setActive(true);
+      }
+      if(e instanceof ol.interaction.DragPan){
+        e.setActive(true);
+      }
+      if(e instanceof ol.interaction.PinchZoom){
+        e.setActive(true);
+      }    
+    }) 
+  }, 200);
 }
-  ```
+```
 
 1. We detect when the screen starts to be scrolled.
 2. We disable the map's default interactions (`MouseWheelZoom`,`DragPan`,`PinchZoom`)
