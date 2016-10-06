@@ -22,8 +22,8 @@ class SurveysController < ApplicationController
     render layout: "thanks"
   end
   def admin
-    @users = Survey.all
-
+    @users = Survey.where("created_at > ?", Date.new(2016, 10, 03))
+    
     respond_to do |format|
       format.html
       format.csv {
