@@ -68,3 +68,6 @@ disableZoomAndPanWhenScrolling: function(){
 2. We disable the map's default interactions (`MouseWheelZoom`,`DragPan`,`PinchZoom`)
 3. If a timer is set, we cancel it
 4. We choose to set a timer every time a scroll event is triggered. We think that when users are scrolling our page, the scroll can stop during a short time. The maps interactions should not bet active during this time. 200ms is an aribtrary time that we choose. We could investigate more time to choose the right time :-). After this _200ms_ timer is expires, the map's default interactions are enabled.
+
+Now we can scroll our page as smoothly as it should be.
+![Screencast](docs/images/pole-gare-screencast2.gif)
