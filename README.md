@@ -80,3 +80,17 @@ We have some geographical questions in our survey. Basically users can select ar
 Here an exemple of our map with the 20 areas that we can select. Buttons above the map help to _re-center the map_, _select all areas_ and _unselect all areas_.
 
 This is pretty cool. But it was pretty hard to achieve this because of the default behaviour of `ol.interaction.Select`.
+
+## Backup heroku database and import it to local database
+
+First backup your database
+
+`$ heroku pg:backups capture`
+
+Then import it to your machine
+
+`$ curl -o latest.dump 'heroku pg:backups public-url'`
+
+Finally copy your data to your local database
+
+`pg_restore --verbose --clean --no-acl --no-owner -d database_name latest.dump`
