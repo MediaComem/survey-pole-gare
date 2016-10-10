@@ -13,6 +13,11 @@ Example
     
 `.env` content
   `DB_USER=[your_db_username]`
+  
+## General infos about libs and stuffs we use
+
+This project is a big survey with cartographic questions. User can select features on map to respond to some questions. This can be very useful but it brings some problems that we try to solve here.
+For theses cartographic questions we choose OpenLayers 3 (v3.17.1). We will not argue here why we choose it, but it is free, open source and quite easy to use.
 
 [Scroll page without blocking on maps](#scroll-page-without-blocking-on-maps)
 
@@ -21,11 +26,6 @@ Example
 [Backup heroku database and import it to local database](#backup-heroku-database-and-import-it-to-local–database)
 
 [Ruby on rails: How to divide array in columns for twitter bootstrap](#ruby-on-rails-how-to-divide-array-in-columns-for-twitter-bootstrap)
-  
-## General infos about libs and stuffs we use
-
-This project is a big survey with cartographic questions. User can select features on map to respond to some questions. This can be very useful but it brings some problems that we try to solve here.
-For theses cartographic questions we choose OpenLayers 3 (v3.17.1). We will not argue here why we choose it, but it is free, open source and quite easy to use.
 
 ## Scroll page without blocking on maps
 We have a very long page and people should scroll to navigate throug the questions or just to have a look of the form. We have multiple maps and they are taking all the page's width. Maps have native user behaviours with user's interactions, you can zoom it with the mouse's scroll (on desktop) or drag it with your fingers (on mobile). But these interactions are also used to scroll the page. So what happens when you are scrolling the page and your finger or your cursor hit the map? The map takes control of the scroll. Your smooth scroll is suddenly stopped and you are zooming on max level (desktop) or draging the map to the top of its bbox (mobile).
