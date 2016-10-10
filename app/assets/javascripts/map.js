@@ -29,10 +29,21 @@ var mapManager = {
     var map = new ol.Map({
       view: mapManager.defaultView(),
       target: 'home-map',
-      layers: [colorlayer]
+      layers: [colorlayer],
+      controls: ol.control.defaults({
+        attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+          collapsible: false
+        })
+      })
     });
 
-    var vectorSource = new ol.source.Vector();
+    var vectorSource = new ol.source.Vector({
+      attributions: [
+        new ol.Attribution({
+          html: "géodonnées © Etat de Vaud & © contributeurs OpenStreetMap"
+        })
+      ]
+    });
 
     $.get( "/lausanne_maillle_reguliere.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
@@ -102,10 +113,21 @@ var mapManager = {
     var map = new ol.Map({
       view: mapManager.defaultView(),
       target: 'work-map',
-      layers: [colorlayer]
+      layers: [colorlayer],
+      controls: ol.control.defaults({
+        attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+          collapsible: false
+        })
+      })
     });
 
-    var vectorSource = new ol.source.Vector();
+    var vectorSource = new ol.source.Vector({
+      attributions: [
+        new ol.Attribution({
+          html: "géodonnées © Etat de Vaud & © contributeurs OpenStreetMap"
+        })
+      ]
+    });
 
     $.get( "/lausanne_maillle_reguliere.geojson", function( data ) {
       vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data))
@@ -174,10 +196,21 @@ var mapManager = {
     var map = new ol.Map({
       view: mapManager.businessAndVisitsMapsView(),
       target: 'map-visits',
-      layers: [colorlayer]
+      layers: [colorlayer],
+      controls: ol.control.defaults({
+        attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+          collapsible: false
+        })
+      })
     });
 
-    var vectorSource = new ol.source.Vector();
+    var vectorSource = new ol.source.Vector({
+      attributions: [
+        new ol.Attribution({
+          html: "géodonnées © Etat de Vaud & © contributeurs OpenStreetMap"
+        })
+      ]
+    });
 
     var feats = []
     $.get( "/vide.geojson", function( data ) {
@@ -314,10 +347,21 @@ var mapManager = {
     var map = new ol.Map({
       view: mapManager.businessAndVisitsMapsView(),
       target: 'map-business',
-      layers: [colorlayer]
+      layers: [colorlayer],
+      controls: ol.control.defaults({
+        attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+          collapsible: false
+        })
+      }),
     });
 
-    var vectorSource = new ol.source.Vector();
+    var vectorSource = new ol.source.Vector({
+      attributions: [
+        new ol.Attribution({
+          html: "géodonnées © Etat de Vaud & © contributeurs OpenStreetMap"
+        })
+      ]
+    });
 
     var feats = []
     $.get( "/plein.geojson", function( data ) {
@@ -366,7 +410,6 @@ var mapManager = {
     selectSingleClick.on('select', function(e) {
       $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
       var tempFeatures = e.target.getFeatures().getArray()
-
       var valueArr = tempFeatures.map(function(item){ return item.get('id') });
       var isDuplicate = valueArr.some(function(item, idx){ 
           return valueArr.indexOf(item) != idx 
@@ -376,13 +419,21 @@ var mapManager = {
       });
 
       tempFeaturesCol = e.target.getFeatures()
+      
+      var indexsToRemove = []
 
       if(isDuplicate){
+        console.log(duplicates)
         tempFeaturesCol.forEach(function (el,index) {
           if(el.get('id') == duplicates[0]){
-            tempFeaturesCol.remove(el)
+            indexsToRemove.push(index)
           }
         });
+
+        for (var i = indexsToRemove.length - 1; i >= 0; i--) {
+          tempFeaturesCol.removeAt(indexsToRemove[i])
+        }
+
       }
 
       e.target.getFeatures().forEach(function(f){
