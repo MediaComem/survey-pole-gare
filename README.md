@@ -1,6 +1,6 @@
 # README
 
-[create an anchor](#Ruby-on-rails:-How-to-divide-array-in-columns-for-twitter-bootstrap)
+[create an anchor](#ruby-on-rails--how-to-divide-array-in-columns-for-twitter-bootstrap)
 
 ## .env
 The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
