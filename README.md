@@ -194,7 +194,7 @@ Finally copy your data to your local database
 
 `pg_restore --verbose --clean --no-acl --no-owner -d database_name latest.dump`
 
-## Ruby on rails: How to divide array in columns for twitter bootstrap
+## Ruby on rails: How to divide array in columns for twitter bootstrap ##
 
 This could be useful if you need to divide array into multiple columns to fit twitter bootstrap columns template.
 
