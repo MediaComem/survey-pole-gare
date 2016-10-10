@@ -15,8 +15,11 @@ Example
   `DB_USER=[your_db_username]`
 
 [Scroll page without blocking on maps](#scroll-page-without-blocking-on-maps)
+
 [ol3 Select all features then unselect them individually](#ol3-Select-all-features-then-unselect-them-individually)
+
 [Backup heroku database and import it to local database](#backup-heroku-database-and-import-it-to-local–database)
+
 [Ruby on rails: How to divide array in columns for twitter bootstrap](#ruby-on-rails-how-to-divide-array-in-columns-for-twitter-bootstrap)
   
 ## General infos about libs and stuffs we use
