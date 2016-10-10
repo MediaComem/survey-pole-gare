@@ -1,6 +1,6 @@
 # README
 
-[Ruby on rails: How to divide array in columns for twitter bootstrap][]
+[create an anchor](#Ruby-on-rails:-How-to-divide-array-in-columns-for-twitter-bootstrap)
 
 ## .env
 The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
@@ -194,7 +194,7 @@ Finally copy your data to your local database
 
 `pg_restore --verbose --clean --no-acl --no-owner -d database_name latest.dump`
 
-## Ruby on rails: How to divide array in columns for twitter bootstrap ##
+## Ruby on rails: How to divide array in columns for twitter bootstrap
 
 This could be useful if you need to divide array into multiple columns to fit twitter bootstrap columns template.
 
