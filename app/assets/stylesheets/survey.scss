@@ -431,3 +431,15 @@ pre.gm-pre {
 		font-size: 16px;
 	}
 }
+.ol-attribution ul{
+	font-size: 0.8em;
+	@media (max-width: 768px) {
+		li:first-child{
+			display: none;
+		}
+		font-size: 0.5em;
+	}
+}
+.ol-attribution.ol-uncollapsible{
+  bottom: 5px;
+}
