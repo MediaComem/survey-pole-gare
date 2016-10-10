@@ -1,5 +1,6 @@
 # README
 
+[Ruby on rails: How to divide array in columns for twitter bootstrap][]
 
 ## .env
 The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
@@ -81,7 +82,7 @@ We have some geographical questions in our survey. Basically users can select ar
 
 Here an exemple of our map with the 20 areas (in yellow) that we can select. Buttons above the map help to _re-center the map_, _select all areas_ and _unselect all areas_.
 
-[put image here]
+![Screencast](docs/images/pole-gare-screenshot1.jpg)
 
 With openlayers this is pretty simple to do but pretty weird as well.
 
@@ -192,3 +193,25 @@ Then import it to your machine
 Finally copy your data to your local database
 
 `pg_restore --verbose --clean --no-acl --no-owner -d database_name latest.dump`
+
+## Ruby on rails: How to divide array in columns for twitter bootstrap
+
+This could be useful if you need to divide array into multiple columns to fit twitter bootstrap columns template.
+
+```
+.row
+  .col-sm-3.col-md-2.col-xs-12
+    - Survey.q3_answers.in_groups(2)[0].each do |item|
+      .radio
+        label
+          = f.radio_button(:q3,"#{item}")
+          = item
+  .col-sm-3.col-md-2.col-xs-12
+    - Survey.q3_answers.in_groups(2,false)[1].each do |item|
+      .radio
+        label
+          = f.radio_button(:q3,"#{item}")
+          = item
+```
+
+Use `in_groups(2)` to divide your arry in two parts. Then use `false` when you get the last part for padding any remaining slots.

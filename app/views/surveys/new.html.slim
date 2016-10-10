@@ -43,7 +43,7 @@ div
                 = f.radio_button(:q3,"#{item}")
                 = item
         .col-sm-3.col-md-2.col-xs-12
-          - Survey.q3_answers.in_groups(2)[1].compact.each do |item|
+          - Survey.q3_answers.in_groups(2)[1].each do |item|
             .radio
               label
                 = f.radio_button(:q3,"#{item}")
