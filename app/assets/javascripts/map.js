@@ -366,7 +366,6 @@ var mapManager = {
     selectSingleClick.on('select', function(e) {
       $('#map-business').siblings('.checkbox').find(':checked').prop('checked','')
       var tempFeatures = e.target.getFeatures().getArray()
-
       var valueArr = tempFeatures.map(function(item){ return item.get('id') });
       var isDuplicate = valueArr.some(function(item, idx){ 
           return valueArr.indexOf(item) != idx 
@@ -376,13 +375,21 @@ var mapManager = {
       });
 
       tempFeaturesCol = e.target.getFeatures()
+      
+      var indexsToRemove = []
 
       if(isDuplicate){
+        console.log(duplicates)
         tempFeaturesCol.forEach(function (el,index) {
           if(el.get('id') == duplicates[0]){
-            tempFeaturesCol.remove(el)
+            indexsToRemove.push(index)
           }
         });
+
+        for (var i = indexsToRemove.length - 1; i >= 0; i--) {
+          tempFeaturesCol.removeAt(indexsToRemove[i])
+        }
+
       }
 
       e.target.getFeatures().forEach(function(f){
