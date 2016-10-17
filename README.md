@@ -1,5 +1,7 @@
 # README
 
+Survey-Pole-Gare is the survey used by the municipality of Lausanne to get feedback on the [Pole gare](http://pole-gare.ch/) urbanistic project from interested citizens.
+
 ## .env
 The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
 
