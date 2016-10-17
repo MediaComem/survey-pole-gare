@@ -63,7 +63,7 @@ Now we can scroll our page as smoothly as it should be.
 
 ## ol3 Select all features then deselect them individually
 
-We have some geographical questions in our survey. Basically, users can select area(s) where they usually go. A map can have up to 20 areas to select from so we chose to put a button to select or deselect all areas with one click.
+We have geographical questions wheres users can select area(s) they frequent. A map can have up to 20 areas to select from so we put a button to *select* or *deselect all* areas with one click.
 
 Here an exemple of our map with the 20 areas (in yellow) that can be select. Buttons above the map help the user _re-center the map_, _select all areas_ and _deselect all areas_.
 
@@ -104,7 +104,7 @@ var selectSingleClick = new ol.interaction.Select({
 });
 map.addInteraction(selectSingleClick);
 ```
-This will enable the map's _select_ and _deselect_ interactions. Whith these interactions we can select/deselect features individually. To select all features in the same time we need to setup a custom button (`#map-select-all`). On click, this button will trigger some code that will make the job: 
+This will enable the map's _select_ and _deselect_ interactions. Whith these interactions we can select/deselect features individually. To select all features in the same time we need to setup a custom button (`#map-select-all`). On click, this button will trigger some code that will: 
 1. Get all the features already selected
 2. Clear them all
 3. Put all features (`feats`) inside the selected features array
@@ -120,7 +120,7 @@ $('#q8 #map-select-all').on('click',function(e) {
 });
 ```
 
-To deselect all you just have to do the same without adding the features :-)
+To deselect all you just have to do the same without adding the features.
 
 Now the problem is how to individually deselect features when you add them manually as we did. By default _ol3_ will not care about the features you added previously and will add them again in `selectSingleClick` zones collection. Below you will see an example of this.
 
@@ -152,9 +152,9 @@ selectSingleClick.on('select', function(e) {
 });
 ```
 
-As we said before, _ol3_ add the zones you select in the `selectSingleClick` zones collection. No matter if the feature is already present in the collection. We need to check "manually" the existence of the selected feature in the collection . This is how we proceeded.
+As we said before, _ol3_ add the zones you select in the `selectSingleClick` zones collection. No matter if the feature is already present in the collection. We need to "manually" check the existence of the selected feature in the collection . This is how we proceeded.
 
-1. Get the selected features collection as an Array
+1. Get the selected features collection as an `Array`
 2. Map the array to get the feature’s ids
 3. Check if the array contains duplicates
 4. If it contains duplicates, parse the collection to know where the duplicate features are
