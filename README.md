@@ -2,6 +2,11 @@
 
 Survey-Pole-Gare is the survey used by the municipality of Lausanne to get feedback on the [Pole gare](http://pole-gare.ch/) urbanistic project from interested citizens.
 
+The project is a lengthy survey with cartographic questions. Users can **select features on maps** to respond to some questions. This is very useful for our use case. This also brings some challenges that we discuss in this document.
+
+For theses cartographic questions we chose [OpenLayers 3](http://openlayers.org/) *v3.17.1*. We will not argue here why we choose it, but it is free, open source and quite easy to use.
+
+
 ## .env
 The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
 
@@ -16,10 +21,7 @@ Example
 `.env` content
   `DB_USER=[your_db_username]`
   
-## General infos about libs and stuffs we use
-
-This project is a big survey with cartographic questions. Users can select features on maps to respond to some questions. This can be very useful but it brings some problems that we try to solve here. 
-For theses cartographic questions we chose OpenLayers 3 (v3.17.1). We will not argue here why we choose it, but it is free, open source and quite easy to use.
+## Resources
 
 [Scroll page without blocking on maps](#scroll-page-without-blocking-on-maps)
 
