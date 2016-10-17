@@ -6,30 +6,6 @@ The project is a lengthy survey with cartographic questions. Users can **select 
 
 We used [OpenLayers 3](http://openlayers.org/) *v3.17.1* for the cartography part. It is free, open source and quite easy to use.
 
-## .env
-The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
-
-* `DB_USER`
-* `DB_NAME_DEV`
-* `DB_NAME_TEST`
-* `ADMIN_LOGIN`
-* `ADMIN_PWD`
-
-Example
-    
-`.env` content
-  `DB_USER=[your_db_username]`
-  
-## Resources
-
-[Scroll page without blocking on maps](#scroll-page-without-blocking-on-maps)
-
-[ol3 Select all features then deselect them individually](#ol3-Select-all-features-then-deselect-them-individually)
-
-[Backup heroku database and import it to local database](#backup-heroku-database-and-import-it-to-local–database)
-
-[Ruby on rails: How to divide array in columns for twitter bootstrap](#ruby-on-rails-how-to-divide-array-in-columns-for-twitter-bootstrap)
-
 ## Scroll page without blocking on maps
 We have a very long page and people need to scroll to navigate through the questions or to have a look at the form. We have multiple page-wide maps. Maps have native user behaviors that alow the user to zoom with the mouse's scroll (on desktop) or drag it with your fingers (on mobile). But these interactions are also used to scroll on the page. So what happens when you are scrolling and your finger or your cursor hit the map? The map takes control of the scroll. Your smooth scroll is suddenly stopped and you are zooming on max level (desktop) or dragging the map to the top of its bbox (mobile).
 
@@ -224,3 +200,27 @@ This could be useful if you need to divide array into multiple columns to fit tw
 ```
 
 Use `in_groups(2)` to divide your arry in two parts. Then use `false` when you get the last part for padding any remaining slots.
+
+## .env
+The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
+
+* `DB_USER`
+* `DB_NAME_DEV`
+* `DB_NAME_TEST`
+* `ADMIN_LOGIN`
+* `ADMIN_PWD`
+
+Example
+    
+`.env` content
+  `DB_USER=[your_db_username]`
+  
+## Resources
+
+[Scroll page without blocking on maps](#scroll-page-without-blocking-on-maps)
+
+[ol3 Select all features then deselect them individually](#ol3-Select-all-features-then-deselect-them-individually)
+
+[Backup heroku database and import it to local database](#backup-heroku-database-and-import-it-to-local–database)
+
+[Ruby on rails: How to divide array in columns for twitter bootstrap](#ruby-on-rails-how-to-divide-array-in-columns-for-twitter-bootstrap)
