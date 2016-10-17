@@ -63,7 +63,7 @@ Now we can scroll our page as smoothly as it should be.
 
 ## ol3 Select all features then deselect them individually
 
-We have geographical questions wheres users can select area(s) they frequent. A map can have up to 20 areas to select from so we put a button to *select* or *deselect all* areas with one click.
+We have geographical questions where users can select area(s) they frequent. A map can have up to 20 areas to select from so we put a button to *select* or *deselect all* areas with one click.
 
 Here an exemple of our map with the 20 areas (in yellow) that can be select. Buttons above the map help the user _re-center the map_, _select all areas_ and _deselect all areas_.
 
