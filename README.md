@@ -1,31 +1,10 @@
 # README
 
-## .env
-The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
+Survey-Pole-Gare is the survey used by the municipality of Lausanne to get feedback on the [Pole gare](http://pole-gare.ch/) urbanistic project from interested citizens.
 
-* `DB_USER`
-* `DB_NAME_DEV`
-* `DB_NAME_TEST`
-* `ADMIN_LOGIN`
-* `ADMIN_PWD`
+The project is a lengthy survey with cartographic questions. Users can **select features on maps** to respond to some questions. This is very useful for our use case. This also brings some challenges that we discuss in this document.
 
-Example
-    
-`.env` content
-  `DB_USER=[your_db_username]`
-  
-## General infos about libs and stuffs we use
-
-This project is a big survey with cartographic questions. Users can select features on maps to respond to some questions. This can be very useful but it brings some problems that we try to solve here. 
-For theses cartographic questions we chose OpenLayers 3 (v3.17.1). We will not argue here why we choose it, but it is free, open source and quite easy to use.
-
-[Scroll page without blocking on maps](#scroll-page-without-blocking-on-maps)
-
-[ol3 Select all features then deselect them individually](#ol3-Select-all-features-then-deselect-them-individually)
-
-[Backup heroku database and import it to local database](#backup-heroku-database-and-import-it-to-local–database)
-
-[Ruby on rails: How to divide array in columns for twitter bootstrap](#ruby-on-rails-how-to-divide-array-in-columns-for-twitter-bootstrap)
+We used [OpenLayers 3](http://openlayers.org/) *v3.17.1* for the cartography part. It is free, open source and quite easy to use.
 
 ## Scroll page without blocking on maps
 We have a very long page and people need to scroll to navigate through the questions or to have a look at the form. We have multiple page-wide maps. Maps have native user behaviors that alow the user to zoom with the mouse's scroll (on desktop) or drag it with your fingers (on mobile). But these interactions are also used to scroll on the page. So what happens when you are scrolling and your finger or your cursor hit the map? The map takes control of the scroll. Your smooth scroll is suddenly stopped and you are zooming on max level (desktop) or dragging the map to the top of its bbox (mobile).
@@ -84,7 +63,7 @@ Now we can scroll our page as smoothly as it should be.
 
 ## ol3 Select all features then deselect them individually
 
-We have some geographical questions in our survey. Basically, users can select area(s) where they usually go. A map can have up to 20 areas to select from so we chose to put a button to select or deselect all areas with one click.
+We have geographical questions where users can select area(s) they frequent. A map can have up to 20 areas to select from so we put a button to *select* or *deselect all* areas with one click.
 
 Here an exemple of our map with the 20 areas (in yellow) that can be select. Buttons above the map help the user _re-center the map_, _select all areas_ and _deselect all areas_.
 
@@ -125,7 +104,7 @@ var selectSingleClick = new ol.interaction.Select({
 });
 map.addInteraction(selectSingleClick);
 ```
-This will enable the map's _select_ and _deselect_ interactions. Whith these interactions we can select/deselect features individually. To select all features in the same time we need to setup a custom button (`#map-select-all`). On click, this button will trigger some code that will make the job: 
+This will enable the map's _select_ and _deselect_ interactions. Whith these interactions we can select/deselect features individually. To select all features in the same time we need to setup a custom button (`#map-select-all`). On click, this button will trigger some code that will: 
 1. Get all the features already selected
 2. Clear them all
 3. Put all features (`feats`) inside the selected features array
@@ -141,7 +120,7 @@ $('#q8 #map-select-all').on('click',function(e) {
 });
 ```
 
-To deselect all you just have to do the same without adding the features :-)
+To deselect all you just have to do the same without adding the features.
 
 Now the problem is how to individually deselect features when you add them manually as we did. By default _ol3_ will not care about the features you added previously and will add them again in `selectSingleClick` zones collection. Below you will see an example of this.
 
@@ -173,9 +152,9 @@ selectSingleClick.on('select', function(e) {
 });
 ```
 
-As we said before, _ol3_ add the zones you select in the `selectSingleClick` zones collection. No matter if the feature is already present in the collection. We need to check "manually" the existence of the selected feature in the collection . This is how we proceeded.
+As we said before, _ol3_ add the zones you select in the `selectSingleClick` zones collection. No matter if the feature is already present in the collection. We need to "manually" check the existence of the selected feature in the collection . This is how we proceeded.
 
-1. Get the selected features collection as an Array
+1. Get the selected features collection as an `Array`
 2. Map the array to get the feature’s ids
 3. Check if the array contains duplicates
 4. If it contains duplicates, parse the collection to know where the duplicate features are
@@ -221,3 +200,27 @@ This could be useful if you need to divide array into multiple columns to fit tw
 ```
 
 Use `in_groups(2)` to divide your arry in two parts. Then use `false` when you get the last part for padding any remaining slots.
+
+## .env
+The `config/database.yml` `config/secrets.yml` files use environment variables for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variables:
+
+* `DB_USER`
+* `DB_NAME_DEV`
+* `DB_NAME_TEST`
+* `ADMIN_LOGIN`
+* `ADMIN_PWD`
+
+Example
+    
+`.env` content
+  `DB_USER=[your_db_username]`
+  
+## Resources
+
+[Scroll page without blocking on maps](#scroll-page-without-blocking-on-maps)
+
+[ol3 Select all features then deselect them individually](#ol3-Select-all-features-then-deselect-them-individually)
+
+[Backup heroku database and import it to local database](#backup-heroku-database-and-import-it-to-local–database)
+
+[Ruby on rails: How to divide array in columns for twitter bootstrap](#ruby-on-rails-how-to-divide-array-in-columns-for-twitter-bootstrap)
