@@ -21,6 +21,11 @@ class SurveysController < ApplicationController
   def thanks
     render layout: "thanks"
   end
+
+  def close
+    
+  end
+
   def admin
     @users = Survey.where("created_at > ?", Date.new(2016, 10, 03))
     
