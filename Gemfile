@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'httparty'
+gem 'json', '~>1.8.3'
 gem 'slim'
 
 gem 'google-analytics-rails', '1.1.0'
@@ -48,7 +49,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry', '~> 0.9.12.2'
-  gem 'dotenv-rails'
   gem 'sqlite3'
 end
 
